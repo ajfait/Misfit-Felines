@@ -1,0 +1,5 @@
+Problem Statement
+
+Misfit Felines is a foster-based cat rescue and does not have a physical location. As such, fosters are often communicating with the rescue via email, messenger, text, etc. There is currently no central repository for all of the fosters to communicate with the rescue or with each other. Many things need to be communicated such as contact information for the foster, photos and bios of the cats for Petfinder, and vaccination records.
+
+Since the rescue has grown tremendously since it was founded, there is a need to centralize all of this information and make it easier for the rescue and its fosters / volunteers to access the most updated information regarding each foster and cat. This application will serve as a database of both fosters and cats. Rescue administrators will be able to view, edit, and remove both. Fosters will be able to edit their own contact information, add, edit, and remove their own cats, and view information on other fosters / volunteers and cats in the rescue.
