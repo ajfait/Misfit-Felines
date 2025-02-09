@@ -13,6 +13,7 @@
     <javaee.version>7.0</javaee.version>
     <jakarta.version>6.1.0</jakarta.version>
     <jstl.version>1.2</jstl.version>
+    <log4j-version>2.17.1</log4j-version>
     <maven.compiler-plugin-version>3.8.1</maven.compiler-plugin-version>
   </properties>
 
@@ -37,6 +38,17 @@
       <groupId>jstl</groupId>
       <artifactId>jstl</artifactId>
       <version>${jstl.version}</version>
+    </dependency>
+    <!-- Log4J -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>${log4j-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>${log4j-version}</version>
     </dependency>
   </dependencies>
 
