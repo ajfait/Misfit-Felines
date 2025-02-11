@@ -1,6 +1,7 @@
 # Time Log
 
-| Date   | Task                                                                               | Hours | Notes|
-|--------|------------------------------------------------------------------------------------|-------|------|
-| 2/2/25 | Clone repository and write problem statement                                       | 0.5   | |
-| 2/9/25 | Configure Log4J and JUnit, write user stories, design screens, create project plan | 3     | |
+| Date    | Task                                                                               | Hours | Notes |
+|---------|------------------------------------------------------------------------------------|-------|-------|
+| 2/2/25  | Clone repository and write problem statement                                       | 0.5   |       |
+| 2/9/25  | Configure Log4J and JUnit, write user stories, design screens, create project plan | 3     |       |
+| 2/10/25 | Create entities and some jsp files                                                 | 1     |       |
