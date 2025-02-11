@@ -25,12 +25,12 @@
 - [ ] Create the dev version of the database
 - [ ] Create a test version of the database for unit testing
 - [ ] Create unit tests
-- [ ] Create Entities
-  - [ ] Cat
-  - [ ] Foster
+- [X] Create Entities
+  - [X] Cat
+  - [X] Person
 - [ ] Create JSPs
-  - [ ] index.jsp
-  - [ ] head.jsp
+  - [X] index.jsp
+  - [X] head.jsp
   - [ ] header.jsp
   - [ ] footer.jsp
   - [ ] signup.jsp

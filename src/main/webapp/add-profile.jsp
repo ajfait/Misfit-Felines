@@ -14,8 +14,7 @@
 <!-- END HEADER -->
 
 <!-- Main Content -->
-<c:import url="/main.jsp" />
-<p>Testing</p>
+<c:import url="/add-profile-form.jsp" />
 <!-- END Main Content -->
 
 <!-- Footer -->

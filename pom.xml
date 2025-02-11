@@ -9,7 +9,6 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <junit.version>3.8.1</junit.version>
     <javaee.version>7.0</javaee.version>
     <jakarta.version>6.1.0</jakarta.version>
     <jstl.version>1.2</jstl.version>
@@ -24,12 +23,6 @@
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>
     <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-web-api</artifactId>
