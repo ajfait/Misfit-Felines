@@ -20,7 +20,7 @@
 ### Week 4 - Class topic is Hibernate
 #### This week my focus is the Find Trails by Name user story
 
-- [ ] First cut at database design
+- [X] First cut at database design
 - [ ] Create the config files for the DB connection info (dev and test)
 - [ ] Create the dev version of the database
 - [ ] Create a test version of the database for unit testing

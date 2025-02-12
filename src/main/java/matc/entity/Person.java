@@ -1,19 +1,34 @@
 package matc.entity;
 
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * A class to represent a person.
  *
  * @author afait
  */
+@Entity
+@Table(name = "Person")
 public class Person {
     // Creates instance variables
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private int id;
+    @Column(name = "p_first_name")
     private String firstName;
+    @Column(name = "p_last_name")
     private String lastName;
+    @Column(name = "p_phone")
     private String phone;
+    @Column(name = "p_email")
     private String email;
+    @Column(name = "p_role")
     private String role;
+    @Column(name = "p_preferences")
     private String preferences;
+    @Column(name = "p_admin")
     private boolean admin;
 
     /**

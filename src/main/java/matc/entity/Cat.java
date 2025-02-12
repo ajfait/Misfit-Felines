@@ -1,5 +1,8 @@
 package matc.entity;
 
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
@@ -8,14 +11,25 @@ import java.time.format.DateTimeFormatter;
  *
  * @author afait
  */
+@Entity
+@Table(name = "Cat")
 public class Cat {
     // Creates instance variables
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private int catId;
+    @Column(name = "c_name")
     private String name;
+    @Column(name = "c_sex")
     private String sex;
+    @Column(name = "c_dob")
     private String dob;
+    @Column(name = "c_breed")
     private String breed;
+    @Column(name = "c_bio")
     private String bio;
+    @Column(name = "c_adoptable")
     private boolean adoptable;
 
     /**
