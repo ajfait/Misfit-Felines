@@ -14,6 +14,8 @@ public class PersonDaoTest {
     @BeforeEach
     void setUp() {
         personDao = new PersonDao();
+        Database database = Database.getInstance();
+        database.runSQL("cleanDB.sql");
     }
 
     @Test

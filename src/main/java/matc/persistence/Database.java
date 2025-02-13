@@ -1,12 +1,12 @@
 package matc.persistence;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -101,5 +101,43 @@ public class Database {
         }
 
         connection = null;
+    }
+
+    /**
+     * Run the sql.
+     *
+     * @param sqlFile the sql file to be read and executed line by line
+     */
+    public void runSQL(String sqlFile) {
+
+        Statement stmt = null;
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(classloader.getResourceAsStream(sqlFile))))  {
+
+            connect();
+            stmt = connection.createStatement();
+
+            String sql = "";
+            while (br.ready())
+            {
+                char inputValue = (char)br.read();
+
+                if(inputValue == ';')
+                {
+                    stmt.executeUpdate(sql);
+                    sql = "";
+                }
+                else
+                    sql += inputValue;
+            }
+
+        } catch (SQLException se) {
+            System.out.println("SQL Exception" + se);
+        } catch (Exception e) {
+            System.out.println("Exception" + e);
+        } finally {
+            disconnect();
+        }
+
     }
 }

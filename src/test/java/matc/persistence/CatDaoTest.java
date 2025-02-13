@@ -13,6 +13,8 @@ class CatDaoTest {
     @BeforeEach
     void setUp() {
         catDao = new CatDao();
+        Database database = Database.getInstance();
+        database.runSQL("cleanDB.sql");
     }
 
     @Test
