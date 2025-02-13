@@ -16,7 +16,7 @@ import java.util.List;
 public class CatDao {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
-    SessionFactory sessionFactory = edu.matc.persistence.SessionFactoryProvider.getSessionFactory();
+    SessionFactory sessionFactory = matc.persistence.SessionFactoryProvider.getSessionFactory();
 
     /**
      * Get cat by id
@@ -45,14 +45,14 @@ public class CatDao {
      * @param cat  cat to be inserted
      */
     public int insert(Cat cat) {
-        int id = 0;
+        int c_id = 0;
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         session.persist(cat);
         transaction.commit();
-        id = cat.getCatId();
+        c_id = cat.getCatId();
         session.close();
-        return id;
+        return c_id;
     }
 
     /**

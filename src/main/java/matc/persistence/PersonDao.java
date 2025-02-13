@@ -16,7 +16,7 @@ import java.util.List;
 public class PersonDao {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
-    SessionFactory sessionFactory = edu.matc.persistence.SessionFactoryProvider.getSessionFactory();
+    SessionFactory sessionFactory = matc.persistence.SessionFactoryProvider.getSessionFactory();
 
     /**
      * Get person by id
@@ -45,14 +45,14 @@ public class PersonDao {
      * @param person  person to be inserted
      */
     public int insert(Person person) {
-        int id = 0;
+        int p_id = 0;
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         session.persist(person);
         transaction.commit();
-        id = person.getId();
+        p_id = person.getId();
         session.close();
-        return id;
+        return p_id;
     }
 
     /**

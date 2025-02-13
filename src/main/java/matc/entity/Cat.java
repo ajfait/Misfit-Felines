@@ -16,8 +16,8 @@ import java.time.format.DateTimeFormatter;
 public class Cat {
     // Creates instance variables
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "c_id")
     private int catId;
     @Column(name = "c_name")
     private String name;

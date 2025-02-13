@@ -13,8 +13,8 @@ import org.hibernate.annotations.GenericGenerator;
 public class Person {
     // Creates instance variables
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "p_id")
     private int id;
     @Column(name = "p_first_name")
     private String firstName;
