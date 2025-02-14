@@ -22,12 +22,15 @@
 
 - [X] First cut at database design
 - [ ] Create the config files for the DB connection info (dev and test)
-- [ ] Create the dev version of the database
-- [ ] Create a test version of the database for unit testing
+- [X] Create the dev version of the database
+- [X] Create a test version of the database for unit testing
 - [ ] Create unit tests
 - [X] Create Entities
   - [X] Cat
   - [X] Person
+- [X] Create DAOs
+  - [X] CatDao
+  - [X] PersonDao
 - [ ] Create JSPs
   - [X] index.jsp
   - [X] head.jsp
