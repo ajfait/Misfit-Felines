@@ -10,13 +10,19 @@
 <div class="col-md-10">
 
   <div class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm">
-    <p>ADD MENU ITEMS HERE</p>
-    <p>What can an admin do?</p>
-    <ul>
-      <li>Add Cat</li>
-      <li>Add Profile</li>
-      <li>View Cats</li>
-      <li>View Profiles</li>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Add Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">View Profiles</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Add Cat</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">View Cats</a>
+      </li>
     </ul>
   </div>
 
