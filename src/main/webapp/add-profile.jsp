@@ -14,7 +14,17 @@
 <!-- END HEADER -->
 
 <!-- Main Content -->
-<c:import url="/add-profile-form.jsp" />
+<div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-1">
+    </div>
+    <c:import url="/add-profile-form.jsp" />
+    <div class="col-md-1">
+    </div>
+</div>
 <!-- END Main Content -->
 
 <!-- Footer -->
@@ -24,3 +34,7 @@
 </body>
 
 </html>
+
+
+
+
