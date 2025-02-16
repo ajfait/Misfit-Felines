@@ -42,7 +42,9 @@
             <div class="row py-2">
                 <div class="col-12">
                     <div class="container-fluid d-flex justify-content-start">
-                        <input type="button" class="btn btn-primary btn-lg me-2" name="edit_cat" value="Edit Cat"/>
+                        <button type="button" class="btn btn-primary btn-lg me-2" name="edit_cat" value="Edit Cat"> Edit
+                            Cat
+                        </button>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#deleteCatModal">
                             Delete Cat
@@ -63,7 +65,8 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-primary">Delete
                                         </button>
-                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel
+                                        </button>
                                     </div>
                                 </div>
                             </div>

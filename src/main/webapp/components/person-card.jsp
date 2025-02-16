@@ -32,8 +32,35 @@
             <div class="row py-2">
                 <div class="col-12">
                     <div class="container-fluid d-flex justify-content-start">
-                        <input type="submit" class="btn btn-primary btn-lg me-2" name="edit_person" value="Edit Foster"/>
-                        <input type="submit" class="btn btn-primary btn-lg" name="delete_person" value="Delete Foster"/>
+                        <button type="button" class="btn btn-primary btn-lg me-2" name="edit_person">Edit
+                            Profile
+                        </button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#deletePersonModal">
+                            Delete Profile
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="deletePersonModal" tabindex="-1" aria-labelledby="deletePersonModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="deletePersonModalLabel">Delete Profile</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete [INSERT PERSON NAME HERE]?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary">Delete
+                                        </button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
