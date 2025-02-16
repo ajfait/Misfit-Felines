@@ -2,7 +2,7 @@
     <div class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white">
         <div class="row">
             <div class="col-md-9">
-                <h1>Current Cats</h1>
+                <h1 class="py-2">Current Cats</h1>
             </div>
             <div class="col-md-3">
                 <button type="button" class="btn btn-primary btn-lg me-2" name="add_cat" value="Add Cat">Add Cat

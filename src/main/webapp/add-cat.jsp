@@ -1,16 +1,42 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ajfait
-  Date: 2/16/25
-  Time: 4:34 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>Title</title>
+  <c:import url="/components/head.jsp"/>
 </head>
+
 <body>
 
+<!-- Header -->
+<c:import url="/components/header.jsp"/>
+<!-- END HEADER -->
+
+<!-- Main Content -->
+<div class="bg-primary-subtle py-5">
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <c:import url="/components/admin-menu.jsp"/>
+    <div class="col-md-1">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <c:import url="/components/profile-card.jsp"/>
+    <c:import url="/components/add-cat-form.jsp"/>
+    <div class="col-md-1">
+    </div>
+  </div>
+</div>
+<!-- END Main Content -->
+
+<!-- Footer -->
+<c:import url="/components/footer.jsp"/>
+<!-- END Footer -->
+
 </body>
+
 </html>

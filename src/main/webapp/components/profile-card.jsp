@@ -5,7 +5,9 @@
     <div class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white">
 
         <!-- Image -->
-        <img src="${pageContext.request.contextPath}/images/Alison%20Fait%20Headshot_resized.jpg" alt="Alison Fait">
+        <img src="${pageContext.request.contextPath}/images/profile-image-default.png"
+             alt="name of person"
+             style="max-width: 200px">
 
         <div class="container-fluid pt-3">
 
