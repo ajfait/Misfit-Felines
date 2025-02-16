@@ -1,4 +1,5 @@
 <div class="col-md-6">
+    <!-- Form -->
     <form class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white" action="#" method="POST">
         <h1>Add New Profile</h1>
         <div class="container-fluid">
@@ -51,7 +52,6 @@
                 />
                 <label for="email">Email Address</label>
             </div>
-
             <div class="form-floating mb-3 pt-2">
                 <select class="form-select form-select-lg" id="role">
                     <option selected></option>
@@ -60,7 +60,6 @@
                 </select>
                 <label for="role">Role</label>
             </div>
-
             <div class="pt-2">
                 <fieldset>
                     <legend>Preferences</legend>
@@ -90,7 +89,6 @@
                     </div>
                 </fieldset>
             </div>
-
             <div class="pt-2">
                 <fieldset>
                     <legend>Admin</legend>
@@ -108,16 +106,10 @@
                     </div>
                 </fieldset>
             </div>
-
-
         </div>
         <div class="container-fluid pt-5">
-            <input
-                    type="submit"
-                    class="btn btn-primary btn-lg"
-                    name="add_submission"
-                    value="Add Profile"
-            />
+            <button type="submit" class="btn btn-primary btn-lg" name="add_submission">Add Profile</button>
         </div>
     </form>
+    <!-- END Form -->
 </div>

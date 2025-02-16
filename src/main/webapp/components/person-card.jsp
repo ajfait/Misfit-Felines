@@ -5,7 +5,9 @@
                 <h1>Current Fosters</h1>
             </div>
             <div class="col-md-3">
-                <input type="submit" class="btn btn-primary btn-lg me-2" name="add_person" value="Add Foster"/>
+                <button type="button" class="btn btn-primary btn-lg me-2" name="add_person" value="Add Foster">Add
+                    Foster
+                </button>
             </div>
         </div>
         <div class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white">
@@ -13,7 +15,8 @@
                 <div class="col-md-6">
                     <!-- Image -->
                     <div class="container-fluid pt-3">
-                        <img src="${pageContext.request.contextPath}/images/profile-image-default.png" alt="name of person"
+                        <img src="${pageContext.request.contextPath}/images/profile-image-default.png"
+                             alt="name of person"
                              style="max-width: 200px">
                     </div>
                 </div>
@@ -40,7 +43,8 @@
                             Delete Profile
                         </button>
                         <!-- Modal -->
-                        <div class="modal fade" id="deletePersonModal" tabindex="-1" aria-labelledby="deletePersonModalLabel"
+                        <div class="modal fade" id="deletePersonModal" tabindex="-1"
+                             aria-labelledby="deletePersonModalLabel"
                              aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">

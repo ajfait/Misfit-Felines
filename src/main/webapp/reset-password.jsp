@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <c:import url="/components/head.jsp"/>
+    <c:import url="/components/head.jsp"/>
 </head>
 <body>
 
@@ -12,17 +12,17 @@
 
 <!-- Main Content -->
 <div class="bg-primary-subtle py-5">
-  <div class="row">
-    <div class="col-md-3">
-    </div>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
 
-    <div class="col-md-6 d-flex justify-content-center">
-      <c:import url="/components/reset-password-form.jsp"/>
-    </div>
+        <div class="col-md-6 d-flex justify-content-center">
+            <c:import url="/components/reset-password-form.jsp"/>
+        </div>
 
-    <div class="col-md-3">
+        <div class="col-md-3">
+        </div>
     </div>
-  </div>
 </div>
 <!-- END Main Content -->
 

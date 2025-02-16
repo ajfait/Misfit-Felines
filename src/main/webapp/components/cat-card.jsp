@@ -5,7 +5,8 @@
                 <h1>Current Cats</h1>
             </div>
             <div class="col-md-3">
-                <input type="submit" class="btn btn-primary btn-lg me-2" name="add_cat" value="Add Cat"/>
+                <button type="button" class="btn btn-primary btn-lg me-2" name="add_cat" value="Add Cat">Add Cat
+                </button>
             </div>
         </div>
         <div class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white">

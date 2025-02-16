@@ -23,12 +23,12 @@
         <!-- Button: Update Profile -->
 
         <div class="container-fluid pt-3">
-            <input
+            <button
                     type="button"
                     class="btn btn-primary btn-lg"
                     name="update_profile"
-                    value="Update Profile"
-            />
+                    value="Update Profile">Update Profile
+            </button>
         </div>
 
     </div>

@@ -27,9 +27,11 @@
         <div class="col-md-4 text-center">
             <table class="mx-auto">
                 <tr>
-                    <td class="p-3"><img src="${pageContext.request.contextPath}/images/facebook-icon.png" alt="Misfit Felines on Facebook"
+                    <td class="p-3"><img src="${pageContext.request.contextPath}/images/facebook-icon.png"
+                                         alt="Misfit Felines on Facebook"
                                          style="max-height: 25px"></td>
-                    <td class="p-3"><img src="${pageContext.request.contextPath}/images/instagram-icon.png" alt="Misfit Felines on Instagram"
+                    <td class="p-3"><img src="${pageContext.request.contextPath}/images/instagram-icon.png"
+                                         alt="Misfit Felines on Instagram"
                                          style="max-height: 25px"></td>
                 </tr>
             </table>
