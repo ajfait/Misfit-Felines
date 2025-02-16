@@ -13,8 +13,8 @@
                 <div class="col-md-6">
                     <!-- Image -->
                     <div class="container-fluid pt-3">
-                        <img src="${pageContext.request.contextPath}/images/April.jpg" alt="April"
-                             style="max-width: 300px">
+                        <img src="${pageContext.request.contextPath}/images/profile-image-default.png" alt="name of person"
+                             style="max-width: 200px">
                     </div>
                 </div>
                 <div class="col-md-6">
