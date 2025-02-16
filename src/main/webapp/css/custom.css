@@ -1,0 +1,17 @@
+:root {
+    --bs-primary: #483D8B;
+}
+
+.btn-primary {
+    background-color: #483D8B;
+    border-color: #483D8B;
+}
+
+.bg-primary {
+    background-color: #483D8B !important;
+}
+
+.text-primary {
+    color: #483D8B !important;
+}
+
