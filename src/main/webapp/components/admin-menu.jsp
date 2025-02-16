@@ -5,16 +5,16 @@
   <div class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white">
     <ul class="nav nav-pills">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Add Profile</a>
+        <a class="nav-link bg-primary active" aria-current="page" href="#">Add Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">View Profiles</a>
+        <a class="nav-link text-primary" href="#">View Profiles</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Add Cat</a>
+        <a class="nav-link text-primary" href="#">Add Cat</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">View Cats</a>
+        <a class="nav-link text-primary" href="#">View Cats</a>
       </li>
     </ul>
   </div>

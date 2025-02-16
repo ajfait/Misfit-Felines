@@ -26,7 +26,7 @@
                         <p>Name</p>
                         <p>Role</p>
                         <p>Phone Number</p>
-                        <p><a href="mailto:jafait1004@gmail.com">Email Address</a></p>
+                        <p><a class="text-primary" href="mailto:jafait1004@gmail.com">Email Address</a></p>
                         <p>Preferences</p>
                     </div>
                 </div>
