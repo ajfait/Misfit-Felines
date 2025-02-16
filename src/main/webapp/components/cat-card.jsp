@@ -13,7 +13,8 @@
                 <div class="col-md-6">
                     <!-- Image -->
                     <div class="container-fluid pt-3">
-                        <img src="${pageContext.request.contextPath}/images/profile-image-default.png" alt="name of person"
+                        <img src="${pageContext.request.contextPath}/images/profile-image-default.png"
+                             alt="name of person"
                              style="max-width: 200px">
                     </div>
                 </div>
@@ -41,8 +42,32 @@
             <div class="row py-2">
                 <div class="col-12">
                     <div class="container-fluid d-flex justify-content-start">
-                        <input type="submit" class="btn btn-primary btn-lg me-2" name="edit_cat" value="Edit Cat"/>
-                        <input type="submit" class="btn btn-primary btn-lg" name="delete_cat" value="Delete Cat"/>
+                        <input type="button" class="btn btn-primary btn-lg me-2" name="edit_cat" value="Edit Cat"/>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#deleteCatModal">
+                            Delete Cat
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="deleteCatModal" tabindex="-1" aria-labelledby="deleteCatModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="deleteCatModalLabel">Delete Cat</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete [INSERT CAT NAME HERE]?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary">Delete
+                                        </button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
