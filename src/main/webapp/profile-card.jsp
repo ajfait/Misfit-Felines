@@ -9,7 +9,7 @@
 
 <div class="col-md-4">
 
-    <div class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm">
+    <div class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white">
 
         <!-- Image -->
         <img src="images/Alison%20Fait%20Headshot_resized.jpg" alt="Alison Fait">
@@ -32,7 +32,7 @@
         <div class="container-fluid pt-3">
             <input
                     type="button"
-                    class="btn btn-primary"
+                    class="btn btn-primary btn-lg"
                     name="update_profile"
                     value="Update Profile"
             />

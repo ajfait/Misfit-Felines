@@ -11,6 +11,10 @@
     background-color: #483D8B !important;
 }
 
+.bg-primary-subtle {
+    background-color: #f5f4fa !important;
+}
+
 .text-primary {
     color: #483D8B !important;
 }

@@ -9,7 +9,7 @@
 
 <div class="col-md-10">
 
-  <div class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm">
+  <div class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white">
     <ul class="nav nav-pills">
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="#">Add Profile</a>

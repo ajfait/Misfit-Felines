@@ -1,5 +1,5 @@
 <div class="col-md-6">
-    <form class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm" action="#" method="POST">
+    <form class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white" action="#" method="POST">
         <h1>Add New Profile</h1>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
@@ -114,7 +114,7 @@
         <div class="container-fluid pt-5">
             <input
                     type="submit"
-                    class="btn btn-primary"
+                    class="btn btn-primary btn-lg"
                     name="add_submission"
                     value="Add Profile"
             />
