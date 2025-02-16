@@ -12,7 +12,7 @@
     <div class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white">
 
         <!-- Image -->
-        <img src="images/Alison%20Fait%20Headshot_resized.jpg" alt="Alison Fait">
+        <img src="${pageContext.request.contextPath}/images/Alison%20Fait%20Headshot_resized.jpg" alt="Alison Fait">
 
         <div class="container-fluid pt-3">
 

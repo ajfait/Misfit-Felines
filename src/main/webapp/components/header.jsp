@@ -3,7 +3,7 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-2">
-            <img src="images/misfit-felines-logo.png" alt="Misfit Felines logo" style="max-height: 200px">
+            <img src="${pageContext.request.contextPath}/images/misfit-felines-logo.png" alt="Misfit Felines logo" style="max-height: 200px">
         </div>
         <div class="col-md-5">
         </div>

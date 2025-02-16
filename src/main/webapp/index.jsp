@@ -4,22 +4,21 @@
 <html lang="en">
 
 <head>
-    <c:import url="/head.jsp" />
+    <c:import url="/components/head.jsp" />
 </head>
 
 <body>
 
 <!-- Header -->
-<c:import url="/header.jsp" />
+<c:import url="/components/header.jsp" />
 <!-- END HEADER -->
 
 <!-- Main Content -->
-<c:import url="/main.jsp" />
-<p>Testing</p>
+
 <!-- END Main Content -->
 
 <!-- Footer -->
-<c:import url="/footer.jsp" />
+<c:import url="/components/footer.jsp" />
 <!-- END Footer -->
 
 </body>
