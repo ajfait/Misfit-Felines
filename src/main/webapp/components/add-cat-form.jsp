@@ -51,6 +51,14 @@
             </div>
         </div>
         <div class="container-fluid">
+            <div class="mb-3 pt-2">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="adoptable">
+                    <label class="form-check-label" for="adoptable">Adoptable</label>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
                 <textarea class="form-control" name="bio" id="bio" style="height: 350px" required></textarea>
                 <label for="bio">Bio</label>
