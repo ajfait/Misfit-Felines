@@ -233,7 +233,7 @@ public class Cat {
                 ", breed='" + breed + '\'' +
                 ", bio='" + bio + '\'' +
                 ", adoptable='" + adoptable + '\'' +
-                ", age='" + getAge() + '\'' +
+                // ", age='" + getAge() + '\'' +
                 '}';
     }
 }

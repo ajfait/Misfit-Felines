@@ -43,7 +43,7 @@ CREATE TABLE `Cat` (
 
 LOCK TABLES `Cat` WRITE;
 /*!40000 ALTER TABLE `Cat` DISABLE KEYS */;
-INSERT INTO `Cat` VALUES (2,'Maxine','F',NULL,'Persian','Maxine is the sweetest girl ever',1,1);
+INSERT INTO `Cat` VALUES (2,'Maxine','F',"2020-01-01",'Persian','Maxine is the sweetest girl ever',1,1);
 /*!40000 ALTER TABLE `Cat` ENABLE KEYS */;
 UNLOCK TABLES;
 
