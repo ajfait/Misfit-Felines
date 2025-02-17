@@ -18,8 +18,6 @@
 - [X] Weekly journal entry / time log
 
 ### Week 4 - Class topic is Hibernate
-#### This week my focus is the Find Trails by Name user story
-
 - [X] First cut at database design
 - [ ] Create the config files for the DB connection info (dev and test)
 - [X] Create the dev version of the database
@@ -34,24 +32,21 @@
 - [ ] Create JSPs
   - [X] index.jsp
   - [X] head.jsp
-  - [ ] header.jsp
-  - [ ] footer.jsp
-  - [ ] signup.jsp
-  - [ ] login.jsp
-  - [ ] reset-password.jsp
-  - [ ] view-cats.jsp
-  - [ ] view-fosters.jsp
-  - [ ] view-profile.jsp
-  - [ ] edit-cats.jsp
-  - [ ] edit-fosters.jsp
-  - [ ] edit-profile.jsp
-  - [ ] confirm-delete.jsp (modal?)
+  - [X] header.jsp
+  - [X] footer.jsp
+  - [X] signup.jsp
+  - [X] login.jsp
+  - [X] reset-password.jsp
+  - [X] view-cats.jsp
+  - [X] view-fosters.jsp
+  - [x] add /edit-cat.jsp
+  - [X] add / edit-profile.jsp
+  - [X] confirm-delete.jsp modal
 - [ ] Create Controllers
-- [ ] Weekly journal entry / time log
+- [X] Weekly journal entry / time log
 
 ### Week 7
 #### Checkpoint 2 is Due: Database designed and created, at least one DAO with full CRUD (create, read, update, delete) implemented with Hibernate, DAO is fully unit tested, Log4J is implemented (no System.out.printlns)
-
 - [ ] Double-check all checkpoint 2 items (above) are complete and visible in GitHub
 - [ ] Set up authentication
 - [ ] Create project DB on AWS
@@ -62,12 +57,10 @@
 
 ### Week 9 (Start of the team project)
 #### Checkpoint 3 is Due: Deployed to AWS, at least one JSP that displays data from the database is implemented, authentication implemented, add AWS deployed app link to indie project list in student repo.
-
 - [ ] Double-check all checkpoint 3 items (above) are complete and visible in github
 - [ ] Weekly journal entry / time log
 
 ### Week 15
-
 - [ ] Implement feedback from week 14 review
 - [ ] Final presentation
 - [ ] Create video, add video link to README.md
@@ -76,6 +69,5 @@
 - [ ] Weekly journal entry / time log
 
 ### Week 16
-
 - [ ] Final touches before code complete
 - [ ] Weekly journal entry / time log

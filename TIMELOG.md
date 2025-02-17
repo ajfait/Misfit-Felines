@@ -9,3 +9,4 @@
 | 2/12/25 | Create test databases and unit tests                                               | 2     |
 | 2/13/25 | Create profile card, admin menu, and update add profile form                       | 1.5   |
 | 2/15/25 | Troubleshoot Intellij and Maven configs, create header and footer, and add styling | 3.5   |
+| 2/16/24 | Create login, signup, reset password, and add cat forms and pages, and add styling | 4     |
