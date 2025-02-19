@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.41, for macos15 (x86_64)
 --
--- Host: 127.0.0.1    Database:
+-- Host: 127.0.0.1    Database: 
 -- ------------------------------------------------------
 -- Server version	8.0.41
 
@@ -33,14 +33,14 @@ DROP TABLE IF EXISTS `columns_priv`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `columns_priv` (
-                                `Host` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
-                                `Db` char(64) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
-                                `User` char(32) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
-                                `Table_name` char(64) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
-                                `Column_name` char(64) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
-                                `Timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                                `Column_priv` set('Select','Insert','Update','References') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '',
-                                PRIMARY KEY (`Host`,`User`,`Db`,`Table_name`,`Column_name`)
+  `Host` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
+  `Db` char(64) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
+  `User` char(32) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
+  `Table_name` char(64) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
+  `Column_name` char(64) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
+  `Timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Column_priv` set('Select','Insert','Update','References') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`Host`,`User`,`Db`,`Table_name`,`Column_name`)
 ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC COMMENT='Column privileges';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -61,10 +61,10 @@ DROP TABLE IF EXISTS `component`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `component` (
-                             `component_id` int unsigned NOT NULL AUTO_INCREMENT,
-                             `component_group_id` int unsigned NOT NULL,
-                             `component_urn` text NOT NULL,
-                             PRIMARY KEY (`component_id`)
+  `component_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `component_group_id` int unsigned NOT NULL,
+  `component_urn` text NOT NULL,
+  PRIMARY KEY (`component_id`)
 ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC COMMENT='Components';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -85,30 +85,30 @@ DROP TABLE IF EXISTS `db`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db` (
-                      `Host` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
-                      `Db` char(64) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
-                      `User` char(32) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
-                      `Select_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Insert_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Update_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Delete_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Create_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Drop_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Grant_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `References_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Index_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Alter_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Create_tmp_table_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Lock_tables_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Create_view_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Show_view_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Create_routine_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Alter_routine_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Execute_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Event_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      `Trigger_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                      PRIMARY KEY (`Host`,`User`,`Db`),
-                      KEY `User` (`User`)
+  `Host` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
+  `Db` char(64) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
+  `User` char(32) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
+  `Select_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Insert_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Update_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Delete_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Create_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Drop_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Grant_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `References_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Index_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Alter_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Create_tmp_table_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Lock_tables_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Create_view_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Show_view_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Create_routine_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Alter_routine_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Execute_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Event_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  `Trigger_priv` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  PRIMARY KEY (`Host`,`User`,`Db`),
+  KEY `User` (`User`)
 ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC COMMENT='Database privileges';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -130,11 +130,11 @@ DROP TABLE IF EXISTS `default_roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `default_roles` (
-                                 `HOST` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
-                                 `USER` char(32) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
-                                 `DEFAULT_ROLE_HOST` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '%',
-                                 `DEFAULT_ROLE_USER` char(32) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
-                                 PRIMARY KEY (`HOST`,`USER`,`DEFAULT_ROLE_HOST`,`DEFAULT_ROLE_USER`)
+  `HOST` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
+  `USER` char(32) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
+  `DEFAULT_ROLE_HOST` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '%',
+  `DEFAULT_ROLE_USER` char(32) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
+  PRIMARY KEY (`HOST`,`USER`,`DEFAULT_ROLE_HOST`,`DEFAULT_ROLE_USER`)
 ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC COMMENT='Default roles';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -155,14 +155,14 @@ DROP TABLE IF EXISTS `engine_cost`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `engine_cost` (
-                               `engine_name` varchar(64) NOT NULL,
-                               `device_type` int NOT NULL,
-                               `cost_name` varchar(64) NOT NULL,
-                               `cost_value` float DEFAULT NULL,
-                               `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                               `comment` varchar(1024) DEFAULT NULL,
-                               `default_value` float GENERATED ALWAYS AS ((case `cost_name` when _utf8mb3'io_block_read_cost' then 1.0 when _utf8mb3'memory_block_read_cost' then 0.25 else NULL end)) VIRTUAL,
-                               PRIMARY KEY (`cost_name`,`engine_name`,`device_type`)
+  `engine_name` varchar(64) NOT NULL,
+  `device_type` int NOT NULL,
+  `cost_name` varchar(64) NOT NULL,
+  `cost_value` float DEFAULT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `comment` varchar(1024) DEFAULT NULL,
+  `default_value` float GENERATED ALWAYS AS ((case `cost_name` when _utf8mb3'io_block_read_cost' then 1.0 when _utf8mb3'memory_block_read_cost' then 0.25 else NULL end)) VIRTUAL,
+  PRIMARY KEY (`cost_name`,`engine_name`,`device_type`)
 ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -184,11 +184,11 @@ DROP TABLE IF EXISTS `func`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `func` (
-                        `name` char(64) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
-                        `ret` tinyint NOT NULL DEFAULT '0',
-                        `dl` char(128) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
-                        `type` enum('function','aggregate') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-                        PRIMARY KEY (`name`)
+  `name` char(64) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
+  `ret` tinyint NOT NULL DEFAULT '0',
+  `dl` char(128) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
+  `type` enum('function','aggregate') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  PRIMARY KEY (`name`)
 ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC COMMENT='User defined functions';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -209,11 +209,11 @@ DROP TABLE IF EXISTS `global_grants`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `global_grants` (
-                                 `USER` char(32) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
-                                 `HOST` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
-                                 `PRIV` char(32) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '',
-                                 `WITH_GRANT_OPTION` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
-                                 PRIMARY KEY (`USER`,`HOST`,`PRIV`)
+  `USER` char(32) COLLATE utf8mb3_bin NOT NULL DEFAULT '',
+  `HOST` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
+  `PRIV` char(32) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '',
+  `WITH_GRANT_OPTION` enum('N','Y') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'N',
+  PRIMARY KEY (`USER`,`HOST`,`PRIV`)
 ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC COMMENT='Extended global grants';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -234,11 +234,11 @@ UNLOCK TABLES;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE IF NOT EXISTS `gtid_executed` (
-                                               `source_uuid` char(36) NOT NULL COMMENT 'uuid of the source where the transaction was originally executed.',
-    `interval_start` bigint NOT NULL COMMENT 'First number of interval.',
-    `interval_end` bigint NOT NULL COMMENT 'Last number of interval.',
-    PRIMARY KEY (`source_uuid`,`interval_start`)
-    ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC;
+  `source_uuid` char(36) NOT NULL COMMENT 'uuid of the source where the transaction was originally executed.',
+  `interval_start` bigint NOT NULL COMMENT 'First number of interval.',
+  `interval_end` bigint NOT NULL COMMENT 'Last number of interval.',
+  PRIMARY KEY (`source_uuid`,`interval_start`)
+) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,12 +249,12 @@ DROP TABLE IF EXISTS `help_category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `help_category` (
-                                 `help_category_id` smallint unsigned NOT NULL,
-                                 `name` char(64) NOT NULL,
-                                 `parent_category_id` smallint unsigned DEFAULT NULL,
-                                 `url` text NOT NULL,
-                                 PRIMARY KEY (`help_category_id`),
-                                 UNIQUE KEY `name` (`name`)
+  `help_category_id` smallint unsigned NOT NULL,
+  `name` char(64) NOT NULL,
+  `parent_category_id` smallint unsigned DEFAULT NULL,
+  `url` text NOT NULL,
+  PRIMARY KEY (`help_category_id`),
+  UNIQUE KEY `name` (`name`)
 ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC COMMENT='help categories';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -276,10 +276,10 @@ DROP TABLE IF EXISTS `help_keyword`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `help_keyword` (
-                                `help_keyword_id` int unsigned NOT NULL,
-                                `name` char(64) NOT NULL,
-                                PRIMARY KEY (`help_keyword_id`),
-                                UNIQUE KEY `name` (`name`)
+  `help_keyword_id` int unsigned NOT NULL,
+  `name` char(64) NOT NULL,
+  PRIMARY KEY (`help_keyword_id`),
+  UNIQUE KEY `name` (`name`)
 ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC COMMENT='help keywords';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -301,9 +301,9 @@ DROP TABLE IF EXISTS `help_relation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `help_relation` (
-                                 `help_topic_id` int unsigned NOT NULL,
-                                 `help_keyword_id` int unsigned NOT NULL,
-                                 PRIMARY KEY (`help_keyword_id`,`help_topic_id`)
+  `help_topic_id` int unsigned NOT NULL,
+  `help_keyword_id` int unsigned NOT NULL,
+  PRIMARY KEY (`help_keyword_id`,`help_topic_id`)
 ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC COMMENT='keyword-topic relation';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -325,14 +325,14 @@ DROP TABLE IF EXISTS `help_topic`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `help_topic` (
-                              `help_topic_id` int unsigned NOT NULL,
-                              `name` char(64) NOT NULL,
-                              `help_category_id` smallint unsigned NOT NULL,
-                              `description` text NOT NULL,
-                              `example` text NOT NULL,
-                              `url` text NOT NULL,
-                              PRIMARY KEY (`help_topic_id`),
-                              UNIQUE KEY `name` (`name`)
+  `help_topic_id` int unsigned NOT NULL,
+  `name` char(64) NOT NULL,
+  `help_category_id` smallint unsigned NOT NULL,
+  `description` text NOT NULL,
+  `example` text NOT NULL,
+  `url` text NOT NULL,
+  PRIMARY KEY (`help_topic_id`),
+  UNIQUE KEY `name` (`name`)
 ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC COMMENT='help topics';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
