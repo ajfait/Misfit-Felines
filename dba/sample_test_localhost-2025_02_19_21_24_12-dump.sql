@@ -23,17 +23,17 @@ DROP TABLE IF EXISTS `Cat`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Cat` (
-                       `c_id` int NOT NULL AUTO_INCREMENT,
-                       `c_name` varchar(75) NOT NULL,
-                       `c_sex` char(1) NOT NULL,
-                       `c_dob` date DEFAULT NULL,
-                       `c_breed` varchar(75) DEFAULT NULL,
-                       `c_bio` varchar(3000) DEFAULT NULL,
-                       `c_adoptable` tinyint(1) DEFAULT NULL,
-                       `p_id` int DEFAULT NULL,
-                       PRIMARY KEY (`c_id`),
-                       KEY `fk_person` (`p_id`),
-                       CONSTRAINT `fk_person` FOREIGN KEY (`p_id`) REFERENCES `Person` (`p_id`)
+  `c_id` int NOT NULL AUTO_INCREMENT,
+  `c_name` varchar(75) NOT NULL,
+  `c_sex` char(1) NOT NULL,
+  `c_dob` date DEFAULT NULL,
+  `c_breed` varchar(75) DEFAULT NULL,
+  `c_bio` varchar(3000) DEFAULT NULL,
+  `c_adoptable` tinyint(1) DEFAULT NULL,
+  `p_id` int DEFAULT NULL,
+  PRIMARY KEY (`c_id`),
+  KEY `fk_person` (`p_id`),
+  CONSTRAINT `fk_person` FOREIGN KEY (`p_id`) REFERENCES `Person` (`p_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -55,15 +55,15 @@ DROP TABLE IF EXISTS `Event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Event` (
-                         `e_id` int NOT NULL AUTO_INCREMENT,
-                         `e_name` varchar(75) NOT NULL,
-                         `e_location_street` varchar(75) NOT NULL,
-                         `e_location_city` varchar(50) NOT NULL,
-                         `e_location_state` varchar(2) NOT NULL,
-                         `e_location_zip` varchar(5) NOT NULL,
-                         `e_date_start` datetime NOT NULL,
-                         `e_date_end` datetime NOT NULL,
-                         PRIMARY KEY (`e_id`)
+  `e_id` int NOT NULL AUTO_INCREMENT,
+  `e_name` varchar(75) NOT NULL,
+  `e_location_street` varchar(75) NOT NULL,
+  `e_location_city` varchar(50) NOT NULL,
+  `e_location_state` varchar(2) NOT NULL,
+  `e_location_zip` varchar(5) NOT NULL,
+  `e_date_start` datetime NOT NULL,
+  `e_date_end` datetime NOT NULL,
+  PRIMARY KEY (`e_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -85,13 +85,13 @@ DROP TABLE IF EXISTS `Medical`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Medical` (
-                           `m_id` int NOT NULL AUTO_INCREMENT,
-                           `m_name` varchar(50) NOT NULL,
-                           `m_date_given` date NOT NULL,
-                           `c_id` int DEFAULT NULL,
-                           PRIMARY KEY (`m_id`),
-                           KEY `Medical_Cat_c_id_fk` (`c_id`),
-                           CONSTRAINT `Medical_Cat_c_id_fk` FOREIGN KEY (`c_id`) REFERENCES `Cat` (`c_id`)
+  `m_id` int NOT NULL AUTO_INCREMENT,
+  `m_name` varchar(50) NOT NULL,
+  `m_date_given` date NOT NULL,
+  `c_id` int DEFAULT NULL,
+  PRIMARY KEY (`m_id`),
+  KEY `Medical_Cat_c_id_fk` (`c_id`),
+  CONSTRAINT `Medical_Cat_c_id_fk` FOREIGN KEY (`c_id`) REFERENCES `Cat` (`c_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -113,15 +113,15 @@ DROP TABLE IF EXISTS `Person`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Person` (
-                          `p_id` int NOT NULL AUTO_INCREMENT,
-                          `p_first_name` varchar(75) NOT NULL,
-                          `p_last_name` varchar(75) NOT NULL,
-                          `p_phone` varchar(10) NOT NULL,
-                          `p_email` varchar(75) NOT NULL,
-                          `p_role` varchar(75) NOT NULL,
-                          `p_preferences` varchar(255) DEFAULT NULL,
-                          `p_admin` tinyint(1) DEFAULT NULL,
-                          PRIMARY KEY (`p_id`)
+  `p_id` int NOT NULL AUTO_INCREMENT,
+  `p_first_name` varchar(75) NOT NULL,
+  `p_last_name` varchar(75) NOT NULL,
+  `p_phone` varchar(10) NOT NULL,
+  `p_email` varchar(75) NOT NULL,
+  `p_role` varchar(75) NOT NULL,
+  `p_preferences` varchar(255) DEFAULT NULL,
+  `p_admin` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`p_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -143,14 +143,14 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-                        `id` int NOT NULL AUTO_INCREMENT,
-                        `first_name` varchar(25) DEFAULT NULL,
-                        `last_name` varchar(30) DEFAULT NULL,
-                        `user_name` varchar(15) DEFAULT NULL,
-                        `password` varchar(30) DEFAULT NULL,
-                        `date_of_birth` date DEFAULT NULL,
-                        PRIMARY KEY (`id`),
-                        UNIQUE KEY `users_user_name_uindex` (`user_name`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(25) DEFAULT NULL,
+  `last_name` varchar(30) DEFAULT NULL,
+  `user_name` varchar(15) DEFAULT NULL,
+  `password` varchar(30) DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_user_name_uindex` (`user_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
