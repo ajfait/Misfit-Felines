@@ -3,19 +3,20 @@ package matc.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * A class to represent a person.
- *
- * @author afait
+ * The type Person.
  */
-@Entity
+@Entity(name = "Person")
 @Table(name = "Person")
 public class Person {
     // Creates instance variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "p_id")
-    private int id;
+    private int personId;
     @Column(name = "p_first_name")
     private String firstName;
     @Column(name = "p_last_name")
@@ -30,6 +31,8 @@ public class Person {
     private String preferences;
     @Column(name = "p_admin")
     private boolean admin;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
+    private List<Cat> cats = new ArrayList<>();
 
     /**
      * Instantiates a new Person.
@@ -40,17 +43,15 @@ public class Person {
     /**
      * Instantiates a new Person.
      *
-     * @param id            person's id
-     * @param firstName     person's first name
-     * @param lastName      person's last name
-     * @param phone         person's phone number
-     * @param email         person's email address
-     * @param role          person's role
-     * @param preferences   person's preferences
-     * @param admin         admin status
+     * @param firstName   the first name
+     * @param lastName    the last name
+     * @param phone       the phone
+     * @param email       the email
+     * @param role        the role
+     * @param preferences the preferences
+     * @param admin       the admin
      */
-    public Person(int id, String firstName, String lastName, String phone, String email, String role, String preferences, boolean admin) {
-        this.id = id;
+    public Person(String firstName, String lastName, String phone, String email, String role, String preferences, boolean admin) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
@@ -61,27 +62,27 @@ public class Person {
     }
 
     /**
-     * Gets id.
+     * Gets person id.
      *
-     * @return the id
+     * @return the person id
      */
-    public int getId() {
-        return id;
+    public int getPersonId() {
+        return personId;
     }
 
     /**
-     * Sets id.
+     * Sets person id.
      *
-     * @param id the id
+     * @param personId the person id
      */
-    public void setId(int id) {
-        this.id = id;
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 
     /**
      * Gets first name.
      *
-     * @return firstName
+     * @return the first name
      */
     public String getFirstName() {
         return firstName;
@@ -99,7 +100,7 @@ public class Person {
     /**
      * Gets last name.
      *
-     * @return lastName
+     * @return the last name
      */
     public String getLastName() {
         return lastName;
@@ -117,7 +118,7 @@ public class Person {
     /**
      * Gets phone.
      *
-     * @return the phone number
+     * @return the phone
      */
     public String getPhone() {
         return phone;
@@ -126,7 +127,7 @@ public class Person {
     /**
      * Sets phone.
      *
-     * @param phone the phone number
+     * @param phone the phone
      */
     public void setPhone(String phone) {
         this.phone = phone;
@@ -135,7 +136,7 @@ public class Person {
     /**
      * Gets email.
      *
-     * @return the email address
+     * @return the email
      */
     public String getEmail() {
         return email;
@@ -144,7 +145,7 @@ public class Person {
     /**
      * Sets email.
      *
-     * @param email the email address
+     * @param email the email
      */
     public void setEmail(String email) {
         this.email = email;
@@ -187,18 +188,36 @@ public class Person {
     }
 
     /**
-     * Gets admin status.
+     * Is admin boolean.
      *
-     * @return the admin status
+     * @return the boolean
      */
-    public boolean getAdmin() {
+    public boolean isAdmin() {
         return admin;
     }
 
     /**
-     * Sets admin status.
+     * Gets cats.
      *
-     * @param admin the admin status
+     * @return the cats
+     */
+    public List<Cat> getCats() {
+        return cats;
+    }
+
+    /**
+     * Sets cats.
+     *
+     * @param cats the cats
+     */
+    public void setCats(List<Cat> cats) {
+        this.cats = cats;
+    }
+
+    /**
+     * Sets admin.
+     *
+     * @param admin the admin
      */
     public void setAdmin(boolean admin) {
         this.admin = admin;
@@ -207,7 +226,7 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-                "id='" + id + '\'' +
+                "id='" + personId + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phone='" + phone + '\'' +

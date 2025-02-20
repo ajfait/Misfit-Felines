@@ -59,7 +59,7 @@ class CatDaoTest {
      */
     @Test
     void insert() {
-        Cat newCat = new Cat(3, "Chester", "M", "2000-01-01", "DSH", "My most handsome.", false);
+        Cat newCat = new Cat("Chester", "M", "2000-01-01", "DSH", "My most handsome.", false);
         assertNotNull(newCat);
         assertEquals("Chester", newCat.getName());
     }

@@ -19,6 +19,8 @@
 
         <mapping class="matc.entity.Cat"/>
         <mapping class="matc.entity.Person"/>
+        <mapping class="matc.entity.Medical"/>
+        <mapping class="matc.entity.Event"/>
 
     </session-factory>
 

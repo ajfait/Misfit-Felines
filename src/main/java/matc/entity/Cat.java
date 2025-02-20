@@ -1,17 +1,16 @@
 package matc.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * A class to represent a cat.
- *
- * @author afait
+ * The type Cat.
  */
-@Entity
+@Entity(name = "Cat")
 @Table(name = "Cat")
 public class Cat {
     // Creates instance variables
@@ -31,6 +30,13 @@ public class Cat {
     private String bio;
     @Column(name = "c_adoptable")
     private boolean adoptable;
+    @ManyToOne
+    @JoinColumn(name = "p_id",
+            foreignKey = @ForeignKey(name = "Cat_Person_p_id_fk")
+    )
+    private Person person;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
+    private List<Medical> meds = new ArrayList<>();
 
     /**
      * Instantiates a new Cat.
@@ -41,16 +47,14 @@ public class Cat {
     /**
      * Instantiates a new Cat.
      *
-     * @param catId     cat's id
-     * @param name      cat's name
-     * @param sex       cat's sex
-     * @param dob       cat's date of birth
-     * @param breed     cat's breed
-     * @param bio       cat's bio
-     * @param adoptable adoptable status
+     * @param name      the name
+     * @param sex       the sex
+     * @param dob       the dob
+     * @param breed     the breed
+     * @param bio       the bio
+     * @param adoptable the adoptable
      */
-    public Cat(int catId, String name, String sex, String dob, String breed, String bio, boolean adoptable) {
-        this.catId = catId;
+    public Cat(String name, String sex, String dob, String breed, String bio, boolean adoptable) {
         this.name = name;
         this.sex = sex;
         this.dob = dob;
@@ -60,18 +64,18 @@ public class Cat {
     }
 
     /**
-     * Gets catId.
+     * Gets cat id.
      *
-     * @return the catId
+     * @return the cat id
      */
     public int getCatId() {
         return catId;
     }
 
     /**
-     * Sets catId.
+     * Sets cat id.
      *
-     * @param catId the catId
+     * @param catId the cat id
      */
     public void setCatId(int catId) {
         this.catId = catId;
@@ -80,7 +84,7 @@ public class Cat {
     /**
      * Gets name.
      *
-     * @return name
+     * @return the name
      */
     public String getName() {
         return name;
@@ -114,18 +118,18 @@ public class Cat {
     }
 
     /**
-     * Gets date of birth.
+     * Gets dob.
      *
-     * @return the date of birth
+     * @return the dob
      */
     public String getDob() {
         return dob;
     }
 
     /**
-     * Sets date of birth.
+     * Sets dob.
      *
-     * @param dob date of birth
+     * @param dob the dob
      */
     public void setDob(String dob) {
         this.dob = dob;
@@ -167,31 +171,58 @@ public class Cat {
         this.bio = bio;
     }
 
+
     /**
-     * Gets adoptable status.
+     * Is adoptable boolean.
      *
-     * @return the adoptable status
+     * @return the boolean
      */
-    public boolean getAdoptable() {
+    public boolean isAdoptable() {
         return adoptable;
     }
 
     /**
-     * Sets adoptable status.
+     * Gets person.
      *
-     * @param adoptable the adoptable status
+     * @return the person
      */
-    public void setAdoptable(boolean adoptable) {
-        this.adoptable = adoptable;
+    public Person getPerson() {
+        return person;
     }
 
     /**
-     * Method that uses the current date and the cat's birthdate to
-     * calculate their age.
+     * Sets person.
      *
-     * @param dob date of birth
-     * @param dateFormat date format
-     * @return period.getYears()
+     * @param person the person
+     */
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    /**
+     * Gets meds.
+     *
+     * @return the meds
+     */
+    public List<Medical> getMeds() {
+        return meds;
+    }
+
+    /**
+     * Sets meds.
+     *
+     * @param meds the meds
+     */
+    public void setMeds(List<Medical> meds) {
+        this.meds = meds;
+    }
+
+    /**
+     * Calculate age int.
+     *
+     * @param dob        the dob
+     * @param dateFormat the date format
+     * @return the int
      */
     public int calculateAge(String dob, String dateFormat) {
         // Creates DateTimeFormatter object
@@ -213,7 +244,7 @@ public class Cat {
     /**
      * Gets age.
      *
-     * @return age
+     * @return the age
      */
     public int getAge() {
         // Sets date format
@@ -226,14 +257,13 @@ public class Cat {
     @Override
     public String toString() {
         return "Cat{" +
-                "catId='" + catId + '\'' +
+                "catId=" + catId +
                 ", name='" + name + '\'' +
                 ", sex='" + sex + '\'' +
                 ", dob='" + dob + '\'' +
                 ", breed='" + breed + '\'' +
                 ", bio='" + bio + '\'' +
-                ", adoptable='" + adoptable + '\'' +
-                // ", age='" + getAge() + '\'' +
+                ", adoptable=" + adoptable +
                 '}';
     }
 }

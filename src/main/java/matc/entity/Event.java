@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 /**
  * The type Event.
  */
-@Entity
+@Entity(name = "Event")
 @Table(name = "Event")
 public class Event {
     @Id
@@ -36,7 +36,6 @@ public class Event {
     /**
      * Instantiates a new Event.
      *
-     * @param eventId             the event id
      * @param eventName           the event name
      * @param eventLocationStreet the event location street
      * @param eventLocationCity   the event location city
@@ -45,8 +44,7 @@ public class Event {
      * @param eventDateTimeStart  the event date time start
      * @param eventDateTimeEnd    the event date time end
      */
-    public Event(int eventId, String eventName, String eventLocationStreet, String eventLocationCity, String eventLocationState, String eventLocationZip, String eventDateTimeStart, String eventDateTimeEnd) {
-        this.eventId = eventId;
+    public Event(String eventName, String eventLocationStreet, String eventLocationCity, String eventLocationState, String eventLocationZip, String eventDateTimeStart, String eventDateTimeEnd) {
         this.eventName = eventName;
         this.eventLocationStreet = eventLocationStreet;
         this.eventLocationCity = eventLocationCity;

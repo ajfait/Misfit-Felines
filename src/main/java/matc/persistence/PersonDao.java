@@ -50,7 +50,7 @@ public class PersonDao {
         Transaction transaction = session.beginTransaction();
         session.persist(person);
         transaction.commit();
-        p_id = person.getId();
+        p_id = person.getPersonId();
         session.close();
         return p_id;
     }

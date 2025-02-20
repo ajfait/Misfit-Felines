@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 /**
  * The type Medical.
  */
-@Entity
+@Entity(name = "Medical")
 @Table(name = "Medical")
 public class Medical {
     @Id
@@ -16,6 +16,11 @@ public class Medical {
     private String medicationName;
     @Column(name = "m_date_given")
     private String medicationDateGiven;
+    @ManyToOne
+    @JoinColumn(name = "c_id",
+            foreignKey = @ForeignKey(name = "Medical_Cat_c_id_fk")
+    )
+    private Cat cat;
 
     /**
      * Instantiates a new Medical.
@@ -26,12 +31,10 @@ public class Medical {
     /**
      * Instantiates a new Medical.
      *
-     * @param medicalId           the medical id
      * @param medicationName      the medication name
      * @param medicationDateGiven the medication date given
      */
-    public Medical(int medicalId, String medicationName, String medicationDateGiven) {
-        this.medicalId = medicalId;
+    public Medical(String medicationName, String medicationDateGiven) {
         this.medicationName = medicationName;
         this.medicationDateGiven = medicationDateGiven;
     }
