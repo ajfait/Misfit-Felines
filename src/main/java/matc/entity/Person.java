@@ -62,6 +62,26 @@ public class Person {
     }
 
     /**
+     * Add cat.
+     *
+     * @param cat the cat
+     */
+    public void addCat(Cat cat) {
+        cats.add(cat);
+        cat.setPerson(this);
+    }
+
+    /**
+     * Remove cat.
+     *
+     * @param cat the cat
+     */
+    public void removeCat(Cat cat) {
+        cats.remove(cat);
+        cat.setPerson(null);
+    }
+
+    /**
      * Gets person id.
      *
      * @return the person id

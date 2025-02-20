@@ -64,6 +64,26 @@ public class Cat {
     }
 
     /**
+     * Add medical.
+     *
+     * @param medical the medical
+     */
+    public void addMedical(Medical medical) {
+        meds.add(medical);
+        medical.setCat(this);
+    }
+
+    /**
+     * Remove medical.
+     *
+     * @param medical the medical
+     */
+    public void removeMedical(Medical medical) {
+        meds.remove(medical);
+        medical.setCat(null);
+    }
+
+    /**
      * Gets cat id.
      *
      * @return the cat id
@@ -179,6 +199,15 @@ public class Cat {
      */
     public boolean isAdoptable() {
         return adoptable;
+    }
+
+    /**
+     * Sets adoptable.
+     *
+     * @param adoptable the adoptable
+     */
+    public void setAdoptable(boolean adoptable) {
+        this.adoptable = adoptable;
     }
 
     /**

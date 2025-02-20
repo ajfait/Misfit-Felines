@@ -93,6 +93,24 @@ public class Medical {
         this.medicationDateGiven = medicationDateGiven;
     }
 
+    /**
+     * Gets cat.
+     *
+     * @return the cat
+     */
+    public Cat getCat() {
+        return cat;
+    }
+
+    /**
+     * Sets cat.
+     *
+     * @param cat the cat
+     */
+    public void setCat(Cat cat) {
+        this.cat = cat;
+    }
+
     @Override
     public String toString() {
         return "Medical{" +
