@@ -31,7 +31,7 @@ public class Person {
     private String preferences;
     @Column(name = "p_admin")
     private boolean admin;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cat> cats = new ArrayList<>();
 
     /**

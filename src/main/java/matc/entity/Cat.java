@@ -31,11 +31,9 @@ public class Cat {
     @Column(name = "c_adoptable")
     private boolean adoptable;
     @ManyToOne
-    @JoinColumn(name = "p_id",
-            foreignKey = @ForeignKey(name = "Cat_Person_p_id_fk")
-    )
+    @JoinColumn(name = "p_id", foreignKey = @ForeignKey(name = "Cat_Person_p_id_fk"))
     private Person person;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
+    @OneToMany(mappedBy = "cat", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Medical> meds = new ArrayList<>();
 
     /**
@@ -53,14 +51,16 @@ public class Cat {
      * @param breed     the breed
      * @param bio       the bio
      * @param adoptable the adoptable
+     * @param person    the person
      */
-    public Cat(String name, String sex, String dob, String breed, String bio, boolean adoptable) {
+    public Cat(String name, String sex, String dob, String breed, String bio, boolean adoptable, Person person) {
         this.name = name;
         this.sex = sex;
         this.dob = dob;
         this.breed = breed;
         this.bio = bio;
         this.adoptable = adoptable;
+        this.person = person;
     }
 
     /**

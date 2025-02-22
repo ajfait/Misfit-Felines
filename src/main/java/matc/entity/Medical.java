@@ -17,9 +17,7 @@ public class Medical {
     @Column(name = "m_date_given")
     private String medicationDateGiven;
     @ManyToOne
-    @JoinColumn(name = "c_id",
-            foreignKey = @ForeignKey(name = "Medical_Cat_c_id_fk")
-    )
+    @JoinColumn(name = "c_id", foreignKey = @ForeignKey(name = "Medical_Cat_c_id_fk"))
     private Cat cat;
 
     /**

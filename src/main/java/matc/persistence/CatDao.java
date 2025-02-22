@@ -62,7 +62,7 @@ public class CatDao {
     public void delete(Cat cat) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        session.remove(cat);
+        session.delete(cat);
         transaction.commit();
         session.close();
     }

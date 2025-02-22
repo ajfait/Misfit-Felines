@@ -1,6 +1,7 @@
 package matc.persistence;
 
 import matc.entity.Cat;
+import matc.entity.Person;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -47,8 +48,10 @@ class CatDaoTest {
     void update() {
         Cat updatedCat = catDao.getById(2);
         updatedCat.setName("Molly");
-        assertNotNull(updatedCat);
-        assertEquals("Molly", updatedCat.getName());
+        catDao.update(updatedCat);
+        Cat retrievedCat = catDao.getById(2);
+        assertNotNull(retrievedCat);
+        assertEquals("Molly", retrievedCat.getName());
     }
 
     /**
@@ -59,24 +62,26 @@ class CatDaoTest {
      */
     @Test
     void insert() {
-        Cat newCat = new Cat("Chester", "M", "2000-01-01", "DSH", "My most handsome.", false);
-        assertNotNull(newCat);
-        assertEquals("Chester", newCat.getName());
+        PersonDao personDao = new PersonDao();
+        Person person = personDao.getById(1);
+        Cat newCat = new Cat("Chester", "M", "2000-01-01", "DSH", "My most handsome.", false, person);
+        int insertedCatId = catDao.insert(newCat);
+        Cat retrievedCat = catDao.getById(insertedCatId);
+        assertNotNull(retrievedCat);
+        assertEquals("Chester", retrievedCat.getName());
     }
 
     /**
-     * This test is not working for me. I am not sure what
-     * I am doing wrong.
+     * This method tests deleting a record from the database.
+     * It removes the record then checks to make sure the
+     * record is null.
      */
-//    @Test
-//    void delete() {
-//        Cat newCat = new Cat(3, "Chester", "M", "2000-01-01", "DSH", "My most handsome.", false);
-//        Cat catToDelete = catDao.getById(3);
-//        assertNotNull(catToDelete);
-//        // delete(catToDelete);
-//        Cat deletedCat = catDao.getById(3);
-//        assertNull(deletedCat);
-//    }
+    @Test
+    void delete() {
+        Cat catToDelete = catDao.getById(2);
+        catDao.delete(catToDelete);
+        assertEquals(null, catDao.getById(2));
+    }
 
     /**
      * This method tests getting all the records from the database.
