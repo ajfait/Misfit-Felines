@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3306/sample</property>
+        <property name="connection.url">jdbc:mysql://awseb-e-ed3b82wbfi-stack-awsebrdsdatabase-sq4guzhfttf6.cnko4si62jjj.us-east-2.rds.amazonaws.com:3306/sample</property>
         <!-- DO WE NEED THIS?
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property> -->
 
