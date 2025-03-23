@@ -4,6 +4,8 @@ import matc.entity.Cat;
 import matc.entity.Person;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
@@ -17,6 +19,9 @@ class CatDaoTest {
     // Initializes CatDao object.
     CatDao catDao;
 
+    //
+    private final Logger logger = LogManager.getLogger(CatDaoTest.class);
+
     /**
      * This method instantiates a new CatDao object, gets
      * the database instance, and resets the data before
@@ -24,6 +29,7 @@ class CatDaoTest {
      */
     @BeforeEach
     void setUp() {
+        logger.info("Test setup");
         catDao = new CatDao();
         Database database = Database.getInstance();
         database.runSQL("cleanDB.sql");
@@ -34,9 +40,9 @@ class CatDaoTest {
      */
     @Test
     void getById() {
-//        Cat retrievedCat = catDao.getById(2);
-//        assertNotNull(retrievedCat);
-//        assertEquals("Maxine", retrievedCat.getName());
+        Cat retrievedCat = catDao.getById(2);
+        assertNotNull(retrievedCat);
+        assertEquals("Maxine", retrievedCat.getName());
     }
 
     /**
@@ -46,12 +52,12 @@ class CatDaoTest {
      */
     @Test
     void update() {
-//        Cat updatedCat = catDao.getById(2);
-//        updatedCat.setName("Molly");
-//        catDao.update(updatedCat);
-//        Cat retrievedCat = catDao.getById(2);
-//        assertNotNull(retrievedCat);
-//        assertEquals("Molly", retrievedCat.getName());
+        Cat updatedCat = catDao.getById(2);
+        updatedCat.setName("Molly");
+        catDao.update(updatedCat);
+        Cat retrievedCat = catDao.getById(2);
+        assertNotNull(retrievedCat);
+        assertEquals("Molly", retrievedCat.getName());
     }
 
     /**
@@ -62,13 +68,13 @@ class CatDaoTest {
      */
     @Test
     void insert() {
-//        PersonDao personDao = new PersonDao();
-//        Person person = personDao.getById(1);
-//        Cat newCat = new Cat("Chester", "M", "2000-01-01", "DSH", "My most handsome.", false, person);
-//        int insertedCatId = catDao.insert(newCat);
-//        Cat retrievedCat = catDao.getById(insertedCatId);
-//        assertNotNull(retrievedCat);
-//        assertEquals("Chester", retrievedCat.getName());
+        PersonDao personDao = new PersonDao();
+        Person person = personDao.getById(1);
+        Cat newCat = new Cat("Chester", "M", "2000-01-01", "DSH", "My most handsome.", false, person);
+        int insertedCatId = catDao.insert(newCat);
+        Cat retrievedCat = catDao.getById(insertedCatId);
+        assertNotNull(retrievedCat);
+        assertEquals("Chester", retrievedCat.getName());
     }
 
     /**
@@ -78,9 +84,9 @@ class CatDaoTest {
      */
     @Test
     void delete() {
-//        Cat catToDelete = catDao.getById(2);
-//        catDao.delete(catToDelete);
-//        assertEquals(null, catDao.getById(2));
+        Cat catToDelete = catDao.getById(2);
+        catDao.delete(catToDelete);
+        assertEquals(null, catDao.getById(2));
     }
 
     /**
@@ -90,9 +96,9 @@ class CatDaoTest {
      */
     @Test
     void getAll() {
-//        List<Cat> allCats = catDao.getAll();
-//        assertNotNull(allCats);
-//        assertEquals(1, allCats.size());
+        List<Cat> allCats = catDao.getAll();
+        assertNotNull(allCats);
+        assertEquals(1, allCats.size());
     }
 
     /**
@@ -104,9 +110,9 @@ class CatDaoTest {
      */
     @Test
     void getByPropertyEqual() {
-//        List<Cat> equalCats = catDao.getByPropertyEqual("name", "Maxine");
-//        assertNotNull(equalCats);
-//        assertEquals(1, equalCats.size());
+        List<Cat> equalCats = catDao.getByPropertyEqual("name", "Maxine");
+        assertNotNull(equalCats);
+        assertEquals(1, equalCats.size());
     }
 
     /**
@@ -118,8 +124,8 @@ class CatDaoTest {
      */
     @Test
     void getByPropertyLike() {
-//        List<Cat> likeCats = catDao.getByPropertyLike("name", "Max");
-//        assertNotNull(likeCats);
-//        assertEquals(1, likeCats.size());
+        List<Cat> likeCats = catDao.getByPropertyLike("name", "Max");
+        assertNotNull(likeCats);
+        assertEquals(1, likeCats.size());
     }
 }
