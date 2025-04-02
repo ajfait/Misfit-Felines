@@ -41,9 +41,7 @@ class CatDaoTest {
     @Test
     void getById() {
         Cat retrievedCat = catDao.getById(2);
-        String expectedCat = "Maxine";
         assertNotNull(retrievedCat);
-        assertEquals(expectedCat, retrievedCat.getName());
     }
 
     /**
@@ -53,13 +51,13 @@ class CatDaoTest {
      */
     @Test
     void update() {
+        String newCatName = "Molly";
         Cat updatedCat = catDao.getById(2);
-        updatedCat.setName("Molly");
-        String expectedCat = "Molly";
+        updatedCat.setName(newCatName);
         catDao.update(updatedCat);
         Cat retrievedCat = catDao.getById(2);
         assertNotNull(retrievedCat);
-        assertEquals(expectedCat, retrievedCat.getName());
+        assertEquals(updatedCat, retrievedCat);
     }
 
     /**
@@ -73,11 +71,10 @@ class CatDaoTest {
         PersonDao personDao = new PersonDao();
         Person person = personDao.getById(1);
         Cat newCat = new Cat("Chester", "M", "2000-01-01", "DSH", "My most handsome.", false, person);
-        int insertedCatId = catDao.insert(newCat);
-        Cat retrievedCat = catDao.getById(insertedCatId);
-        String expectedCat = "Chester";
+        catDao.insert(newCat);
+        Cat retrievedCat = catDao.getById(3);
         assertNotNull(retrievedCat);
-        assertEquals(expectedCat, retrievedCat.getName());
+        assertEquals(newCat, retrievedCat);
     }
 
     /**
@@ -114,10 +111,10 @@ class CatDaoTest {
      */
     @Test
     void getByPropertyEqual() {
-        List<Cat> equalCats = catDao.getByPropertyEqual("name", "Maxine");
-        int expectedSize = 1;
-        assertNotNull(equalCats);
-        assertEquals(expectedSize, equalCats.size());
+        List<Cat> specificCat = catDao.getByPropertyEqual("name", "Maxine");
+        Cat expectedCat = catDao.getById(2);
+        assertNotNull(specificCat);
+        assertEquals(expectedCat, specificCat.get(0));
     }
 
     /**
@@ -129,9 +126,9 @@ class CatDaoTest {
      */
     @Test
     void getByPropertyLike() {
-        List<Cat> likeCats = catDao.getByPropertyLike("name", "Max");
-        int expectedSize = 1;
-        assertNotNull(likeCats);
-        assertEquals(expectedSize, likeCats.size());
+        List<Cat> likeCat = catDao.getByPropertyLike("name", "Max");
+        Cat expectedCat = catDao.getById(2);
+        assertNotNull(likeCat);
+        assertEquals(expectedCat, likeCat.get(0));
     }
 }

@@ -6,6 +6,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * The type Cat.
@@ -294,5 +295,17 @@ public class Cat {
                 ", bio='" + bio + '\'' +
                 ", adoptable=" + adoptable +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Cat cat = (Cat) o;
+        return catId == cat.catId && adoptable == cat.adoptable && Objects.equals(name, cat.name) && Objects.equals(sex, cat.sex) && Objects.equals(dob, cat.dob) && Objects.equals(breed, cat.breed) && Objects.equals(bio, cat.bio);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(catId, name, sex, dob, breed, bio, adoptable);
     }
 }
