@@ -41,8 +41,9 @@ class CatDaoTest {
     @Test
     void getById() {
         Cat retrievedCat = catDao.getById(2);
+        String expectedCat = "Maxine";
         assertNotNull(retrievedCat);
-        assertEquals("Maxine", retrievedCat.getName());
+        assertEquals(expectedCat, retrievedCat.getName());
     }
 
     /**
@@ -54,10 +55,11 @@ class CatDaoTest {
     void update() {
         Cat updatedCat = catDao.getById(2);
         updatedCat.setName("Molly");
+        String expectedCat = "Molly";
         catDao.update(updatedCat);
         Cat retrievedCat = catDao.getById(2);
         assertNotNull(retrievedCat);
-        assertEquals("Molly", retrievedCat.getName());
+        assertEquals(expectedCat, retrievedCat.getName());
     }
 
     /**
@@ -73,8 +75,9 @@ class CatDaoTest {
         Cat newCat = new Cat("Chester", "M", "2000-01-01", "DSH", "My most handsome.", false, person);
         int insertedCatId = catDao.insert(newCat);
         Cat retrievedCat = catDao.getById(insertedCatId);
+        String expectedCat = "Chester";
         assertNotNull(retrievedCat);
-        assertEquals("Chester", retrievedCat.getName());
+        assertEquals(expectedCat, retrievedCat.getName());
     }
 
     /**
@@ -97,8 +100,9 @@ class CatDaoTest {
     @Test
     void getAll() {
         List<Cat> allCats = catDao.getAll();
+        int expectedSize = 1;
         assertNotNull(allCats);
-        assertEquals(1, allCats.size());
+        assertEquals(expectedSize, allCats.size());
     }
 
     /**
@@ -111,8 +115,9 @@ class CatDaoTest {
     @Test
     void getByPropertyEqual() {
         List<Cat> equalCats = catDao.getByPropertyEqual("name", "Maxine");
+        int expectedSize = 1;
         assertNotNull(equalCats);
-        assertEquals(1, equalCats.size());
+        assertEquals(expectedSize, equalCats.size());
     }
 
     /**
@@ -125,7 +130,8 @@ class CatDaoTest {
     @Test
     void getByPropertyLike() {
         List<Cat> likeCats = catDao.getByPropertyLike("name", "Max");
+        int expectedSize = 1;
         assertNotNull(likeCats);
-        assertEquals(1, likeCats.size());
+        assertEquals(expectedSize, likeCats.size());
     }
 }
