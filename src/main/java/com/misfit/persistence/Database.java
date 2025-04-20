@@ -104,7 +104,7 @@ public class Database {
     }
 
     /**
-     * Run the sql.
+     * Runs the sql.
      *
      * @param sqlFile the sql file to be read and executed line by line
      */
@@ -129,12 +129,11 @@ public class Database {
             }
 
         } catch (SQLException se) {
-            System.out.println("SQL Exception" + se);
+            logger.error("SQL Exception" + se);
         } catch (Exception e) {
-            System.out.println("Exception" + e);
+            logger.error("Exception" + e);
         } finally {
             disconnect();
         }
-
     }
 }
