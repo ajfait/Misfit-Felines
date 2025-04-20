@@ -31,10 +31,12 @@ public class Medical {
      *
      * @param medicationName      the medication name
      * @param medicationDateGiven the medication date given
+     * @param cat                 the cat
      */
-    public Medical(String medicationName, String medicationDateGiven) {
+    public Medical(String medicationName, String medicationDateGiven, Cat cat) {
         this.medicationName = medicationName;
         this.medicationDateGiven = medicationDateGiven;
+        this.cat = cat;
     }
 
     /**
