@@ -1,4 +1,4 @@
-package matc.persistence;
+package com.misfit.persistence;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,7 +18,6 @@ import org.apache.logging.log4j.Logger;
  *
  * @author pwaite
  */
-
 public class Database {
     // Initializes logger object
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -112,22 +112,19 @@ public class Database {
 
         Statement stmt = null;
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(classloader.getResourceAsStream(sqlFile))))  {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(classloader.getResourceAsStream(sqlFile)))) {
 
             connect();
             stmt = connection.createStatement();
 
             String sql = "";
-            while (br.ready())
-            {
-                char inputValue = (char)br.read();
+            while (br.ready()) {
+                char inputValue = (char) br.read();
 
-                if(inputValue == ';')
-                {
+                if (inputValue == ';') {
                     stmt.executeUpdate(sql);
                     sql = "";
-                }
-                else
+                } else
                     sql += inputValue;
             }
 

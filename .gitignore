@@ -40,3 +40,4 @@ build/
 ### IGNORE ###
 *.cfg.xml
 *.log
+*.properties

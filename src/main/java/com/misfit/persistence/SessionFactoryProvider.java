@@ -1,4 +1,4 @@
-package matc.persistence;
+package com.misfit.persistence;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;

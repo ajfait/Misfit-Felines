@@ -1,4 +1,4 @@
-package matc.entity;
+package com.misfit.entity;
 
 import jakarta.persistence.*;
 
