@@ -15,3 +15,5 @@
 | 4/19/25 | Create EventDAOTest, MedicalDAOTest, and ERD                                                                                             | 1     |
 | 4/21/25 | Add Cognito functionality                                                                                                                | 2     |
 | 4/22/25 | Create SSL certificates and deploy to AWS                                                                                                | 3     |
+| 4/22/25 | Export and run sql script to populate AWS database                                                                                       | 1     |
+| 4/23/25 | Create welcome slideshow component and logout page                                                                                       | 2     |

@@ -11,19 +11,7 @@
 <!-- END HEADER -->
 
 <!-- Main Content -->
-<div class="bg-primary-subtle py-5">
-    <div class="row">
-        <div class="col-md-3">
-        </div>
-
-        <div class="col-md-6 d-flex justify-content-center">
-            <c:import url="/components/login-form.jsp"/>
-        </div>
-
-        <div class="col-md-3">
-        </div>
-    </div>
-</div>
+<c:import url="/components/logout-text.jsp"/>
 <!-- END Main Content -->
 
 <!-- Footer -->

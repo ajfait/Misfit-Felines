@@ -41,6 +41,10 @@ build/
 *.cfg.xml
 *.log
 *.properties
+*.conf
+*.config
+*.crt
+*.pem
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

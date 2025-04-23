@@ -14,7 +14,7 @@
 <!-- END HEADER -->
 
 <!-- Main Content -->
-
+<c:import url="/components/welcome-carousel.jsp"/>
 <!-- END Main Content -->
 
 <!-- Footer -->
