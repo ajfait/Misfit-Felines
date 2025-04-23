@@ -6,7 +6,7 @@ import jakarta.persistence.*;
  * The type Event.
  */
 @Entity(name = "Event")
-@Table(name = "Event")
+@Table(name = "event")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

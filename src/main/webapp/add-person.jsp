@@ -26,7 +26,7 @@
         <div class="col-md-1">
         </div>
         <c:import url="/components/profile-card.jsp"/>
-        <c:import url="/components/add-profile-form.jsp"/>
+        <c:import url="/components/add-person-form.jsp"/>
         <div class="col-md-1">
         </div>
     </div>

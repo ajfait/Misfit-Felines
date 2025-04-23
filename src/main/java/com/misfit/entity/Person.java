@@ -9,7 +9,7 @@ import java.util.List;
  * The type Person.
  */
 @Entity(name = "Person")
-@Table(name = "Person")
+@Table(name = "person")
 public class Person {
     // Creates instance variables
     @Id

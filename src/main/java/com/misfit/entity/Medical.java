@@ -6,7 +6,7 @@ import jakarta.persistence.*;
  * The type Medical.
  */
 @Entity(name = "Medical")
-@Table(name = "Medical")
+@Table(name = "medical")
 public class Medical {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

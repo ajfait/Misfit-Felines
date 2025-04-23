@@ -12,7 +12,7 @@ import java.util.Objects;
  * The type Cat.
  */
 @Entity(name = "Cat")
-@Table(name = "Cat")
+@Table(name = "cat")
 public class Cat {
     // Creates instance variables
     @Id

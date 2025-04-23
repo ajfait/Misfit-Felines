@@ -1,6 +1,6 @@
 <div class="col-md-6">
     <!-- Form -->
-    <form class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white" action="#" method="POST">
+    <form class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white" action="addCat" method="POST">
         <h1 class="py-2">Add New Cat</h1>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
@@ -17,7 +17,7 @@
                 <label for="cat_name">Cat Name</label>
             </div>
             <div class="form-floating mb-3 pt-2">
-                <select class="form-select form-select-lg" id="breed">
+                <select class="form-select form-select-lg" name="breed" id="breed">
                     <option selected></option>
                     <option value="dsh">Domestic Shorthair</option>
                     <option value="dmh">Domestic Medium Hair</option>
@@ -30,13 +30,13 @@
                 <fieldset>
                     <legend>Sex</legend>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sex" id="sex_male" checked>
+                        <input class="form-check-input" type="radio" name="sex" id="sex_male" value="m" checked>
                         <label class="form-check-label" for="sex_male">
                             Male
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sex" id="sex_female">
+                        <input class="form-check-input" type="radio" name="sex" id="sex_female" value="f">
                         <label class="form-check-label" for="sex_female">
                             Female
                         </label>
@@ -53,7 +53,7 @@
         <div class="container-fluid">
             <div class="mb-3 pt-2">
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="adoptable">
+                    <input class="form-check-input" type="checkbox" role="switch" id="adoptable" name="adoptable">
                     <label class="form-check-label" for="adoptable">Adoptable</label>
                 </div>
             </div>
