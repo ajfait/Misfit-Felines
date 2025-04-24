@@ -4,13 +4,13 @@
 <html lang="en">
 
 <head>
-    <c:import url="/components/head.jsp"/>
+    <c:import url="/WEB-INF/components/head.jsp"/>
 </head>
 
 <body>
 
 <!-- Header -->
-<c:import url="/components/header.jsp"/>
+<c:import url="/WEB-INF/components/header.jsp"/>
 <!-- END HEADER -->
 
 <!-- Main Content -->
@@ -18,8 +18,8 @@
     <div class="row">
         <div class="col-md-1">
         </div>
-        <c:import url="/components/profile-card.jsp"/>
-        <c:import url="/components/cat-card.jsp"/>
+        <c:import url="/WEB-INF/components/profile-card.jsp"/>
+        <c:import url="/WEB-INF/components/cat-card.jsp"/>
         <div class="col-md-1">
         </div>
     </div>
@@ -27,7 +27,7 @@
 <!-- END Main Content -->
 
 <!-- Footer -->
-<c:import url="/components/footer.jsp"/>
+<c:import url="/WEB-INF/components/footer.jsp"/>
 <!-- END Footer -->
 
 </body>

@@ -2,20 +2,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <c:import url="/components/head.jsp"/>
+    <c:import url="/WEB-INF/components/head.jsp"/>
 </head>
 <body>
 
 <!-- Header -->
-<c:import url="/components/header.jsp"/>
+<c:import url="/WEB-INF/components/header.jsp"/>
 <!-- END HEADER -->
 
 <!-- Main Content -->
-<c:import url="/components/logout-text.jsp"/>
+<c:import url="/WEB-INF/components/logout-text.jsp"/>
 <!-- END Main Content -->
 
 <!-- Footer -->
-<c:import url="/components/footer.jsp"/>
+<c:import url="/WEB-INF/components/footer.jsp"/>
 <!-- END Footer -->
 
 </body>

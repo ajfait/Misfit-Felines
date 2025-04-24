@@ -1,9 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <c:import url="/WEB-INF/components/head.jsp"/>
 </head>
+
 <body>
 
 <!-- Header -->
@@ -11,7 +14,16 @@
 <!-- END HEADER -->
 
 <!-- Main Content -->
-<c:import url="/WEB-INF/components/unauthorized-text.jsp"/>
+<div class="bg-primary-subtle py-5">
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <c:import url="/WEB-INF/components/profile-card.jsp"/>
+    <c:import url="/WEB-INF/components/event-card.jsp"/>
+    <div class="col-md-1">
+    </div>
+  </div>
+</div>
 <!-- END Main Content -->
 
 <!-- Footer -->
