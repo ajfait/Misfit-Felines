@@ -3,6 +3,7 @@ package com.misfit.controller;
 import com.misfit.entity.Person;
 import com.misfit.persistence.GenericDAO;
 import com.misfit.persistence.PropertiesLoader;
+import com.misfit.service.CognitoService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -45,7 +46,10 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
 
             GenericDAO<Person> personDAO = new GenericDAO<>(Person.class);
             personDAO.insert(newPerson);
-            logger.debug("medical inserted");
+            logger.debug("person inserted");
+
+            CognitoService cognitoService = new CognitoService();
+            cognitoService.createUser(email);
 
             response.sendRedirect("index.jsp");
 

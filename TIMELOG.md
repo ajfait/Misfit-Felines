@@ -19,3 +19,4 @@
 | 4/23/25 | Create welcome slideshow component and logout page                                                                                       | 2     |
 | 4/23/25 | Troubleshoot AWS issue, recreate Elastic Beanstalk environment, update redirect URI and time log                                         | 2     |
 | 4/23/25 | Update servlets, forms, and jsp pages to add entities to the database                                                                    | 3     |
+| 4/24/25 | Create service to add people to Cognito user pool                                                                                        | 1.5   |
