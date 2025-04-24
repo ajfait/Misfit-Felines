@@ -7,14 +7,14 @@
                 <input
                         class="form-control"
                         type="text"
-                        name="event_name"
-                        id="event_name"
+                        name="name"
+                        id="name"
                         required
                         minlength="2"
                         maxlength="50"
                         placeholder="Event Name"
                 />
-                <label for="event_name">Event Name</label>
+                <label for="name">Event Name</label>
             </div>
         </div>
         <div class="container-fluid">
@@ -79,8 +79,14 @@
         </div>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
-                <input class="form-control" type="date" name="date" id="date" required>
-                <label for="date">Date</label>
+                <input class="form-control" type="datetime-local" name="start" id="start" required>
+                <label for="start">Start Date & Time</label>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="form-floating mb-3 pt-2">
+                <input class="form-control" type="datetime-local" name="end" id="end" required>
+                <label for="end">End Date & Time</label>
             </div>
         </div>
         <div class="container-fluid pt-3">

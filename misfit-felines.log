@@ -293,3 +293,15 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'misfit_felines.Cat' doesn't 
 [DEBUG] 2025-04-23 15:48:26.838 [http-nio-8080-exec-6] AddCat - parameters received
 [DEBUG] 2025-04-23 15:48:26.842 [http-nio-8080-exec-6] AddCat - cat object created
 [DEBUG] 2025-04-23 15:48:30.141 [http-nio-8080-exec-6] AddCat - cat inserted
+[DEBUG] 2025-04-23 19:23:39.081 [http-nio-8080-exec-7] AddEvent - doPost started
+[DEBUG] 2025-04-23 19:23:39.088 [http-nio-8080-exec-7] AddEvent - parameters received
+[DEBUG] 2025-04-23 19:23:39.089 [http-nio-8080-exec-7] AddEvent - event object created
+[DEBUG] 2025-04-23 19:23:42.419 [http-nio-8080-exec-7] AddEvent - event inserted
+[DEBUG] 2025-04-23 19:24:15.124 [http-nio-8080-exec-9] AddMedical - doPost started
+[DEBUG] 2025-04-23 19:24:15.143 [http-nio-8080-exec-9] AddMedical - parameters received
+[DEBUG] 2025-04-23 19:24:15.143 [http-nio-8080-exec-9] AddMedical - medical object created
+[DEBUG] 2025-04-23 19:24:15.288 [http-nio-8080-exec-9] AddMedical - medical inserted
+[DEBUG] 2025-04-23 19:28:10.219 [http-nio-8080-exec-6] AddPerson - doPost started
+[DEBUG] 2025-04-23 19:28:10.224 [http-nio-8080-exec-6] AddPerson - parameters received
+[DEBUG] 2025-04-23 19:28:10.226 [http-nio-8080-exec-6] AddPerson - person object created
+[DEBUG] 2025-04-23 19:28:13.493 [http-nio-8080-exec-6] AddPerson - medical inserted

@@ -7,14 +7,14 @@
                 <input
                         class="form-control"
                         type="text"
-                        name="medical_name"
-                        id="medical_name"
+                        name="name"
+                        id="name"
                         required
                         minlength="2"
                         maxlength="50"
-                        placeholder="Medical Name"
+                        placeholder="Medication Name"
                 />
-                <label for="medical_name">Medical Name</label>
+                <label for="name">Medication Name</label>
             </div>
         </div>
         <div class="container-fluid">
