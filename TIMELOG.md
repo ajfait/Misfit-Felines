@@ -21,3 +21,5 @@
 | 4/23/25 | Update servlets, forms, and jsp pages to add entities to the database                                                                    | 3     |
 | 4/24/25 | Create service to add people to Cognito user pool                                                                                        | 1.5   |
 | 4/24/25 | Create service to check for admin status                                                                                                 | 2     |
+| 4/24/25 | Update CRUD servlets for Person entity                                                                                                   | 2     |
+| 4/25/25 | Update delete servlets for remaining entities                                                                                            | 0.5   |

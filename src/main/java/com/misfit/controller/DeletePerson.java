@@ -31,11 +31,11 @@ public class DeletePerson extends HttpServlet implements PropertiesLoader {
             Person person = personDAO.getById(personId);
 
             if (person != null) {
-                personDAO.delete(person);  // Delete the person from the database
+                personDAO.delete(person);
                 logger.debug("Person with ID {} deleted", personId);
             }
 
-            response.sendRedirect("peopleList");  // Redirect to the list of people
+            response.sendRedirect("peopleList");
 
         } catch (Exception e) {
             logger.error("Error deleting person", e);
