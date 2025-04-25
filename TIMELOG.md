@@ -23,3 +23,4 @@
 | 4/24/25 | Create service to check for admin status                                                                                                 | 2     |
 | 4/24/25 | Update CRUD servlets for Person entity                                                                                                   | 2     |
 | 4/25/25 | Update delete servlets for remaining entities                                                                                            | 0.5   |
+| 4/25/25 | Update view servlets for remaining entities                                                                                              | 0.5   |
