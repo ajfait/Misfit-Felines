@@ -24,8 +24,6 @@ public class EditPerson extends HttpServlet implements PropertiesLoader {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
         try {
             int personId = Integer.parseInt(request.getParameter("id"));
             GenericDAO<Person> personDAO = new GenericDAO<>(Person.class);
@@ -33,6 +31,7 @@ public class EditPerson extends HttpServlet implements PropertiesLoader {
 
             request.setAttribute("person", person);
             request.getRequestDispatcher("/WEB-INF/add-person.jsp").forward(request, response);
+            logger.debug("Person with ID {} loaded for edit", personId);
 
         } catch (Exception e) {
             logger.error("Error loading person for edit", e);
@@ -43,8 +42,6 @@ public class EditPerson extends HttpServlet implements PropertiesLoader {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            response.setContentType("text/html;charset=UTF-8");
-
             int personId = Integer.parseInt(request.getParameter("personId"));
 
             String firstName = request.getParameter("first_name");
@@ -68,7 +65,7 @@ public class EditPerson extends HttpServlet implements PropertiesLoader {
             person.setAdmin(admin);
 
             personDAO.update(person);
-
+            logger.debug("Person with ID {} updated", personId);
             response.sendRedirect("success.jsp");
 
         } catch (Exception e) {
