@@ -3,26 +3,35 @@ package com.misfit.controller;
 import com.misfit.entity.Person;
 import com.misfit.persistence.GenericDAO;
 import com.misfit.persistence.PropertiesLoader;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
 
 @WebServlet(
         name = "viewPersonServlet",
         urlPatterns = {"/viewPerson"}
 )
 public class ViewPerson extends HttpServlet implements PropertiesLoader {
-    GenericDAO personDAO = new GenericDAO(Person.class);
+    private final Logger logger = LogManager.getLogger(ViewPerson.class);
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            GenericDAO<Person> personDAO = new GenericDAO<>(Person.class);
+            List<Person> people = personDAO.getAll();
 
-    }
+            request.setAttribute("peopleList", people);
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-
+            request.getRequestDispatcher("/WEB-INF/view-persons.jsp").forward(request, response);
+        } catch (Exception e) {
+            logger.error("Error retrieving person list", e);
+            response.sendRedirect("error.jsp");
+        }
     }
 }

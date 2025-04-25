@@ -15,7 +15,7 @@
 
 <!-- Main Content -->
 <main class="flex-fill">
-    <c:import url="/WEB-INF/components/logout-text.jsp"/>
+    <c:import url="/WEB-INF/components/success-text.jsp"/>
 </main>
 <!-- END Main Content -->
 

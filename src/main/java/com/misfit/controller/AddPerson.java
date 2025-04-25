@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * The type Add person.
+ */
 @WebServlet(
         name = "addPersonServlet",
         urlPatterns = {"/addPerson"}
@@ -23,6 +26,8 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        response.setContentType("text/html;charset=UTF-8");
+
         try {
             logger.debug("doPost started");
             request.setCharacterEncoding("UTF-8");
@@ -32,8 +37,9 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
             String phone = request.getParameter("phone");
             String email = request.getParameter("email");
             String role = request.getParameter("role");
-            String preferences = request.getParameter("preferences");
-            boolean admin = request.getParameter("admin") != null;
+            String[] prefs = request.getParameterValues("preferences");
+            String preferences = prefs != null ? String.join(",", prefs) : "";
+            boolean admin = "true".equals(request.getParameter("admin"));
             logger.debug("parameters received");
 
             Person newPerson = new Person();
@@ -53,7 +59,7 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
             CognitoService cognitoService = new CognitoService();
             cognitoService.createUser(email);
 
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("success.jsp");
 
         } catch (Exception e) {
             logger.error("Error adding person", e);
@@ -63,6 +69,8 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
         String idToken = (String) request.getSession().getAttribute("idToken");
 
         if (idToken == null) {

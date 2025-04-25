@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <c:import url="/WEB-INF/components/head.jsp"/>
+  <c:import url="/WEB-INF/components/head.jsp"/>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -15,7 +15,7 @@
 
 <!-- Main Content -->
 <main class="flex-fill">
-    <c:import url="/WEB-INF/components/logout-text.jsp"/>
+  <c:import url="/WEB-INF/components/error-text.jsp"/>
 </main>
 <!-- END Main Content -->
 
