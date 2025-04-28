@@ -25,7 +25,9 @@
   <div class="row">
     <div class="col-md-1">
     </div>
-    <c:import url="/WEB-INF/components/profile-card.jsp"/>
+    <c:if test="${not empty person}">
+      <jsp:include page="/WEB-INF/components/profile-card.jsp" />
+    </c:if>
     <c:import url="/WEB-INF/components/add-cat-form.jsp"/>
     <div class="col-md-1">
     </div>

@@ -22,12 +22,10 @@ import java.io.IOException;
         urlPatterns = {"/addPerson"}
 )
 public class AddPerson extends HttpServlet implements PropertiesLoader {
-    private final Logger logger = LogManager.getLogger(AddPerson.class);
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
-        response.setContentType("text/html;charset=UTF-8");
-
         try {
             logger.debug("doPost started");
             request.setCharacterEncoding("UTF-8");
@@ -69,12 +67,12 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
         String idToken = (String) request.getSession().getAttribute("idToken");
+        logger.debug("Session ID: " + request.getSession().getId());
+        logger.debug("ID Token from session: " + idToken);
 
         if (idToken == null) {
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("index.jsp");
             return;
         }
 

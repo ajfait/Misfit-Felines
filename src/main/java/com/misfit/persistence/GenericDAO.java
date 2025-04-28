@@ -84,10 +84,10 @@ public class GenericDAO<T> {
         Session session = getSession();
         try {
             String hql = "FROM " + type.getName() + " WHERE " + fieldName + " = :value";
-            T result = session.createQuery(hql, type)
+            T entity = session.createQuery(hql, type)
                     .setParameter("value", value)
                     .uniqueResult();
-            return result;
+            return entity;
         } finally {
             session.close();
         }

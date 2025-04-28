@@ -1,6 +1,11 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<jsp:useBean id="person" scope="request" type="com.misfit.entity.Event"/>
 <div class="col-md-6">
     <!-- Form -->
-    <form class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white" action="addEvent" method="POST">
+    <form class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white"
+          action="${event.eventId != null ? 'editEvent' : 'addEvent'}" method="POST">
+        <input type="hidden" name="eventId" value="${event.eventId}"/>
         <h1 class="py-2">Add New Event</h1>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
@@ -9,6 +14,7 @@
                         type="text"
                         name="name"
                         id="name"
+                        value="${event.eventName}"
                         required
                         minlength="2"
                         maxlength="50"
@@ -24,6 +30,7 @@
                         type="text"
                         name="street"
                         id="street"
+                        value="${event.eventLocationStreet}"
                         required
                         minlength="2"
                         maxlength="50"
@@ -39,6 +46,7 @@
                         type="text"
                         name="city"
                         id="city"
+                        value="${event.eventLocationCity}"
                         required
                         minlength="2"
                         maxlength="50"
@@ -54,6 +62,7 @@
                         type="text"
                         name="state"
                         id="state"
+                        value="${event.eventLocationState}"
                         required
                         minlength="2"
                         maxlength="2"
@@ -69,6 +78,7 @@
                         type="text"
                         name="zip"
                         id="zip"
+                        value="${event.eventLocationZip}"
                         required
                         minlength="5"
                         maxlength="5"
@@ -79,18 +89,21 @@
         </div>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
-                <input class="form-control" type="datetime-local" name="start" id="start" required>
+                <input class="form-control" type="datetime-local" name="start" id="start"
+                       value="${event.eventDateTimeStart}" required>
                 <label for="start">Start Date & Time</label>
             </div>
         </div>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
-                <input class="form-control" type="datetime-local" name="end" id="end" required>
+                <input class="form-control" type="datetime-local" name="end" id="end"
+                       value="${event.eventDateTimeEnd}" required>
                 <label for="end">End Date & Time</label>
             </div>
         </div>
         <div class="container-fluid pt-3">
-            <button type="submit" class="btn btn-primary btn-lg" name="add_event_submission">Add Event</button>
+            <button type="submit" class="btn btn-primary btn-lg" name="add_event_submission">
+                ${event.eventId == 0 || event.eventId == null ? "Add Event" : "Update Event"}</button>
         </div>
     </form>
     <!-- END Form -->

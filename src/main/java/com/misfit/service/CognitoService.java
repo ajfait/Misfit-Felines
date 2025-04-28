@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class CognitoService implements PropertiesLoader {
-    private final Logger logger = LogManager.getLogger(CognitoService.class);
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     private final CognitoIdentityProviderClient cognitoClient;
     private final String poolID;
@@ -46,7 +46,6 @@ public class CognitoService implements PropertiesLoader {
                     .temporaryPassword(tempPassword)
                     .messageAction("SUPPRESS")
                     .build();
-
 
             AdminCreateUserResponse response = cognitoClient.adminCreateUser(request);
             logger.info("Created Cognito user: {}", response.user().username());

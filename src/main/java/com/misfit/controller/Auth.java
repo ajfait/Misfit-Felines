@@ -66,7 +66,8 @@ public class Auth extends HttpServlet implements PropertiesLoader {
 
     /**
      * Gets the auth code from the request and exchanges it for a token containing user info.
-     * @param req servlet request
+     *
+     * @param req  servlet request
      * @param resp servlet response
      * @throws ServletException
      * @throws IOException
@@ -77,19 +78,23 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         String userName = null;
 
         if (authCode == null) {
-            //TODO forward to an error page or back to the login
+            resp.sendRedirect("index.jsp");
+            return;
         } else {
             HttpRequest authRequest = buildAuthRequest(authCode);
             try {
                 TokenResponse tokenResponse = getToken(authRequest);
                 userName = validate(tokenResponse);
+                req.getSession().setAttribute("idToken", tokenResponse.getIdToken());
+                logger.debug("Session ID: " + req.getSession().getId());
+                logger.debug("idToken: " + tokenResponse.getIdToken());
                 req.setAttribute("userName", userName);
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);
-                //TODO forward to an error page
+                resp.sendRedirect("error.jsp");
             } catch (InterruptedException e) {
                 logger.error("Error getting token from Cognito oauth url " + e.getMessage(), e);
-                //TODO forward to an error page
+                resp.sendRedirect("error.jsp");
             }
         }
         RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
@@ -99,6 +104,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
 
     /**
      * Sends the request for a token to Cognito and maps the response
+     *
      * @param authRequest the request to the oauth2/token url in cognito
      * @return response from the oauth2/token endpoint which should include id token, access token and refresh token
      * @throws IOException
@@ -110,7 +116,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
 
         response = client.send(authRequest, HttpResponse.BodyHandlers.ofString());
 
-
+        logger.debug("Response status: " + response.statusCode());
         logger.debug("Response headers: " + response.headers().toString());
         logger.debug("Response body: " + response.body().toString());
 
@@ -125,6 +131,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     /**
      * Get values out of the header to verify the token is legit. If it is legit, get the claims from it, such
      * as username.
+     *
      * @param tokenResponse
      * @return
      * @throws IOException
@@ -177,7 +184,8 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         return userName;
     }
 
-    /** Create the auth url and use it to build the request.
+    /**
+     * Create the auth url and use it to build the request.
      *
      * @param authCode auth code received from Cognito as part of the login process
      * @return the constructed oauth request
@@ -207,7 +215,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     /**
      * Gets the JSON Web Key Set (JWKS) for the user pool from cognito and loads it
      * into objects for easier use.
-     *
+     * <p>
      * JSON Web Key Set (JWKS) location: https://cognito-idp.{region}.amazonaws.com/{userPoolId}/.well-known/jwks.json
      * Demo url: https://cognito-idp.us-east-2.amazonaws.com/us-east-2_XaRYHsmKB/.well-known/jwks.json
      *

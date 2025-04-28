@@ -17,7 +17,7 @@ import java.io.IOException;
         urlPatterns = {"/deleteCat"}
 )
 public class DeleteCat extends HttpServlet implements PropertiesLoader {
-    private final Logger logger = LogManager.getLogger(DeleteCat.class);
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -32,7 +32,7 @@ public class DeleteCat extends HttpServlet implements PropertiesLoader {
                 logger.debug("Cat with ID {} deleted", catId);
             }
 
-            response.sendRedirect(catList);
+            response.sendRedirect("catList");
 
         } catch (Exception e) {
             logger.error("Error deleting cat", e);

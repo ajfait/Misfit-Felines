@@ -18,7 +18,7 @@ import java.util.List;
         urlPatterns = {"/viewMedical"}
 )
 public class ViewMedical extends HttpServlet implements PropertiesLoader {
-    private final Logger logger = LogManager.getLogger(ViewMedical.class);
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

@@ -1,7 +1,12 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<jsp:useBean id="person" scope="request" type="com.misfit.entity.Cat"/>
 <div class="col-md-6">
     <!-- Form -->
-    <form class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white" action="addCat" method="POST">
-        <h1 class="py-2">Add New Cat</h1>
+    <form class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white"
+          action="${cat.catId != null ? 'editCat' : 'addCat'}" method="POST">
+        <input type="hidden" name="catId" value="${cat.catId}"/>
+        <h1 class="py-2">${cat.catId == 0 || cat.catId == null ? "Add New Cat" : "Edit Cat"}</h1>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
                 <input
@@ -9,6 +14,7 @@
                         type="text"
                         name="cat_name"
                         id="cat_name"
+                        value="${cat.name}"
                         required
                         minlength="2"
                         maxlength="50"
@@ -60,12 +66,14 @@
         </div>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
-                <textarea class="form-control" name="bio" id="bio" style="height: 350px" required></textarea>
+                <textarea class="form-control" name="bio" id="bio" style="height: 350px" value="${cat.bio}"
+                          required></textarea>
                 <label for="bio">Bio</label>
             </div>
         </div>
         <div class="container-fluid pt-3">
-            <button type="submit" class="btn btn-primary btn-lg" name="add_cat_submission">Add Cat</button>
+            <button type="submit" class="btn btn-primary btn-lg" name="add_cat_submission">
+                ${cat.catId == 0 || cat.catId == null ? "Add Cat" : "Update Cat"}</button>
         </div>
     </form>
     <!-- END Form -->

@@ -28,6 +28,7 @@
                         <div class="container-fluid pt-3">
                             <p><strong>Name:</strong> ${person.firstName} ${person.lastName}</p>
                             <p><strong>Role:</strong> ${person.role}</p>
+                            <p><strong>Phone:</strong> ${person.phone}</p>
                             <p><strong>Email:</strong> <a class="text-primary"
                                                           href="mailto:${person.email}">${person.email}</a></p>
                             <p><strong>Preferences:</strong> ${person.preferences}</p>

@@ -18,7 +18,7 @@ import java.util.List;
         urlPatterns = {"/viewCat"}
 )
 public class ViewCat extends HttpServlet implements PropertiesLoader {
-    private final Logger logger = LogManager.getLogger(ViewCat.class);
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

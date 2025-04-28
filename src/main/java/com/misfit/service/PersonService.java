@@ -6,23 +6,38 @@ import com.nimbusds.jwt.SignedJWT;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class AdminService {
+/**
+ * The type Person service.
+ */
+public class PersonService {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private final GenericDAO<Person> genericDAO;
 
-    public AdminService(GenericDAO<Person> genericDAO) {
+    /**
+     * Instantiates a new Person service.
+     *
+     * @param genericDAO the generic dao
+     */
+    public PersonService(GenericDAO<Person> genericDAO) {
         this.genericDAO = genericDAO;
     }
 
-    public boolean checkIfUserIsAdmin(String idToken) throws Exception {
+    /**
+     * Gets person.
+     *
+     * @param idToken the id token
+     * @return the person
+     * @throws Exception the exception
+     */
+    public Person getPerson(String idToken) throws Exception {
         try {
             String email = getEmailFromToken(idToken);
             Person person = genericDAO.getByField("email", email);
             logger.debug("Email from token: {}", email);
-            return person != null && person.isAdmin();
+            return person;
         } catch (Exception e) {
             logger.error("Error checking if user is admin", e);
-            return false;
+            return null;
         }
     }
 

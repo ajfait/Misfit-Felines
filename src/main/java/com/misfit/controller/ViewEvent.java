@@ -18,7 +18,7 @@ import java.util.List;
         urlPatterns = {"/viewEvent"}
 )
 public class ViewEvent extends HttpServlet implements PropertiesLoader {
-    private final Logger logger = LogManager.getLogger(ViewEvent.class);
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

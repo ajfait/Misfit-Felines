@@ -17,7 +17,7 @@ import java.io.IOException;
         urlPatterns = {"/deleteEvent"}
 )
 public class DeleteEvent extends HttpServlet implements PropertiesLoader {
-    private final Logger logger = LogManager.getLogger(DeleteEvent.class);
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -32,7 +32,7 @@ public class DeleteEvent extends HttpServlet implements PropertiesLoader {
                 logger.debug("Event with ID {} deleted", eventId);
             }
 
-            response.sendRedirect(eventList);
+            response.sendRedirect("eventList");
 
         } catch (Exception e) {
             logger.error("Error deleting event", e);
