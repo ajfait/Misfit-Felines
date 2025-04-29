@@ -30,7 +30,7 @@ public class EditPerson extends HttpServlet implements PropertiesLoader {
             Person person = personDAO.getById(personId);
 
             request.setAttribute("person", person);
-            request.getRequestDispatcher("/WEB-INF/add-person.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/edit-person.jsp").forward(request, response);
             logger.debug("Person with ID {} loaded for edit", personId);
 
         } catch (Exception e) {

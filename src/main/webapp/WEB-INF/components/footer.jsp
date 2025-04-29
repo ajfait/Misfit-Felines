@@ -16,7 +16,7 @@
                 <tr>
                     <td class="text-white">Email:</td>
                     <td class="text-white"><a class="text-white"
-                                              href="info@misfitfelines.org">info@misfitfelines.org</a>
+                                              href="mailto:info@misfitfelines.org">info@misfitfelines.org</a>
                     </td>
                 </tr>
             </table>
@@ -27,12 +27,20 @@
         <div class="col-md-4 text-center">
             <table class="mx-auto">
                 <tr>
-                    <td class="p-3"><img src="${pageContext.request.contextPath}/images/facebook-icon.png"
-                                         alt="Misfit Felines on Facebook"
-                                         style="max-height: 25px"></td>
-                    <td class="p-3"><img src="${pageContext.request.contextPath}/images/instagram-icon.png"
-                                         alt="Misfit Felines on Instagram"
-                                         style="max-height: 25px"></td>
+                    <td class="p-3"><a class="text-white" target="blank"
+                                       href="https://www.facebook.com/MisfitFelines/">
+                        <img src="${pageContext.request.contextPath}/images/facebook-icon.png"
+                             alt="Misfit Felines on Facebook"
+                             style="max-height: 25px">
+                    </a>
+                    </td>
+                    <td class="p-3"><a class="text-white" target="blank"
+                                       href="https://www.instagram.com/MisfitFelines/">
+                        <img src="${pageContext.request.contextPath}/images/instagram-icon.png"
+                             alt="Misfit Felines on Instagram"
+                             style="max-height: 25px">
+                    </a>
+                    </td>
                 </tr>
             </table>
             <p></p>
