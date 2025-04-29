@@ -3,6 +3,7 @@ package com.misfit.controller;
 import com.misfit.entity.Cat;
 import com.misfit.persistence.GenericDAO;
 import com.misfit.persistence.PropertiesLoader;
+import com.misfit.service.CatBreedService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(
         name = "editCatServlet",
@@ -33,6 +35,15 @@ public class EditCat extends HttpServlet implements PropertiesLoader {
         } catch (Exception e) {
             logger.error("Error retrieving cat", e);
             response.sendRedirect("error.jsp");
+        }
+
+        try {
+            CatBreedService breedService = new CatBreedService();
+            List<String> breedNames = breedService.getBreedNames();
+            request.setAttribute("breeds", breedNames);
+        } catch (Exception e) {
+            request.setAttribute("breeds", List.of("Unable to load breeds"));
+            logger.error("Error loading cat breeds", e);
         }
     }
 

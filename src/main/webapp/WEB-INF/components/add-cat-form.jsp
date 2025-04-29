@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<jsp:useBean id="person" scope="request" type="com.misfit.entity.Cat"/>
 <div class="col-md-6">
     <!-- Form -->
     <form class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white"
@@ -23,14 +22,12 @@
                 <label for="cat_name">Cat Name</label>
             </div>
             <div class="form-floating mb-3 pt-2">
-                <select class="form-select form-select-lg" name="breed" id="breed">
-                    <option selected></option>
-                    <option value="dsh">Domestic Shorthair</option>
-                    <option value="dmh">Domestic Medium Hair</option>
-                    <option value="dlh">Domestic Long Hair</option>
-                    <option value="persian">Persian</option>
+                <select class="form-select form-select-lg"  name="breed" id="breed">
+                    <c:forEach var="breed" items="${breeds}">
+                        <option value="${breed}">${breed}</option>
+                    </c:forEach>
                 </select>
-                <label for="breed">Breed</label>
+                <label for="breed">Breed:</label>
             </div>
             <div class="mb-3 pt-2">
                 <fieldset>

@@ -1,13 +1,12 @@
 package com.misfit.controller;
 
 import com.misfit.entity.Medical;
-import com.misfit.entity.Person;
 import com.misfit.persistence.GenericDAO;
 import com.misfit.persistence.PropertiesLoader;
-import com.misfit.service.AdminService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -49,33 +48,29 @@ public class AddMedical extends HttpServlet implements PropertiesLoader {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
-        String idToken = (String) request.getSession().getAttribute("idToken");
-        logger.debug("Session ID: " + request.getSession().getId());
-        logger.debug("ID Token from session: " + idToken);
+            throws IOException, ServletException {
+        Boolean isAdmin = (Boolean) request.getAttribute("isAdmin");
 
-        if (idToken == null) {
-            response.sendRedirect("index.jsp");
+        if (isAdmin == null || !isAdmin) {
+            response.sendRedirect("unauthorized.jsp");
             return;
         }
 
-        GenericDAO<Person> personDAO = new GenericDAO<>(Person.class);
-        AdminService adminService = new AdminService(personDAO);
+        String medicalIdParam = request.getParameter("medicalId");
+        if (medicalIdParam != null) {
+            try {
+                int medicalId = Integer.parseInt(medicalIdParam);
+                GenericDAO<Medical> medicalDAO = new GenericDAO<>(Medical.class);
+                Medical medical = medicalDAO.getById(medicalId);
 
-        try {
-            boolean isAdmin = adminService.checkIfUserIsAdmin(idToken);
-
-            if (!isAdmin) {
-                response.sendRedirect("unauthorized.jsp");
-                return;
+                if (medical != null) {
+                    request.setAttribute("medical", medical);
+                }
+            } catch (NumberFormatException e) {
+                logger.error("Invalid medicalId provided: " + medicalIdParam, e);
             }
-
-            request.setAttribute("isAdmin", true);
-            request.getRequestDispatcher("/WEB-INF/add-medical.jsp").forward(request, response);
-
-        } catch (Exception e) {
-            logger.error("Error checking if user is admin", e);
-            response.sendRedirect("unauthorized.jsp");
         }
+
+        request.getRequestDispatcher("/WEB-INF/add-medical.jsp").forward(request, response);
     }
 }

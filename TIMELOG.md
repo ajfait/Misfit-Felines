@@ -27,3 +27,4 @@
 | 4/25/25 | Update edit servlets for remaining entities                                                                                              | 0.5   |
 | 4/27/25 | Create service and filter to dynamically populate profile card, clean up jsp pages, and update time log                                  | 6     |
 | 4/28/25 | Create admin user for Paula and fix footer links                                                                                         | 0.5   |
+| 4/29/25 | Incorporate cat breed API, consolidate admin service utilization, and update time log                                                    | 4     |

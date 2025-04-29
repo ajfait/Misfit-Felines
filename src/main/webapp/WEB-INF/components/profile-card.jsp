@@ -26,7 +26,7 @@
         <!-- Button: Update Profile -->
 
         <div class="container-fluid pt-3">
-            <form action="${pageContext.request.contextPath}/addPerson" method="GET">
+            <form action="${pageContext.request.contextPath}/editPerson" method="GET">
                 <input type="hidden" name="personId" value="${person.personId}"/>
                 <button
                         type="submit"

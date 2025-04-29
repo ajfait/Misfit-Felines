@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<jsp:useBean id="person" scope="request" type="com.misfit.entity.Person"/>
 <div class="col-md-6">
   <!-- Form -->
   <form class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white"

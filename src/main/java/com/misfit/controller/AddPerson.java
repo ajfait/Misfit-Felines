@@ -3,11 +3,11 @@ package com.misfit.controller;
 import com.misfit.entity.Person;
 import com.misfit.persistence.GenericDAO;
 import com.misfit.persistence.PropertiesLoader;
-import com.misfit.service.AdminService;
 import com.misfit.service.CognitoService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -66,33 +66,14 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
-        String idToken = (String) request.getSession().getAttribute("idToken");
-        logger.debug("Session ID: " + request.getSession().getId());
-        logger.debug("ID Token from session: " + idToken);
+            throws IOException, ServletException {
+        Boolean isAdmin = (Boolean) request.getAttribute("isAdmin");
 
-        if (idToken == null) {
-            response.sendRedirect("index.jsp");
+        if (isAdmin == null || !isAdmin) {
+            response.sendRedirect("unauthorized.jsp");
             return;
         }
 
-        GenericDAO<Person> personDAO = new GenericDAO<>(Person.class);
-        AdminService adminService = new AdminService(personDAO);
-
-        try {
-            boolean isAdmin = adminService.checkIfUserIsAdmin(idToken);
-
-            if (!isAdmin) {
-                response.sendRedirect("unauthorized.jsp");
-                return;
-            }
-
-            request.setAttribute("isAdmin", true);
-            request.getRequestDispatcher("/WEB-INF/add-person.jsp").forward(request, response);
-
-        } catch (Exception e) {
-            logger.error("Error checking if user is admin", e);
-            response.sendRedirect("unauthorized.jsp");
-        }
+        request.getRequestDispatcher("/WEB-INF/add-person.jsp").forward(request, response);
     }
 }
