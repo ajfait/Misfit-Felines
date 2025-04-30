@@ -23,7 +23,7 @@
                 <div class="card my-2 shadow-sm">
                     <div class="p-3">
                         <div class="row d-flex">
-                            <div class="col-md-6">
+                            <div class="col-12">
                                 <!-- Details -->
                                 <div class="container-fluid pt-3">
                                     <p data-searchable><strong>Name:</strong> ${event.eventName}</p>

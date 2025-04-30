@@ -18,7 +18,14 @@
     <div class="row">
         <div class="col-md-1">
         </div>
-        <c:import url="/WEB-INF/components/admin-menu.jsp"/>
+        <c:choose>
+            <c:when test="${sessionScope.isAdmin}">
+                <c:import url="/WEB-INF/components/nav-menu-admin.jsp"/>
+            </c:when>
+            <c:otherwise>
+                <c:import url="/WEB-INF/components/nav-menu.jsp"/>
+            </c:otherwise>
+        </c:choose>
         <div class="col-md-1">
         </div>
     </div>
@@ -26,7 +33,7 @@
         <div class="col-md-1">
         </div>
         <c:if test="${not empty person}">
-            <jsp:include page="/WEB-INF/components/profile-card.jsp" />
+            <c:import url="/WEB-INF/components/profile-card.jsp"/>
         </c:if>
         <c:import url="/WEB-INF/components/add-medical-form.jsp"/>
         <div class="col-md-1">

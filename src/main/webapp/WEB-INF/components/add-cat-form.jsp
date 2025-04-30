@@ -33,13 +33,13 @@
                 <fieldset>
                     <legend>Sex</legend>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sex" id="sex_male" value="m" checked>
+                        <input class="form-check-input" type="radio" name="sex" id="sex_male" value="Male" checked>
                         <label class="form-check-label" for="sex_male">
                             Male
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sex" id="sex_female" value="f">
+                        <input class="form-check-input" type="radio" name="sex" id="sex_female" value="Female">
                         <label class="form-check-label" for="sex_female">
                             Female
                         </label>
