@@ -5,6 +5,11 @@
     <form class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white"
           action="${event.eventId != null ? 'editEvent' : 'addEvent'}" method="POST">
         <input type="hidden" name="eventId" value="${event.eventId}"/>
+        <c:if test="${not empty violations}">
+            <c:forEach var="violation" items="${violations}">
+                <p class="alert alert-danger mt-3">${violation.message}</p>
+            </c:forEach>
+        </c:if>
         <h1 class="py-2">Add New Event</h1>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
@@ -14,7 +19,6 @@
                         name="name"
                         id="name"
                         value="${event.eventName}"
-                        required
                         minlength="2"
                         maxlength="50"
                         placeholder="Event Name"
@@ -30,7 +34,6 @@
                         name="street"
                         id="street"
                         value="${event.eventLocationStreet}"
-                        required
                         minlength="2"
                         maxlength="50"
                         placeholder="Street Address"
@@ -46,7 +49,6 @@
                         name="city"
                         id="city"
                         value="${event.eventLocationCity}"
-                        required
                         minlength="2"
                         maxlength="50"
                         placeholder="City"
@@ -62,7 +64,6 @@
                         name="state"
                         id="state"
                         value="${event.eventLocationState}"
-                        required
                         minlength="2"
                         maxlength="2"
                         placeholder="State"
@@ -78,7 +79,6 @@
                         name="zip"
                         id="zip"
                         value="${event.eventLocationZip}"
-                        required
                         minlength="5"
                         maxlength="5"
                         placeholder="Zip Code"
@@ -89,14 +89,14 @@
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
                 <input class="form-control" type="datetime-local" name="start" id="start"
-                       value="${event.eventDateTimeStart}" required>
+                       value="${event.eventDateTimeStart}">
                 <label for="start">Start Date & Time</label>
             </div>
         </div>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
                 <input class="form-control" type="datetime-local" name="end" id="end"
-                       value="${event.eventDateTimeEnd}" required>
+                       value="${event.eventDateTimeEnd}">
                 <label for="end">End Date & Time</label>
             </div>
         </div>

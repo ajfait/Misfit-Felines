@@ -27,6 +27,7 @@ public class ViewMedical extends HttpServlet implements PropertiesLoader {
             List<Medical> medicals = medicalDAO.getAll();
 
             request.setAttribute("medicalList", medicals);
+            request.setAttribute("currentPage", "viewMedical");
 
             request.getRequestDispatcher("/WEB-INF/view-medical.jsp").forward(request, response);
 

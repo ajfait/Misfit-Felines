@@ -3,6 +3,8 @@ package com.misfit.controller;
 import com.misfit.entity.Event;
 import com.misfit.persistence.GenericDAO;
 import com.misfit.persistence.PropertiesLoader;
+import com.misfit.util.ValidationUtil;
+import jakarta.validation.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,6 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
+import java.util.Set;
 
 @WebServlet(
         name = "addEventServlet",
@@ -31,8 +36,24 @@ public class AddEvent extends HttpServlet implements PropertiesLoader {
             String city = request.getParameter("city");
             String state = request.getParameter("state");
             String zip = request.getParameter("zip");
-            String start = request.getParameter("start");
-            String end = request.getParameter("end");
+            String startString = request.getParameter("start");
+            LocalDateTime start = null;
+            try {
+                if (startString != null && !startString.isBlank()) {
+                    start = LocalDateTime.parse(startString);
+                }
+            } catch (DateTimeParseException e) {
+                logger.warn("Invalid event date format: {}", startString);
+            }
+            String endString = request.getParameter("end");
+            LocalDateTime end = null;
+            try {
+                if (endString != null && !endString.isBlank()) {
+                    end = LocalDateTime.parse(endString);
+                }
+            } catch (DateTimeParseException e) {
+                logger.warn("Invalid event date format: {}", endString);
+            }
             logger.debug("parameters received");
 
             Event newEvent = new Event();
@@ -44,6 +65,15 @@ public class AddEvent extends HttpServlet implements PropertiesLoader {
             newEvent.setEventDateTimeStart(start);
             newEvent.setEventDateTimeEnd(end);
             logger.debug("event object created");
+
+            Set<ConstraintViolation<Event>> violations = ValidationUtil.validate(newEvent);
+
+            if (!violations.isEmpty()) {
+                request.setAttribute("violations", violations);
+                request.setAttribute("event", newEvent);
+                request.getRequestDispatcher("/WEB-INF/add-event.jsp").forward(request, response);
+                return;
+            }
 
             GenericDAO<Event> eventDAO = new GenericDAO<>(Event.class);
             eventDAO.insert(newEvent);
@@ -80,6 +110,8 @@ public class AddEvent extends HttpServlet implements PropertiesLoader {
                 logger.error("Invalid eventId provided: " + eventIdParam, e);
             }
         }
+
+        request.setAttribute("currentPage", "addEvent");
 
         request.getRequestDispatcher("/WEB-INF/add-event.jsp").forward(request, response);
     }

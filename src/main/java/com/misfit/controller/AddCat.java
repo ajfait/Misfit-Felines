@@ -4,6 +4,8 @@ import com.misfit.entity.Cat;
 import com.misfit.persistence.GenericDAO;
 import com.misfit.persistence.PropertiesLoader;
 import com.misfit.service.CatBreedService;
+import com.misfit.util.ValidationUtil;
+import jakarta.validation.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,7 +15,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.Set;
 
 @WebServlet(
         name = "addCatServlet",
@@ -23,7 +28,7 @@ public class AddCat extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             logger.debug("doPost started");
             request.setCharacterEncoding("UTF-8");
@@ -31,7 +36,15 @@ public class AddCat extends HttpServlet implements PropertiesLoader {
             String name = request.getParameter("cat_name");
             String breed = request.getParameter("breed");
             String sex = request.getParameter("sex");
-            String dob = request.getParameter("birthdate");
+            String dobString = request.getParameter("birthdate");
+            LocalDate dob = null;
+            try {
+                if (dobString != null && !dobString.isBlank()) {
+                    dob = LocalDate.parse(dobString);
+                }
+            } catch (DateTimeParseException e) {
+                logger.warn("Invalid birthdate format: {}", dobString);
+            }
             String bio = request.getParameter("bio");
             boolean adoptable = request.getParameter("adoptable") != null;
             logger.debug("parameters received");
@@ -45,6 +58,15 @@ public class AddCat extends HttpServlet implements PropertiesLoader {
             newCat.setAdoptable(adoptable);
             logger.debug("cat object created");
 
+            Set<ConstraintViolation<Cat>> violations = ValidationUtil.validate(newCat);
+
+            if (!violations.isEmpty()) {
+                request.setAttribute("violations", violations);
+                request.setAttribute("cat", newCat);
+                request.getRequestDispatcher("/WEB-INF/add-cat.jsp").forward(request, response);
+                return;
+            }
+
             GenericDAO<Cat> catDAO = new GenericDAO<>(Cat.class);
             catDAO.insert(newCat);
             logger.debug("cat inserted");
@@ -53,6 +75,7 @@ public class AddCat extends HttpServlet implements PropertiesLoader {
 
         } catch (Exception e) {
             logger.error("Error adding cat", e);
+            response.sendRedirect("error.jsp");
         }
     }
 
@@ -89,6 +112,8 @@ public class AddCat extends HttpServlet implements PropertiesLoader {
                 logger.error("Invalid catId provided: " + catIdParam, e);
             }
         }
+
+        request.setAttribute("currentPage", "addCat");
 
         request.getRequestDispatcher("/WEB-INF/add-cat.jsp").forward(request, response);
     }

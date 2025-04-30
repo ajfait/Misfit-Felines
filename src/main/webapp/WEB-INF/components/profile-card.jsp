@@ -24,17 +24,9 @@
         </div>
 
         <!-- Button: Update Profile -->
-
         <div class="container-fluid pt-3">
-            <form action="${pageContext.request.contextPath}/editPerson" method="GET">
-                <input type="hidden" name="personId" value="${person.personId}"/>
-                <button
-                        type="submit"
-                        class="btn btn-primary btn-lg"
-                        name="update_profile_submission"
-                        value="Update Profile">Update Profile
-                </button>
-            </form>
+            <a href="${pageContext.request.contextPath}/editPerson?id=${person.personId}"
+               class="btn btn-primary btn-lg me-2">Update Profile</a>
         </div>
 
     </div>

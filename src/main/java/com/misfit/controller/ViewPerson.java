@@ -27,6 +27,7 @@ public class ViewPerson extends HttpServlet implements PropertiesLoader {
             List<Person> people = personDAO.getAll();
 
             request.setAttribute("peopleList", people);
+            request.setAttribute("currentPage", "viewPerson");
 
             request.getRequestDispatcher("/WEB-INF/view-persons.jsp").forward(request, response);
         } catch (Exception e) {

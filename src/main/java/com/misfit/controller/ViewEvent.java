@@ -27,6 +27,7 @@ public class ViewEvent extends HttpServlet implements PropertiesLoader {
             List<Event> events = eventDAO.getAll();
 
             request.setAttribute("eventList", events);
+            request.setAttribute("currentPage", "viewEvent");
 
             request.getRequestDispatcher("/WEB-INF/view-events.jsp").forward(request, response);
 

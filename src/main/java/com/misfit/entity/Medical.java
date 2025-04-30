@@ -1,6 +1,10 @@
 package com.misfit.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+
+import java.time.LocalDate;
 
 /**
  * The type Medical.
@@ -13,9 +17,11 @@ public class Medical {
     @Column(name = "m_id")
     private int medicalId;
     @Column(name = "m_name")
+    @NotBlank(message = "Medication name is required")
     private String medicationName;
     @Column(name = "m_date_given")
-    private String medicationDateGiven;
+    @PastOrPresent(message = "Medication date cannot be in the future")
+    private LocalDate medicationDateGiven;
     @ManyToOne
     @JoinColumn(name = "c_id", foreignKey = @ForeignKey(name = "Medical_Cat_c_id_fk"))
     private Cat cat;
@@ -33,7 +39,7 @@ public class Medical {
      * @param medicationDateGiven the medication date given
      * @param cat                 the cat
      */
-    public Medical(String medicationName, String medicationDateGiven, Cat cat) {
+    public Medical(String medicationName, LocalDate medicationDateGiven, Cat cat) {
         this.medicationName = medicationName;
         this.medicationDateGiven = medicationDateGiven;
         this.cat = cat;
@@ -80,7 +86,7 @@ public class Medical {
      *
      * @return the medication date given
      */
-    public String getMedicationDateGiven() {
+    public LocalDate getMedicationDateGiven() {
         return medicationDateGiven;
     }
 
@@ -89,7 +95,7 @@ public class Medical {
      *
      * @param medicationDateGiven the medication date given
      */
-    public void setMedicationDateGiven(String medicationDateGiven) {
+    public void setMedicationDateGiven(LocalDate medicationDateGiven) {
         this.medicationDateGiven = medicationDateGiven;
     }
 

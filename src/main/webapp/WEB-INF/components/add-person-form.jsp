@@ -3,6 +3,11 @@
     <!-- Form -->
     <form class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white"
           action="addPerson" method="POST">
+        <c:if test="${not empty violations}">
+            <c:forEach var="violation" items="${violations}">
+                <p class="alert alert-danger mt-3">${violation.message}</p>
+            </c:forEach>
+        </c:if>
         <h1 class="py-2">Add New Person</h1>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
@@ -11,7 +16,6 @@
                         type="text"
                         name="first_name"
                         id="first_name"
-                        required
                         minlength="2"
                         maxlength="50"
                         placeholder="First Name"
@@ -24,7 +28,6 @@
                         type="text"
                         name="last_name"
                         id="last_name"
-                        required
                         minlength="2"
                         maxlength="50"
                         placeholder="Last Name"
@@ -34,12 +37,11 @@
             <div class="form-floating mb-3 pt-2">
                 <input
                         class="form-control"
-                        type="text"
+                        type="tel"
                         name="phone"
                         id="phone"
-                        required
-                        pattern="^\d{3}-\d{4}$"
-                        placeholder="555-1212"
+                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                        placeholder="608-555-1212"
                 />
                 <label for="phone">Phone Number</label>
             </div>
@@ -49,7 +51,6 @@
                         type="email"
                         name="email"
                         id="email"
-                        required
                         placeholder="foster@gmail.com"
                 />
                 <label for="email">Email Address</label>

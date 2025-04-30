@@ -1,8 +1,8 @@
-1. addPerson servlet redirecting to unauthorized.jsp
-2. viewCat
-+ add cta not working
-+ edit cta redirecting to error.jsp
-3. viewEvent
-+ add cta redirecting to error.jsp
-+ edit cta redirecting to error.jsp
-+ configure to hide past events
++ viewCat: edit cta doesn't return pre-filled form
++ viewEvent: edit cta doesn't return pre-filled form
++ viewEvent: configure to hide past events
++ carousel: icons not showing
++ all things medical
++ form validation
++ link person to cat
++ photos!?

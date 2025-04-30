@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -47,8 +48,8 @@ class EventDAOTest {
                         "2392 Jackson St", "Stoughton",
                         "WI",
                         "53589",
-                        "2025-04-19 11:00:00",
-                        "2025-04-19 11:00:00");
+                        LocalDateTime.of(2025, 7, 19, 11, 0),
+                        LocalDateTime.of(2025, 7, 19, 14, 0));
         eventDAO.insert(newEvent);
         Event retrievedEvent = eventDAO.getById(2);
         assertNotNull(retrievedEvent);

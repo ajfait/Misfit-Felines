@@ -41,9 +41,9 @@ class PersonDAOTest {
      */
     @Test
     void insert() {
-        Person newPerson = new Person("John", "Doe", "6082221212", "jdoe@gmail.com", "Foster", "Adult Cats", false);
+        Person newPerson = new Person("John", "Doe", "608-222-1212", "jdoe@gmail.com", "Foster", "Adult Cats", false);
         personDAO.insert(newPerson);
-        Person retrievedPerson = personDAO.getById(2);
+        Person retrievedPerson = personDAO.getById(4);
         assertNotNull(retrievedPerson);
         assertEquals(newPerson.getFirstName(), retrievedPerson.getFirstName());
         assertEquals(newPerson.getLastName(), retrievedPerson.getLastName());
@@ -71,7 +71,7 @@ class PersonDAOTest {
     @Test
     void getAll() {
         List<Person> allPeople = personDAO.getAll();
-        int expectedSize = 1;
+        int expectedSize = 3;
         assertNotNull(allPeople);
         assertEquals(expectedSize, allPeople.size());
     }

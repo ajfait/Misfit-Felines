@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 
 @WebServlet(
         name = "editMedicalServlet",
@@ -28,6 +29,7 @@ public class EditMedical extends HttpServlet implements PropertiesLoader {
             Medical medical = medicalDAO.getById(medicalId);
 
             request.setAttribute("medical", medical);
+            request.setAttribute("currentPage", "editMedical");
             request.getRequestDispatcher("/WEB-INF/edit-medical.jsp").forward(request, response);
             logger.debug("Medical with ID {} loaded to edit", medicalId);
 
@@ -43,7 +45,9 @@ public class EditMedical extends HttpServlet implements PropertiesLoader {
             int medicalId = Integer.parseInt(request.getParameter("medicalId"));
 
             String medicationName = request.getParameter("name");
-            String medicationDateGiven = request.getParameter("date");
+            String dateString = request.getParameter("date");
+            LocalDate medicationDateGiven = LocalDate.parse(dateString);
+
 
             GenericDAO<Medical> medicalDAO = new GenericDAO<>(Medical.class);
             Medical medical = medicalDAO.getById(medicalId);

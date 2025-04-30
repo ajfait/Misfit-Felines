@@ -1,9 +1,9 @@
 package com.misfit.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 import java.time.*;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,14 +20,20 @@ public class Cat {
     @Column(name = "c_id")
     private int catId;
     @Column(name = "c_name")
+    @NotBlank(message = "Cat name is required")
     private String name;
     @Column(name = "c_sex")
+    @Pattern(regexp = "^(Male|Female)$", message = "Sex must be male or female")
     private String sex;
     @Column(name = "c_dob")
-    private String dob;
+    @PastOrPresent(message = "Birthdate cannot be in the future")
+    private LocalDate dob;
     @Column(name = "c_breed")
+    @NotNull(message = "Breed is required")
     private String breed;
     @Column(name = "c_bio")
+    @NotBlank(message = "Bio is required")
+    @Size(max = 3000, message = "Bio must not exceed 3,000 characters")
     private String bio;
     @Column(name = "c_adoptable")
     private boolean adoptable;
@@ -54,7 +60,7 @@ public class Cat {
      * @param adoptable the adoptable
      * @param person    the person
      */
-    public Cat(String name, String sex, String dob, String breed, String bio, boolean adoptable, Person person) {
+    public Cat(String name, String sex, LocalDate dob, String breed, String bio, boolean adoptable, Person person) {
         this.name = name;
         this.sex = sex;
         this.dob = dob;
@@ -143,7 +149,7 @@ public class Cat {
      *
      * @return the dob
      */
-    public String getDob() {
+    public LocalDate getDob() {
         return dob;
     }
 
@@ -152,7 +158,7 @@ public class Cat {
      *
      * @param dob the dob
      */
-    public void setDob(String dob) {
+    public void setDob(LocalDate dob) {
         this.dob = dob;
     }
 
@@ -251,21 +257,14 @@ public class Cat {
      * Calculate age int.
      *
      * @param dob        the dob
-     * @param dateFormat the date format
      * @return the int
      */
-    public int calculateAge(String dob, String dateFormat) {
-        // Creates DateTimeFormatter object
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat);
-
-        // Formats birthdate
-        LocalDate birthDate = LocalDate.parse(dob, formatter);
-
+    public int calculateAge(LocalDate dob) {
         // Creates LocalDate object
         LocalDate currentDate = LocalDate.now();
 
         // Calculates the period between current date and birthdate
-        Period period = Period.between(birthDate, currentDate);
+        Period period = Period.between(dob, currentDate);
 
         // Returns period between in years
         return period.getYears();
@@ -277,11 +276,8 @@ public class Cat {
      * @return the age
      */
     public int getAge() {
-        // Sets date format
-        String dateFormat = "yyyy-MM-dd";
-
         // Returns calculated age
-        return calculateAge(dob, dateFormat);
+        return calculateAge(dob);
     }
 
     @Override

@@ -27,6 +27,7 @@ public class ViewCat extends HttpServlet implements PropertiesLoader {
             List<Cat> cats = catDAO.getAll();
 
             request.setAttribute("catList", cats);
+            request.setAttribute("currentPage", "viewCat");
 
             request.getRequestDispatcher("/WEB-INF/view-cats.jsp").forward(request, response);
 

@@ -3,6 +3,8 @@ package com.misfit.controller;
 import com.misfit.entity.Medical;
 import com.misfit.persistence.GenericDAO;
 import com.misfit.persistence.PropertiesLoader;
+import com.misfit.util.ValidationUtil;
+import jakarta.validation.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Set;
 
 @WebServlet(
         name = "addMedicalServlet",
@@ -27,13 +31,23 @@ public class AddMedical extends HttpServlet implements PropertiesLoader {
             request.setCharacterEncoding("UTF-8");
 
             String name = request.getParameter("name");
-            String date = request.getParameter("date");
+            String dateString = request.getParameter("date");
+            LocalDate date = LocalDate.parse(dateString);
             logger.debug("parameters received");
 
             Medical newMedical = new Medical();
             newMedical.setMedicationName(name);
             newMedical.setMedicationDateGiven(date);
             logger.debug("medical object created");
+
+            Set<ConstraintViolation<Medical>> violations = ValidationUtil.validate(newMedical);
+
+            if (!violations.isEmpty()) {
+                request.setAttribute("violations", violations);
+                request.setAttribute("medical", newMedical);
+                request.getRequestDispatcher("/WEB-INF/add-medical.jsp").forward(request, response);
+                return;
+            }
 
             GenericDAO<Medical> medicalDAO = new GenericDAO<>(Medical.class);
             medicalDAO.insert(newMedical);
@@ -70,6 +84,8 @@ public class AddMedical extends HttpServlet implements PropertiesLoader {
                 logger.error("Invalid medicalId provided: " + medicalIdParam, e);
             }
         }
+
+        request.setAttribute("currentPage", "addMedical");
 
         request.getRequestDispatcher("/WEB-INF/add-medical.jsp").forward(request, response);
     }

@@ -12,9 +12,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <input type="text" class="search-input form-control mb-2" data-target=".container"
-                       placeholder="Search...">
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text" class="form-control search-input" data-target=".container" placeholder="Search...">
             </div>
         </div>
         <!-- Cards Loop -->
@@ -39,7 +39,7 @@
                         <div class="row py-2">
                             <div class="col-12">
                                 <div class="container-fluid d-flex justify-content-start">
-                                    <a href="${pageContext.request.contextPath}/editEvent?id=${event.eventId}"
+                                    <a href="${pageContext.request.contextPath}/addEvent?id=${event.eventId}"
                                        class="btn btn-primary btn-lg me-2">Edit</a>
                                     <!-- Delete Button -->
                                     <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal"

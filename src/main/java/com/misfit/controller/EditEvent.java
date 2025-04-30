@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 @WebServlet(
         name = "editEventServlet",
@@ -27,7 +29,8 @@ public class EditEvent extends HttpServlet implements PropertiesLoader {
             Event event = eventDAO.getById(eventId);
 
             request.setAttribute("event", event);
-            request.getRequestDispatcher("/WEB-INF/add-event.jsp");
+            request.setAttribute("currentPage", "editEvent");
+            request.getRequestDispatcher("/WEB-INF/add-event.jsp").forward(request, response);
 
         } catch (Exception e) {
             logger.error("Error loading event for edit", e);
@@ -45,8 +48,13 @@ public class EditEvent extends HttpServlet implements PropertiesLoader {
             String eventLocationCity = request.getParameter("city");
             String eventLocationState = request.getParameter("state");
             String eventLocationZip = request.getParameter("zip");
-            String eventDateTimeStart = request.getParameter("start");
-            String eventDateTimeEnd = request.getParameter("end");
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+            String startString = request.getParameter("start");
+            LocalDateTime eventDateTimeStart = LocalDateTime.parse(startString, formatter);
+            String endString = request.getParameter("end");
+            LocalDateTime eventDateTimeEnd = LocalDateTime.parse(endString, formatter);
 
             GenericDAO<Event> eventDAO = new GenericDAO<>(Event.class);
             Event event = eventDAO.getById(eventId);

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -46,10 +47,10 @@ class MedicalDAOTest {
      */
     @Test
     void insert() {
-        Cat cat = catDAO.getById(1);
-        Medical newMedical = new Medical("Doxycycline", "2025-04-19", cat);
+        Cat cat = catDAO.getById(2);
+        Medical newMedical = new Medical("Doxycycline", LocalDate.of(2025, 4, 19), cat);
         medicalDAO.insert(newMedical);
-        Medical retrievedMedical = medicalDAO.getById(4);
+        Medical retrievedMedical = medicalDAO.getById(3);
         assertNotNull(retrievedMedical);
         assertEquals(newMedical.getMedicationName(), retrievedMedical.getMedicationName());
     }

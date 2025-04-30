@@ -12,9 +12,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <input type="text" class="search-input form-control mb-2" data-target=".container"
-                       placeholder="Search...">
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text" class="form-control search-input" data-target=".container" placeholder="Search...">
             </div>
         </div>
         <!-- Cards Loop -->

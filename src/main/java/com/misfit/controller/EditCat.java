@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 @WebServlet(
@@ -29,6 +30,7 @@ public class EditCat extends HttpServlet implements PropertiesLoader {
             Cat cat = catDAO.getById(catId);
 
             request.setAttribute("cat", cat);
+            request.setAttribute("currentPage", "editCat");
             request.getRequestDispatcher("/WEB-INF/edit-cat.jsp").forward(request, response);
             logger.debug("Cat with ID {} loaded to edit", catId);
 
@@ -55,7 +57,8 @@ public class EditCat extends HttpServlet implements PropertiesLoader {
             String name = request.getParameter("cat_name");
             String breed = request.getParameter("breed");
             String sex = request.getParameter("sex");
-            String dob = request.getParameter("birthdate");
+            String dobString = request.getParameter("birthdate");
+            LocalDate dob = LocalDate.parse(dobString);
             boolean adoptable = "true".equals(request.getParameter("adoptable"));
             String bio = request.getParameter("bio");
 

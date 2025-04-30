@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -45,7 +46,7 @@ class CatDAOTest {
     @Test
     void insert() {
         Person person = personDAO.getById(1);
-        Cat newCat = new Cat("Chester", "M", "2000-01-01", "DSH", "My most handsome.", false, person);
+        Cat newCat = new Cat("Chester", "Male", LocalDate.of(2023, 5, 10), "Domestic Shorthair", "My most handsome.", false, person);
         catDAO.insert(newCat);
         Cat retrievedCat = catDAO.getById(4);
         assertNotNull(retrievedCat);

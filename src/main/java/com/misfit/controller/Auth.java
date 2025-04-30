@@ -97,9 +97,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
                 resp.sendRedirect("error.jsp");
             }
         }
-        RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
-        dispatcher.forward(req, resp);
-
+        resp.sendRedirect(req.getContextPath() + "/viewCat");
     }
 
     /**

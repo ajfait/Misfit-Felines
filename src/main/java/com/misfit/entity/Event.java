@@ -1,6 +1,9 @@
 package com.misfit.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
+import java.time.LocalDateTime;
 
 /**
  * The type Event.
@@ -13,19 +16,26 @@ public class Event {
     @Column(name = "e_id")
     private int eventId;
     @Column(name = "e_name")
+    @NotBlank(message = "Event name is required")
     private String eventName;
     @Column(name = "e_location_street")
+    @NotBlank(message = "Street is required")
     private String eventLocationStreet;
     @Column(name = "e_location_city")
+    @NotBlank(message = "City is required")
     private String eventLocationCity;
     @Column(name = "e_location_state")
+    @NotBlank(message = "State is required")
     private String eventLocationState;
     @Column(name = "e_location_zip")
+    @NotBlank(message = "Zip code is required")
     private String eventLocationZip;
     @Column(name = "e_date_start")
-    private String eventDateTimeStart;
+    @Future(message = "Event date cannot be in the past")
+    private LocalDateTime eventDateTimeStart;
     @Column(name = "e_date_end")
-    private String eventDateTimeEnd;
+    @Future(message = "Event date cannot be in the past")
+    private LocalDateTime eventDateTimeEnd;
 
     /**
      * Instantiates a new Event.
@@ -44,7 +54,7 @@ public class Event {
      * @param eventDateTimeStart  the event date time start
      * @param eventDateTimeEnd    the event date time end
      */
-    public Event(String eventName, String eventLocationStreet, String eventLocationCity, String eventLocationState, String eventLocationZip, String eventDateTimeStart, String eventDateTimeEnd) {
+    public Event(String eventName, String eventLocationStreet, String eventLocationCity, String eventLocationState, String eventLocationZip, LocalDateTime eventDateTimeStart, LocalDateTime eventDateTimeEnd) {
         this.eventName = eventName;
         this.eventLocationStreet = eventLocationStreet;
         this.eventLocationCity = eventLocationCity;
@@ -167,7 +177,7 @@ public class Event {
      *
      * @return the event date time start
      */
-    public String getEventDateTimeStart() {
+    public LocalDateTime getEventDateTimeStart() {
         return eventDateTimeStart;
     }
 
@@ -176,7 +186,7 @@ public class Event {
      *
      * @param eventDateTimeStart the event date time start
      */
-    public void setEventDateTimeStart(String eventDateTimeStart) {
+    public void setEventDateTimeStart(LocalDateTime eventDateTimeStart) {
         this.eventDateTimeStart = eventDateTimeStart;
     }
 
@@ -185,7 +195,7 @@ public class Event {
      *
      * @return the event date time end
      */
-    public String getEventDateTimeEnd() {
+    public LocalDateTime getEventDateTimeEnd() {
         return eventDateTimeEnd;
     }
 
@@ -194,7 +204,7 @@ public class Event {
      *
      * @param eventDateTimeEnd the event date time end
      */
-    public void setEventDateTimeEnd(String eventDateTimeEnd) {
+    public void setEventDateTimeEnd(LocalDateTime eventDateTimeEnd) {
         this.eventDateTimeEnd = eventDateTimeEnd;
     }
 

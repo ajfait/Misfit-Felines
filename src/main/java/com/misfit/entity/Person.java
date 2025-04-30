@@ -1,6 +1,8 @@
 package com.misfit.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +19,20 @@ public class Person {
     @Column(name = "p_id")
     private int personId;
     @Column(name = "p_first_name")
+    @NotBlank(message = "First name is required")
     private String firstName;
     @Column(name = "p_last_name")
+    @NotBlank(message = "Last name is required")
     private String lastName;
     @Column(name = "p_phone")
+    @NotBlank(message = "Phone is required")
+    @Pattern(regexp = "^[0-9]{3}-[0-9]{3}-[0-9]{4}$", message = "Format required: 608-555-1212")
     private String phone;
     @Column(name = "p_email")
+    @NotBlank(message = "Email is required")
     private String email;
     @Column(name = "p_role")
+    @Pattern(regexp = "^(Foster|Volunteer)$", message = "Role must be Foster or Volunteer")
     private String role;
     @Column(name = "p_preferences")
     private String preferences;

@@ -22,30 +22,38 @@
 DROP TABLE IF EXISTS `cat`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cat` (
-                       `c_id` int NOT NULL AUTO_INCREMENT,
-                       `c_name` varchar(75) DEFAULT NULL,
-                       `c_sex` char(1) DEFAULT NULL,
-                       `c_dob` date DEFAULT NULL,
-                       `c_breed` varchar(75) DEFAULT NULL,
-                       `c_bio` varchar(3000) DEFAULT NULL,
-                       `c_adoptable` tinyint(1) DEFAULT NULL,
-                       `p_id` int DEFAULT NULL,
-                       PRIMARY KEY (`c_id`),
-                       KEY `fk_cat_person` (`p_id`),
-                       CONSTRAINT `fk_cat_person` FOREIGN KEY (`p_id`) REFERENCES `person` (`p_id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `cat`
+(
+    `c_id`        int NOT NULL AUTO_INCREMENT,
+    `c_name`      varchar(75)   DEFAULT NULL,
+    `c_sex`       varchar(10)   DEFAULT NULL,
+    `c_dob`       date          DEFAULT NULL,
+    `c_breed`     varchar(75)   DEFAULT NULL,
+    `c_bio`       varchar(3000) DEFAULT NULL,
+    `c_adoptable` tinyint(1) DEFAULT NULL,
+    `p_id`        int           DEFAULT NULL,
+    PRIMARY KEY (`c_id`),
+    KEY           `fk_cat_person` (`p_id`),
+    CONSTRAINT `fk_cat_person` FOREIGN KEY (`p_id`) REFERENCES `person` (`p_id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `cat`
 --
 
-LOCK TABLES `cat` WRITE;
+LOCK
+TABLES `cat` WRITE;
 /*!40000 ALTER TABLE `cat` DISABLE KEYS */;
-INSERT INTO `cat` VALUES (1,'CeeCee','f','2024-01-01','Domestic Shorthair','CeeCee is Chip\'s mom.',1,1),(2,'Chip','m','2024-05-21','Domestic Shorthair','Chip is CeeCee\'s son.',1,1),(3,'Maxine','f','2023-01-01','Persian','Maxine is the sweetest.',1,1);
+TRUNCATE TABLE `cat`;
+INSERT INTO `cat`
+VALUES (1, 'CeeCee', 'Female', '2024-01-01', 'Domestic Shorthair',
+        'CeeCee is Chip\'s mom.',1,1),(2,'Chip','Male','2024-05-21','Domestic Shorthair','Chip is CeeCee\'s son.', 1,
+        1),
+       (3, 'Maxine', 'Female', '2023-01-01', 'Persian', 'Maxine is the sweetest.', 1, 1);
 /*!40000 ALTER TABLE `cat` ENABLE KEYS */;
-UNLOCK TABLES;
+UNLOCK
+TABLES;
 
 --
 -- Table structure for table `event`
@@ -54,16 +62,17 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `event` (
-                         `e_id` int NOT NULL AUTO_INCREMENT,
-                         `e_name` varchar(75) DEFAULT NULL,
-                         `e_location_street` varchar(75) DEFAULT NULL,
-                         `e_location_city` varchar(50) DEFAULT NULL,
-                         `e_location_state` varchar(2) DEFAULT NULL,
-                         `e_location_zip` varchar(5) DEFAULT NULL,
-                         `e_date_start` datetime DEFAULT NULL,
-                         `e_date_end` datetime DEFAULT NULL,
-                         PRIMARY KEY (`e_id`)
+CREATE TABLE `event`
+(
+    `e_id`              int NOT NULL AUTO_INCREMENT,
+    `e_name`            varchar(75) DEFAULT NULL,
+    `e_location_street` varchar(75) DEFAULT NULL,
+    `e_location_city`   varchar(50) DEFAULT NULL,
+    `e_location_state`  varchar(2)  DEFAULT NULL,
+    `e_location_zip`    varchar(5)  DEFAULT NULL,
+    `e_date_start`      datetime    DEFAULT NULL,
+    `e_date_end`        datetime    DEFAULT NULL,
+    PRIMARY KEY (`e_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -71,11 +80,16 @@ CREATE TABLE `event` (
 -- Dumping data for table `event`
 --
 
-LOCK TABLES `event` WRITE;
+LOCK
+TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (1,'Adoption Fair at EarthWise Pet Supply & Grooming Madison','3260 University Ave','Madison','WI','53705','2025-02-23 11:00:00','2025-02-23 14:00:00');
+TRUNCATE TABLE `event`;
+INSERT INTO `event`
+VALUES (1, 'Adoption Fair at EarthWise Pet Supply & Grooming Madison', '3260 University Ave', 'Madison', 'WI', '53705',
+        '2025-08-23 11:00:00', '2025-08-23 14:00:00');
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
-UNLOCK TABLES;
+UNLOCK
+TABLES;
 
 --
 -- Table structure for table `medical`
@@ -84,14 +98,15 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `medical`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `medical` (
-                           `m_id` int NOT NULL AUTO_INCREMENT,
-                           `m_name` varchar(50) DEFAULT NULL,
-                           `m_date_given` date DEFAULT NULL,
-                           `c_id` int DEFAULT NULL,
-                           PRIMARY KEY (`m_id`),
-                           KEY `fk_medical_cat` (`c_id`),
-                           CONSTRAINT `fk_medical_cat` FOREIGN KEY (`c_id`) REFERENCES `cat` (`c_id`) ON DELETE SET NULL ON UPDATE CASCADE
+CREATE TABLE `medical`
+(
+    `m_id`         int NOT NULL AUTO_INCREMENT,
+    `m_name`       varchar(50) DEFAULT NULL,
+    `m_date_given` date        DEFAULT NULL,
+    `c_id`         int         DEFAULT NULL,
+    PRIMARY KEY (`m_id`),
+    KEY            `fk_medical_cat` (`c_id`),
+    CONSTRAINT `fk_medical_cat` FOREIGN KEY (`c_id`) REFERENCES `cat` (`c_id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -99,11 +114,16 @@ CREATE TABLE `medical` (
 -- Dumping data for table `medical`
 --
 
-LOCK TABLES `medical` WRITE;
+LOCK
+TABLES `medical` WRITE;
 /*!40000 ALTER TABLE `medical` DISABLE KEYS */;
-INSERT INTO `medical` VALUES (1,'FVRCP','2024-12-01',2),(2,'Rabies','2024-12-01',2);
+TRUNCATE TABLE `medical`;
+INSERT INTO `medical`
+VALUES (1, 'FVRCP', '2024-12-01', 2),
+       (2, 'Rabies', '2024-12-01', 2);
 /*!40000 ALTER TABLE `medical` ENABLE KEYS */;
-UNLOCK TABLES;
+UNLOCK
+TABLES;
 
 --
 -- Table structure for table `person`
@@ -112,16 +132,17 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `person`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `person` (
-                          `p_id` int NOT NULL AUTO_INCREMENT,
-                          `p_first_name` varchar(75) DEFAULT NULL,
-                          `p_last_name` varchar(75) DEFAULT NULL,
-                          `p_phone` varchar(10) DEFAULT NULL,
-                          `p_email` varchar(75) DEFAULT NULL,
-                          `p_role` varchar(75) DEFAULT NULL,
-                          `p_preferences` varchar(255) DEFAULT NULL,
-                          `p_admin` tinyint(1) DEFAULT NULL,
-                          PRIMARY KEY (`p_id`)
+CREATE TABLE `person`
+(
+    `p_id`          int NOT NULL AUTO_INCREMENT,
+    `p_first_name`  varchar(75)  DEFAULT NULL,
+    `p_last_name`   varchar(75)  DEFAULT NULL,
+    `p_phone`       varchar(15)  DEFAULT NULL,
+    `p_email`       varchar(75)  DEFAULT NULL,
+    `p_role`        varchar(75)  DEFAULT NULL,
+    `p_preferences` varchar(255) DEFAULT NULL,
+    `p_admin`       tinyint(1) DEFAULT NULL,
+    PRIMARY KEY (`p_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -129,11 +150,17 @@ CREATE TABLE `person` (
 -- Dumping data for table `person`
 --
 
-LOCK TABLES `person` WRITE;
+LOCK
+TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
-INSERT INTO `person` VALUES (1,'Alison','Fait','7153838927','jafait1004@gmail.com','Foster','Pregnant Cats, Kittens',0);
+TRUNCATE TABLE `person`;
+INSERT INTO `person`
+VALUES (1, 'Alison', 'Fait', '715-383-8927', 'ajfait@madisoncollege.edu', 'Foster', 'Pregnant Cats, Kittens', 1),
+       (2, 'Jason', 'Fait', '715-383-8915', 'jafait1004@gmail.com', 'Foster', 'Weaned', 0),
+       (3, 'Paula', 'Waite', '608-111-1234', 'PAWaite@madisoncollege.edu', 'Volunteer', '', 1);
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
-UNLOCK TABLES;
+UNLOCK
+TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

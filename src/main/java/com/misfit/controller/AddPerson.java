@@ -4,6 +4,8 @@ import com.misfit.entity.Person;
 import com.misfit.persistence.GenericDAO;
 import com.misfit.persistence.PropertiesLoader;
 import com.misfit.service.CognitoService;
+import com.misfit.util.ValidationUtil;
+import jakarta.validation.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Set;
 
 /**
  * The type Add person.
@@ -50,6 +53,15 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
             newPerson.setAdmin(admin);
             logger.debug("person object created");
 
+            Set<ConstraintViolation<Person>> violations = ValidationUtil.validate(newPerson);
+
+            if (!violations.isEmpty()) {
+                request.setAttribute("violations", violations);
+                request.setAttribute("person", newPerson);
+                request.getRequestDispatcher("/WEB-INF/add-person.jsp").forward(request, response);
+                return;
+            }
+
             GenericDAO<Person> personDAO = new GenericDAO<>(Person.class);
             personDAO.insert(newPerson);
             logger.debug("person inserted");
@@ -73,6 +85,8 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
             response.sendRedirect("unauthorized.jsp");
             return;
         }
+
+        request.setAttribute("currentPage", "addPerson");
 
         request.getRequestDispatcher("/WEB-INF/add-person.jsp").forward(request, response);
     }
