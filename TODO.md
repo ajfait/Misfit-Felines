@@ -3,6 +3,6 @@
 + viewEvent: configure to hide past events
 + carousel: icons not showing
 + all things medical
-+ form validation
 + link person to cat
++ hover styling on nav menu list items
 + photos!?
