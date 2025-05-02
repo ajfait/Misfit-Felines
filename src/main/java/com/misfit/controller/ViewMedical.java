@@ -1,5 +1,6 @@
 package com.misfit.controller;
 
+import com.misfit.entity.Cat;
 import com.misfit.entity.Medical;
 import com.misfit.persistence.GenericDAO;
 import com.misfit.persistence.PropertiesLoader;
@@ -23,8 +24,27 @@ public class ViewMedical extends HttpServlet implements PropertiesLoader {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
+            String catIdParam = request.getParameter("id");
             GenericDAO<Medical> medicalDAO = new GenericDAO<>(Medical.class);
-            List<Medical> medicals = medicalDAO.getAll();
+
+            List<Medical> medicals;
+
+            if (catIdParam != null && !catIdParam.isEmpty()) {
+                int catId = Integer.parseInt(catIdParam);
+
+                GenericDAO<Cat> catDAO = new GenericDAO<>(Cat.class);
+                Cat cat = catDAO.getById(catId);
+
+                if (cat != null) {
+                    medicals = medicalDAO.getByFieldList("cat", cat);
+                    request.setAttribute("cat", cat);
+                } else {
+                    response.sendRedirect("error.jsp");
+                    return;
+                }
+            } else {
+                medicals = medicalDAO.getAll();
+            }
 
             request.setAttribute("medicalList", medicals);
             request.setAttribute("currentPage", "viewMedical");

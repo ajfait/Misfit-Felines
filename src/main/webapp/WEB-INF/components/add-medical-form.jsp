@@ -34,6 +34,7 @@
             </div>
         </div>
         <div class="container-fluid pt-3">
+            <input type="hidden" name="catId" value="${cat.catId != null ? cat.catId : param.id}"/>
             <button type="submit" class="btn btn-primary btn-lg" name="add_medical_submission">
                 ${medical.medicalId == 0 || medical.medicalId == null ? "Add Medical" : "Update Medical"}</button>
         </div>

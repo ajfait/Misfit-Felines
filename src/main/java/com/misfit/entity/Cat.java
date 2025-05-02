@@ -256,7 +256,7 @@ public class Cat {
     /**
      * Calculate age int.
      *
-     * @param dob        the dob
+     * @param dob the dob
      * @return the int
      */
     public int calculateAge(LocalDate dob) {
@@ -268,6 +268,40 @@ public class Cat {
 
         // Returns period between in years
         return period.getYears();
+    }
+
+    /**
+     * Gets formatted age.
+     *
+     * @return the formatted age
+     */
+    public String getFormattedAge() {
+        if (dob == null) {
+            return "Unknown";
+        }
+
+        LocalDate now = LocalDate.now();
+        Period age = Period.between(dob, now);
+
+        int years = age.getYears();
+        int months = age.getMonths();
+
+        StringBuilder sb = new StringBuilder();
+
+        if (years > 0) {
+            sb.append(years).append(" year").append(years > 1 ? "s" : "");
+        }
+
+        if (months > 0) {
+            if (sb.length() > 0) sb.append(" and ");
+            sb.append(months).append(" month").append(months > 1 ? "s" : "");
+        }
+
+        if (sb.length() == 0) {
+            sb.append("Less than a month");
+        }
+
+        return sb.toString();
     }
 
     /**

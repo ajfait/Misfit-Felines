@@ -1,5 +1,6 @@
 package com.misfit.controller;
 
+import com.misfit.entity.Cat;
 import com.misfit.entity.Medical;
 import com.misfit.persistence.GenericDAO;
 import com.misfit.persistence.PropertiesLoader;
@@ -35,9 +36,15 @@ public class AddMedical extends HttpServlet implements PropertiesLoader {
             LocalDate date = LocalDate.parse(dateString);
             logger.debug("parameters received");
 
+            String catIdString = request.getParameter("catId");
+            int catId = Integer.parseInt(catIdString);
+            GenericDAO<Cat> catDAO = new GenericDAO<>(Cat.class);
+            Cat cat = catDAO.getById(catId);
+
             Medical newMedical = new Medical();
             newMedical.setMedicationName(name);
             newMedical.setMedicationDateGiven(date);
+            newMedical.setCat(cat);
             logger.debug("medical object created");
 
             Set<ConstraintViolation<Medical>> violations = ValidationUtil.validate(newMedical);

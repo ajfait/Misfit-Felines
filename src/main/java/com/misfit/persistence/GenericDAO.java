@@ -94,6 +94,26 @@ public class GenericDAO<T> {
     }
 
     /**
+     * Gets by field list.
+     *
+     * @param fieldName the field name
+     * @param value     the value
+     * @return the by field list
+     */
+    public List<T> getByFieldList(String fieldName, Object value) {
+        Session session = getSession();
+        try {
+            String hql = "FROM " + type.getName() + " WHERE " + fieldName + " = :value";
+            List<T> entities = session.createQuery(hql, type)
+                    .setParameter("value", value)
+                    .getResultList();
+            return entities;
+        } finally {
+            session.close();
+        }
+    }
+
+    /**
      * Updates.
      *
      * @param entity the entity
