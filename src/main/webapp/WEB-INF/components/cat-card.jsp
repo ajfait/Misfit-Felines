@@ -3,19 +3,18 @@
 <div class="col-md-6">
     <div class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <h1 class="py-2">Current Cats</h1>
             </div>
-            <div class="col-md-3 text-end">
+            <div class="col-md-4 text-end">
                 <c:choose>
                     <c:when test="${person.personId == null}">
                         <!-- Hide add cat button -->
                     </c:when>
                     <c:when test="${sessionScope.isAdmin == true}">
                         <!-- Display add cat button for admin users without person id -->
-                        <a href="${pageContext.request.contextPath}/addCat" class="btn btn-primary btn-lg me-2"><i
-                                class="bi bi-plus-circle"> </i>Add
-                            Cat</a>
+                        <a href="${pageContext.request.contextPath}/addCat" class="btn btn-primary btn-lg me-2">
+                            <i class="bi bi-plus-circle"></i> Add Cat</a>
                     </c:when>
                     <c:otherwise>
                         <!-- Display add cat button for logged in users -->
@@ -124,8 +123,8 @@
                                                 <form action="${pageContext.request.contextPath}/deleteCat"
                                                       method="POST">
                                                     <input type="hidden" name="catId" value="${cat.catId}"/>
-                                                    <button type="submit" class="btn btn-danger"><i
-                                                            class="bi bi-trash3"> </i>Delete
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="bi bi-trash3"></i> Delete
                                                     </button>
                                                     <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">

@@ -3,10 +3,10 @@
 <div class="col-md-6">
     <div class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <h1 class="py-2">Upcoming Events</h1>
             </div>
-            <div class="col-md-3 text-end">
+            <div class="col-md-4 text-end">
                 <a href="${pageContext.request.contextPath}/addEvent" class="btn btn-primary btn-lg me-2">Add
                     Event</a>
             </div>

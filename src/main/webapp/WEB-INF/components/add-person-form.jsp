@@ -67,25 +67,25 @@
                 <fieldset>
                     <legend>Preferences</legend>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Pregnant" id="prefer_pregnant"/>
+                        <input class="form-check-input" type="checkbox" value="Pregnant" id="prefer_pregnant" name="preferences"/>
                         <label class="form-check-label" for="prefer_pregnant">
                             Pregnant / nursing moms
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Bottle" id="prefer_bottle"/>
+                        <input class="form-check-input" type="checkbox" value="Bottle" id="prefer_bottle" name="preferences"/>
                         <label class="form-check-label" for="prefer_bottle">
                             Bottle fed kittens
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Weaned" id="prefer_weaned"/>
+                        <input class="form-check-input" type="checkbox" value="Weaned" id="prefer_weaned" name="preferences"/>
                         <label class="form-check-label" for="prefer_weaned">
                             Weaned kittens
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Medical" id="prefer_medical"/>
+                        <input class="form-check-input" type="checkbox" value="Medical" id="prefer_medical" name="preferences"/>
                         <label class="form-check-label" for="prefer_medical">
                             Medical needs
                         </label>

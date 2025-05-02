@@ -3,12 +3,20 @@
 <div class="col-md-6">
     <div class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <h1 class="py-2">Current Fosters</h1>
             </div>
-            <div class="col-md-3 text-end">
-                <a href="${pageContext.request.contextPath}/addPerson" class="btn btn-primary btn-lg me-2">Add
-                    Person</a>
+            <div class="col-md-4 text-end">
+                <c:choose>
+                    <c:when test="${sessionScope.isAdmin == true}">
+                        <!-- Display add person button for admin users -->
+                        <a href="${pageContext.request.contextPath}/addPerson" class="btn btn-primary btn-lg me-2">
+                            <i class="bi bi-plus-circle"></i> Add Person</a>
+                    </c:when>
+                    <c:otherwise>
+                        <!-- Hide add person button -->
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
         <div class="row">
@@ -47,14 +55,22 @@
                         <!-- Buttons -->
                         <div class="row py-2">
                             <div class="col-12">
+                                <c:choose>
+                                <c:when test="${sessionScope.isAdmin == true}">
+                                <!-- Display buttons and links for admin users -->
                                 <div class="container-fluid d-flex justify-content-start">
                                     <a href="${pageContext.request.contextPath}/editPerson?id=${person.personId}"
-                                       class="btn btn-primary btn-lg me-2">Edit</a>
+                                       class="btn btn-primary btn-lg me-2"><i class="bi bi-pencil"></i> Edit</a>
                                     <!-- Delete Button -->
                                     <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal"
                                             data-bs-target="#deletePersonModal_${person.personId}">
-                                        Delete
+                                        <i class="bi bi-trash3"></i> Delete
                                     </button>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <!-- Hide buttons and link -->
+                                    </c:otherwise>
+                                    </c:choose>
                                     <!-- Modal -->
                                     <div class="modal fade" id="deletePersonModal_${person.personId}" tabindex="-1"
                                          aria-labelledby="deletePersonModalLabel_${person.personId}" aria-hidden="true">
@@ -77,7 +93,9 @@
                                                           method="POST">
                                                         <input type="hidden" name="personId"
                                                                value="${person.personId}"/>
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                        <button type="submit" class="btn btn-danger">
+                                                            <i class="bi bi-trash3"></i> Delete
+                                                        </button>
                                                         <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">Cancel
                                                         </button>

@@ -33,3 +33,4 @@
 | 4/30/25 | Add form validation, update redirect after log in, and add dynamic styling for nav menu                                                  | 4.5   | 58   |
 | 5/1/25  | Create view for medical record, update cat cards, configure CRUD options for cat based on user                                           | 2.5   | 60.5 |
 | 5/2/25  | Fix issues with edit cat                                                                                                                 | 1     | 61.5 |
+| 5/2/25  | Fix issues with edit person                                                                                                              | 1     | 62.5 |
