@@ -28,7 +28,10 @@
             <div class="form-floating mb-3 pt-2">
                 <select class="form-select form-select-lg" name="breed" id="breed">
                     <c:forEach var="breed" items="${breeds}">
-                        <option value="${breed}">${breed}</option>
+                        <option value="${breed}"
+                                <c:if test="${breed == cat.breed}">selected</c:if>>
+                                ${breed}
+                        </option>
                     </c:forEach>
                 </select>
                 <label for="breed">Breed:</label>
@@ -37,13 +40,15 @@
                 <fieldset>
                     <legend>Sex</legend>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sex" id="sex_male" value="Male" checked>
+                        <input class="form-check-input" type="radio" name="sex" id="sex_male" value="Male"
+                               <c:if test="${cat.sex == 'Male'}">checked</c:if>>
                         <label class="form-check-label" for="sex_male">
                             Male
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sex" id="sex_female" value="Female">
+                        <input class="form-check-input" type="radio" name="sex" id="sex_female" value="Female"
+                               <c:if test="${cat.sex == 'Female'}">checked</c:if>>
                         <label class="form-check-label" for="sex_female">
                             Female
                         </label>
@@ -53,21 +58,22 @@
         </div>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
-                <input class="form-control" type="date" name="birthdate" id="birthdate" value="${birthdateFormatted}">
+                <input class="form-control" type="date" name="birthdate" id="birthdate" value="${cat.dob}">
                 <label for="birthdate">Birthdate</label>
             </div>
         </div>
         <div class="container-fluid">
             <div class="mb-3 pt-2">
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="adoptable" name="adoptable">
+                    <input class="form-check-input" type="checkbox" role="switch" id="adoptable" name="adoptable"
+                           <c:if test="${cat.adoptable}">checked</c:if>>
                     <label class="form-check-label" for="adoptable">Adoptable</label>
                 </div>
             </div>
         </div>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
-                <textarea class="form-control" name="bio" id="bio" style="height: 350px" value="${cat.bio}"></textarea>
+                <textarea class="form-control" name="bio" id="bio" style="height: 350px">${cat.bio}</textarea>
                 <label for="bio">Bio</label>
             </div>
         </div>

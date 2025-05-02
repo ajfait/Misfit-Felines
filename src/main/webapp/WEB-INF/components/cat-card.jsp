@@ -84,7 +84,7 @@
                                         <!-- Display buttons and link if the logged-in user is fostering the cat or is an admin -->
                                         <div class="d-flex align-items-end">
                                             <!-- Edit Button -->
-                                            <a href="${pageContext.request.contextPath}/addCat?id=${cat.catId}"
+                                            <a href="${pageContext.request.contextPath}/editCat?id=${cat.catId}"
                                                class="btn btn-primary btn-lg me-2">
                                                 <i class="bi bi-pencil"></i> Edit
                                             </a>

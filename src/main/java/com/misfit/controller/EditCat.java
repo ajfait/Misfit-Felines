@@ -25,27 +25,22 @@ public class EditCat extends HttpServlet implements PropertiesLoader {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            int catId = Integer.parseInt(request.getParameter("catId"));
+            int catId = Integer.parseInt(request.getParameter("id"));
             GenericDAO<Cat> catDAO = new GenericDAO<>(Cat.class);
             Cat cat = catDAO.getById(catId);
 
+            CatBreedService breedService = new CatBreedService();
+            List<String> breedNames = breedService.getBreedNames();
+            request.setAttribute("breeds", breedNames);
+
             request.setAttribute("cat", cat);
             request.setAttribute("currentPage", "editCat");
-            request.getRequestDispatcher("/WEB-INF/edit-cat.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/add-cat.jsp").forward(request, response);
             logger.debug("Cat with ID {} loaded to edit", catId);
 
         } catch (Exception e) {
             logger.error("Error retrieving cat", e);
             response.sendRedirect("error.jsp");
-        }
-
-        try {
-            CatBreedService breedService = new CatBreedService();
-            List<String> breedNames = breedService.getBreedNames();
-            request.setAttribute("breeds", breedNames);
-        } catch (Exception e) {
-            request.setAttribute("breeds", List.of("Unable to load breeds"));
-            logger.error("Error loading cat breeds", e);
         }
     }
 
