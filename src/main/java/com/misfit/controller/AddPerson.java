@@ -67,7 +67,12 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
             logger.debug("person inserted");
 
             CognitoService cognitoService = new CognitoService();
-            cognitoService.createUser(email);
+            try {
+                cognitoService.createUser(email);
+                logger.debug("Cognito user created successfully.");
+            } catch (Exception ex) {
+                logger.error("Error creating Cognito user", ex);
+            }
 
             response.sendRedirect("success.jsp");
 

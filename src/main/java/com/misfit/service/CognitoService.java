@@ -44,7 +44,6 @@ public class CognitoService implements PropertiesLoader {
                             AttributeType.builder().name("email_verified").value("false").build()
                     ))
                     .temporaryPassword(tempPassword)
-                    .messageAction("SUPPRESS")
                     .build();
 
             AdminCreateUserResponse response = cognitoClient.adminCreateUser(request);

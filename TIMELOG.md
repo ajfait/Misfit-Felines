@@ -34,3 +34,4 @@
 | 5/1/25  | Create view for medical record, update cat cards, configure CRUD options for cat based on user                                           | 2.5   | 60.5 |
 | 5/2/25  | Fix issues with edit cat                                                                                                                 | 1     | 61.5 |
 | 5/2/25  | Fix issues with edit person                                                                                                              | 1     | 62.5 |
+| 5/2/25  | Fix issues with edit event                                                                                                               | 1     | 63.5 |

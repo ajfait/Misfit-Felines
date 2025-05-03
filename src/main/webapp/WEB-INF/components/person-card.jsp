@@ -56,51 +56,51 @@
                         <div class="row py-2">
                             <div class="col-12">
                                 <c:choose>
-                                <c:when test="${sessionScope.isAdmin == true}">
-                                <!-- Display buttons and links for admin users -->
-                                <div class="container-fluid d-flex justify-content-start">
-                                    <a href="${pageContext.request.contextPath}/editPerson?id=${person.personId}"
-                                       class="btn btn-primary btn-lg me-2"><i class="bi bi-pencil"></i> Edit</a>
-                                    <!-- Delete Button -->
-                                    <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal"
-                                            data-bs-target="#deletePersonModal_${person.personId}">
-                                        <i class="bi bi-trash3"></i> Delete
-                                    </button>
+                                    <c:when test="${sessionScope.isAdmin == true}">
+                                        <!-- Display buttons and links for admin users -->
+                                        <div class="d-flex align-items-end">
+                                            <a href="${pageContext.request.contextPath}/editPerson?id=${person.personId}"
+                                               class="btn btn-primary btn-lg me-2"><i class="bi bi-pencil"></i> Edit</a>
+                                            <!-- Delete Button -->
+                                            <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal"
+                                                    data-bs-target="#deletePersonModal_${person.personId}">
+                                                <i class="bi bi-trash3"></i> Delete
+                                            </button>
+                                        </div>
                                     </c:when>
                                     <c:otherwise>
                                         <!-- Hide buttons and link -->
                                     </c:otherwise>
-                                    </c:choose>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="deletePersonModal_${person.personId}" tabindex="-1"
-                                         aria-labelledby="deletePersonModalLabel_${person.personId}" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5"
-                                                        id="deletePersonModalLabel_${person.personId}">
-                                                        Delete Person
-                                                    </h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Are you sure you want to
-                                                    delete ${person.firstName} ${person.lastName}?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <form action="${pageContext.request.contextPath}/deletePerson"
-                                                          method="POST">
-                                                        <input type="hidden" name="personId"
-                                                               value="${person.personId}"/>
-                                                        <button type="submit" class="btn btn-danger">
-                                                            <i class="bi bi-trash3"></i> Delete
-                                                        </button>
-                                                        <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Cancel
-                                                        </button>
-                                                    </form>
-                                                </div>
+                                </c:choose>
+                                <!-- Modal -->
+                                <div class="modal fade" id="deletePersonModal_${person.personId}" tabindex="-1"
+                                     aria-labelledby="deletePersonModalLabel_${person.personId}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5"
+                                                    id="deletePersonModalLabel_${person.personId}">
+                                                    Delete Person
+                                                </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to
+                                                delete ${person.firstName} ${person.lastName}?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form action="${pageContext.request.contextPath}/deletePerson"
+                                                      method="POST">
+                                                    <input type="hidden" name="personId"
+                                                           value="${person.personId}"/>
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="bi bi-trash3"></i> Delete
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Cancel
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

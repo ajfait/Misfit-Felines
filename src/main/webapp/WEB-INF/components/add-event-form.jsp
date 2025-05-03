@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="col-md-6">
     <!-- Form -->
     <form class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white"
@@ -89,14 +90,14 @@
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
                 <input class="form-control" type="datetime-local" name="start" id="start"
-                       value="${event.eventDateTimeStart}">
+                       value="${startFormatted}">
                 <label for="start">Start Date & Time</label>
             </div>
         </div>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
                 <input class="form-control" type="datetime-local" name="end" id="end"
-                       value="${event.eventDateTimeEnd}">
+                       value="${endFormatted}">
                 <label for="end">End Date & Time</label>
             </div>
         </div>

@@ -3,6 +3,7 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/components/event-card.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/components" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/add-profile.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/components/add-cat-form.jsp" value="file://$PROJECT_DIR$/src/main/webapp/components" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/components/welcome-carousel.jsp" value="file://$PROJECT_DIR$/src/main/webapp/components" />

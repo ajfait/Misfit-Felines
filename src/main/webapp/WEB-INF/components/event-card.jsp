@@ -7,8 +7,16 @@
                 <h1 class="py-2">Upcoming Events</h1>
             </div>
             <div class="col-md-4 text-end">
-                <a href="${pageContext.request.contextPath}/addEvent" class="btn btn-primary btn-lg me-2">Add
-                    Event</a>
+                <c:choose>
+                    <c:when test="${sessionScope.isAdmin == true}">
+                        <!-- Display add event button for admin users -->
+                        <a href="${pageContext.request.contextPath}/addEvent" class="btn btn-primary btn-lg me-2">
+                            <i class="bi bi-plus-circle"></i> Add Event</a>
+                    </c:when>
+                    <c:otherwise>
+                        <!-- Hide add person button -->
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
         <div class="row">
@@ -38,40 +46,51 @@
                         <!-- Buttons -->
                         <div class="row py-2">
                             <div class="col-12">
-                                <div class="container-fluid d-flex justify-content-start">
-                                    <a href="${pageContext.request.contextPath}/addEvent?id=${event.eventId}"
-                                       class="btn btn-primary btn-lg me-2">Edit</a>
-                                    <!-- Delete Button -->
-                                    <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal"
-                                            data-bs-target="#deleteEventModal_${event.eventId}">
-                                        Delete
-                                    </button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="deleteEventModal_${event.eventId}" tabindex="-1"
-                                         aria-labelledby="deleteEventModal_${event.eventId}" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="deleteEventModal_${event.eventId}">
-                                                        Delete Event
-                                                    </h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Are you sure you want to delete ${event.eventName}?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <form action="${pageContext.request.contextPath}/deleteEvent"
-                                                          method="POST">
-                                                        <input type="hidden" name="eventId" value="${event.eventId}"/>
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                                        <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">
-                                                            Cancel
-                                                        </button>
-                                                    </form>
-                                                </div>
+                                <c:choose>
+                                    <c:when test="${sessionScope.isAdmin == true}">
+                                        <!-- Display buttons and links for admin users -->
+                                        <div class="d-flex align-items-end">
+                                            <a href="${pageContext.request.contextPath}/editEvent?id=${event.eventId}"
+                                               class="btn btn-primary btn-lg me-2">
+                                                <i class="bi bi-pencil"></i> Edit</a>
+                                            <!-- Delete Button -->
+                                            <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal"
+                                                    data-bs-target="#deleteEventModal_${event.eventId}">
+                                                <i class="bi bi-trash3"></i> Delete
+                                            </button>
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <!-- Hide buttons and link -->
+                                    </c:otherwise>
+                                </c:choose>
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteEventModal_${event.eventId}" tabindex="-1"
+                                     aria-labelledby="deleteEventModal_${event.eventId}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="deleteEventModal_${event.eventId}">
+                                                    Delete Event
+                                                </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete ${event.eventName}?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form action="${pageContext.request.contextPath}/deleteEvent"
+                                                      method="POST">
+                                                    <input type="hidden" name="eventId" value="${event.eventId}"/>
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="bi bi-trash3"></i> Delete
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">
+                                                        Cancel
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

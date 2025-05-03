@@ -67,25 +67,29 @@
                 <fieldset>
                     <legend>Preferences</legend>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Pregnant" id="prefer_pregnant" name="preferences"/>
+                        <input class="form-check-input" type="checkbox" value="Pregnant" id="prefer_pregnant"
+                               name="preferences"/>
                         <label class="form-check-label" for="prefer_pregnant">
                             Pregnant / nursing moms
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Bottle" id="prefer_bottle" name="preferences"/>
+                        <input class="form-check-input" type="checkbox" value="Bottle" id="prefer_bottle"
+                               name="preferences"/>
                         <label class="form-check-label" for="prefer_bottle">
                             Bottle fed kittens
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Weaned" id="prefer_weaned" name="preferences"/>
+                        <input class="form-check-input" type="checkbox" value="Weaned" id="prefer_weaned"
+                               name="preferences"/>
                         <label class="form-check-label" for="prefer_weaned">
                             Weaned kittens
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Medical" id="prefer_medical" name="preferences"/>
+                        <input class="form-check-input" type="checkbox" value="Medical" id="prefer_medical"
+                               name="preferences"/>
                         <label class="form-check-label" for="prefer_medical">
                             Medical needs
                         </label>
@@ -96,13 +100,13 @@
                 <fieldset>
                     <legend>Admin</legend>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="admin" id="admin_no">
+                        <input class="form-check-input" type="radio" value="false" name="admin" id="admin_no" checked/>
                         <label class="form-check-label" for="admin_no">
                             No
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="admin" id="admin_yes"/>
+                        <input class="form-check-input" type="radio" value="true" name="admin" id="admin_yes"/>
                         <label class="form-check-label" for="admin_yes">
                             Yes
                         </label>

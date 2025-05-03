@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Set;
 
@@ -23,7 +24,8 @@ import java.util.Set;
         urlPatterns = {"/addEvent"}
 )
 public class AddEvent extends HttpServlet implements PropertiesLoader {
-    private final Logger logger = LogManager.getLogger(this.getClass());
+    private static final Logger logger = LogManager.getLogger(AddEvent.class);
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
@@ -37,23 +39,11 @@ public class AddEvent extends HttpServlet implements PropertiesLoader {
             String state = request.getParameter("state");
             String zip = request.getParameter("zip");
             String startString = request.getParameter("start");
-            LocalDateTime start = null;
-            try {
-                if (startString != null && !startString.isBlank()) {
-                    start = LocalDateTime.parse(startString);
-                }
-            } catch (DateTimeParseException e) {
-                logger.warn("Invalid event date format: {}", startString);
-            }
             String endString = request.getParameter("end");
-            LocalDateTime end = null;
-            try {
-                if (endString != null && !endString.isBlank()) {
-                    end = LocalDateTime.parse(endString);
-                }
-            } catch (DateTimeParseException e) {
-                logger.warn("Invalid event date format: {}", endString);
-            }
+
+            LocalDateTime start = parseDateTime(startString, DATE_TIME_FORMATTER);
+            LocalDateTime end = parseDateTime(endString, DATE_TIME_FORMATTER);
+
             logger.debug("parameters received");
 
             Event newEvent = new Event();
@@ -64,7 +54,15 @@ public class AddEvent extends HttpServlet implements PropertiesLoader {
             newEvent.setEventLocationZip(zip);
             newEvent.setEventDateTimeStart(start);
             newEvent.setEventDateTimeEnd(end);
+
             logger.debug("event object created");
+
+            if (start != null) {
+                request.setAttribute("startFormatted", start.format(DATE_TIME_FORMATTER));
+            }
+            if (end != null) {
+                request.setAttribute("endFormatted", end.format(DATE_TIME_FORMATTER));
+            }
 
             Set<ConstraintViolation<Event>> violations = ValidationUtil.validate(newEvent);
 
@@ -75,6 +73,7 @@ public class AddEvent extends HttpServlet implements PropertiesLoader {
                 return;
             }
 
+            // Insert Event into the database
             GenericDAO<Event> eventDAO = new GenericDAO<>(Event.class);
             eventDAO.insert(newEvent);
             logger.debug("event inserted");
@@ -83,6 +82,11 @@ public class AddEvent extends HttpServlet implements PropertiesLoader {
 
         } catch (Exception e) {
             logger.error("Error adding event", e);
+            try {
+                response.sendRedirect("error.jsp");
+            } catch (IOException ioException) {
+                logger.error("Redirect to error.jsp failed", ioException);
+            }
         }
     }
 
@@ -105,6 +109,12 @@ public class AddEvent extends HttpServlet implements PropertiesLoader {
 
                 if (event != null) {
                     request.setAttribute("event", event);
+                    if (event.getEventDateTimeStart() != null) {
+                        request.setAttribute("startFormatted", event.getEventDateTimeStart().format(DATE_TIME_FORMATTER));
+                    }
+                    if (event.getEventDateTimeEnd() != null) {
+                        request.setAttribute("endFormatted", event.getEventDateTimeEnd().format(DATE_TIME_FORMATTER));
+                    }
                 }
             } catch (NumberFormatException e) {
                 logger.error("Invalid eventId provided: " + eventIdParam, e);
@@ -112,7 +122,17 @@ public class AddEvent extends HttpServlet implements PropertiesLoader {
         }
 
         request.setAttribute("currentPage", "addEvent");
-
         request.getRequestDispatcher("/WEB-INF/add-event.jsp").forward(request, response);
+    }
+
+    private LocalDateTime parseDateTime(String dateTimeString, DateTimeFormatter formatter) {
+        try {
+            if (dateTimeString != null && !dateTimeString.isBlank()) {
+                return LocalDateTime.parse(dateTimeString, formatter);
+            }
+        } catch (DateTimeParseException e) {
+            logger.warn("Invalid event date format: {}", dateTimeString);
+        }
+        return null;
     }
 }

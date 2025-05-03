@@ -24,9 +24,19 @@ public class EditEvent extends HttpServlet implements PropertiesLoader {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            int eventId = Integer.parseInt(request.getParameter("eventId"));
+            int eventId = Integer.parseInt(request.getParameter("id"));
             GenericDAO<Event> eventDAO = new GenericDAO<>(Event.class);
             Event event = eventDAO.getById(eventId);
+
+            DateTimeFormatter htmlFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+
+            if (event.getEventDateTimeStart() != null) {
+                request.setAttribute("startFormatted", event.getEventDateTimeStart().format(htmlFormat));
+            }
+
+            if (event.getEventDateTimeEnd() != null) {
+                request.setAttribute("endFormatted", event.getEventDateTimeEnd().format(htmlFormat));
+            }
 
             request.setAttribute("event", event);
             request.setAttribute("currentPage", "editEvent");
@@ -49,12 +59,12 @@ public class EditEvent extends HttpServlet implements PropertiesLoader {
             String eventLocationState = request.getParameter("state");
             String eventLocationZip = request.getParameter("zip");
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
             String startString = request.getParameter("start");
-            LocalDateTime eventDateTimeStart = LocalDateTime.parse(startString, formatter);
             String endString = request.getParameter("end");
-            LocalDateTime eventDateTimeEnd = LocalDateTime.parse(endString, formatter);
+
+            DateTimeFormatter htmlDateTimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+            LocalDateTime eventDateTimeStart = LocalDateTime.parse(startString, htmlDateTimeFormat);
+            LocalDateTime eventDateTimeEnd = LocalDateTime.parse(endString, htmlDateTimeFormat);
 
             GenericDAO<Event> eventDAO = new GenericDAO<>(Event.class);
             Event event = eventDAO.getById(eventId);
