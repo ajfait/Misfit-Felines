@@ -902,3 +902,113 @@ Caused by: javax.el.PropertyNotFoundException: Property [getContextPath] not fou
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) ~[servlet-api.jar:4.0.FR]
 	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:466) ~[jasper.jar:9.0.98]
 	... 40 more
+[ERROR] 2025-05-02 21:37:21.185 [http-nio-8080-exec-7] EditMedical - Error retrieving medical
+java.lang.NumberFormatException: Cannot parse null string
+	at java.lang.Integer.parseInt(Integer.java:630) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:786) ~[?:?]
+	at com.misfit.controller.EditMedical.doGet(EditMedical.java:27) [classes/:?]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529) [servlet-api.jar:4.0.FR]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) [servlet-api.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.98]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) [tomcat-websocket.jar:9.0.98]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.98]
+	at com.misfit.filter.PersonInjectionFilter.doFilter(PersonInjectionFilter.java:68) [classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) [catalina.jar:9.0.98]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) [catalina.jar:9.0.98]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) [catalina.jar:9.0.98]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [catalina.jar:9.0.98]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346) [catalina.jar:9.0.98]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396) [tomcat-coyote.jar:9.0.98]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) [tomcat-coyote.jar:9.0.98]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937) [tomcat-coyote.jar:9.0.98]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) [tomcat-coyote.jar:9.0.98]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) [tomcat-coyote.jar:9.0.98]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) [tomcat-util.jar:9.0.98]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-util.jar:9.0.98]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) [tomcat-util.jar:9.0.98]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+[DEBUG] 2025-05-02 21:40:21.030 [http-nio-8080-exec-10] EditMedical - Medical with ID 3 loaded to edit
+[DEBUG] 2025-05-02 21:40:34.995 [http-nio-8080-exec-5] EditMedical - Medical with ID 3 updated
+[DEBUG] 2025-05-02 21:40:56.185 [http-nio-8080-exec-8] EditMedical - Medical with ID 3 loaded to edit
+[DEBUG] 2025-05-02 21:41:11.454 [http-nio-8080-exec-9] EditMedical - Medical with ID 3 loaded to edit
+[DEBUG] 2025-05-02 21:41:15.172 [http-nio-8080-exec-10] EditMedical - Medical with ID 1 loaded to edit
+[DEBUG] 2025-05-02 21:41:30.735 [http-nio-8080-exec-1] EditMedical - Medical with ID 3 loaded to edit
+[DEBUG] 2025-05-02 21:41:45.812 [http-nio-8080-exec-4] EditMedical - Medical with ID 3 updated
+[DEBUG] 2025-05-02 21:41:47.624 [http-nio-8080-exec-3] EditMedical - Medical with ID 3 loaded to edit
+[DEBUG] 2025-05-02 21:42:10.639 [http-nio-8080-exec-6] EditMedical - Medical with ID 1 loaded to edit
+[DEBUG] 2025-05-02 21:42:12.593 [http-nio-8080-exec-7] EditPerson - Person with ID 8 loaded for edit
+[DEBUG] 2025-05-02 21:51:04.074 [http-nio-8080-exec-10] EditMedical - Medical with ID 3 loaded to edit
+[DEBUG] 2025-05-02 21:51:08.238 [http-nio-8080-exec-1] EditMedical - Medical with ID 3 updated
+[DEBUG] 2025-05-02 21:51:10.026 [http-nio-8080-exec-3] EditMedical - Medical with ID 3 loaded to edit
+[ERROR] 2025-05-02 21:54:58.979 [http-nio-8080-exec-4] DeleteMedical - Error deleting medical
+java.lang.NumberFormatException: Cannot parse null string
+	at java.lang.Integer.parseInt(Integer.java:630) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:786) ~[?:?]
+	at com.misfit.controller.DeleteMedical.doPost(DeleteMedical.java:25) [classes/:?]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555) [servlet-api.jar:4.0.FR]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) [servlet-api.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.98]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) [tomcat-websocket.jar:9.0.98]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.98]
+	at com.misfit.filter.PersonInjectionFilter.doFilter(PersonInjectionFilter.java:68) [classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) [catalina.jar:9.0.98]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) [catalina.jar:9.0.98]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) [catalina.jar:9.0.98]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [catalina.jar:9.0.98]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346) [catalina.jar:9.0.98]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396) [tomcat-coyote.jar:9.0.98]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) [tomcat-coyote.jar:9.0.98]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937) [tomcat-coyote.jar:9.0.98]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) [tomcat-coyote.jar:9.0.98]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) [tomcat-coyote.jar:9.0.98]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) [tomcat-util.jar:9.0.98]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-util.jar:9.0.98]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) [tomcat-util.jar:9.0.98]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+[ERROR] 2025-05-02 21:56:41.376 [http-nio-8080-exec-8] DeleteMedical - Error deleting medical
+java.lang.NumberFormatException: Cannot parse null string
+	at java.lang.Integer.parseInt(Integer.java:630) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:786) ~[?:?]
+	at com.misfit.controller.DeleteMedical.doPost(DeleteMedical.java:25) [classes/:?]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555) [servlet-api.jar:4.0.FR]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) [servlet-api.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.98]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) [tomcat-websocket.jar:9.0.98]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.98]
+	at com.misfit.filter.PersonInjectionFilter.doFilter(PersonInjectionFilter.java:68) [classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) [catalina.jar:9.0.98]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) [catalina.jar:9.0.98]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) [catalina.jar:9.0.98]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660) [catalina.jar:9.0.98]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [catalina.jar:9.0.98]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346) [catalina.jar:9.0.98]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396) [tomcat-coyote.jar:9.0.98]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) [tomcat-coyote.jar:9.0.98]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937) [tomcat-coyote.jar:9.0.98]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) [tomcat-coyote.jar:9.0.98]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) [tomcat-coyote.jar:9.0.98]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) [tomcat-util.jar:9.0.98]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-util.jar:9.0.98]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) [tomcat-util.jar:9.0.98]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+[DEBUG] 2025-05-02 22:00:18.707 [http-nio-8080-exec-6] DeleteMedical - Medical with ID 3 deleted

@@ -2,6 +2,7 @@ package com.misfit.controller;
 
 import com.misfit.entity.Cat;
 import com.misfit.entity.Medical;
+import com.misfit.entity.Person;
 import com.misfit.persistence.GenericDAO;
 import com.misfit.persistence.PropertiesLoader;
 import com.misfit.util.ValidationUtil;
@@ -70,9 +71,13 @@ public class AddMedical extends HttpServlet implements PropertiesLoader {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-        Boolean isAdmin = (Boolean) request.getAttribute("isAdmin");
+        int catId = Integer.parseInt(request.getParameter("id"));
+        GenericDAO<Cat> catDao = new GenericDAO<>(Cat.class);
+        Cat cat = catDao.getById(catId);
 
-        if (isAdmin == null || !isAdmin) {
+        Person person = new Person();
+
+        if (person == null) {
             response.sendRedirect("unauthorized.jsp");
             return;
         }

@@ -1,6 +1,7 @@
 package com.misfit.controller;
 
 import com.misfit.entity.Cat;
+import com.misfit.entity.Person;
 import com.misfit.persistence.GenericDAO;
 import com.misfit.persistence.PropertiesLoader;
 import com.misfit.service.CatBreedService;
@@ -82,9 +83,9 @@ public class AddCat extends HttpServlet implements PropertiesLoader {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-        Boolean isAdmin = (Boolean) request.getAttribute("isAdmin");
+        Person person = new Person();
 
-        if (isAdmin == null || !isAdmin) {
+        if (person == null) {
             response.sendRedirect("unauthorized.jsp");
             return;
         }

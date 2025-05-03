@@ -24,13 +24,13 @@ public class EditMedical extends HttpServlet implements PropertiesLoader {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            int medicalId = Integer.parseInt(request.getParameter("medicalId"));
+            int medicalId = Integer.parseInt(request.getParameter("id"));
             GenericDAO<Medical> medicalDAO = new GenericDAO<>(Medical.class);
             Medical medical = medicalDAO.getById(medicalId);
 
             request.setAttribute("medical", medical);
             request.setAttribute("currentPage", "editMedical");
-            request.getRequestDispatcher("/WEB-INF/edit-medical.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/add-medical.jsp").forward(request, response);
             logger.debug("Medical with ID {} loaded to edit", medicalId);
 
         } catch (Exception e) {
@@ -47,7 +47,6 @@ public class EditMedical extends HttpServlet implements PropertiesLoader {
             String medicationName = request.getParameter("name");
             String dateString = request.getParameter("date");
             LocalDate medicationDateGiven = LocalDate.parse(dateString);
-
 
             GenericDAO<Medical> medicalDAO = new GenericDAO<>(Medical.class);
             Medical medical = medicalDAO.getById(medicalId);

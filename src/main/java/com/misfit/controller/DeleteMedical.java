@@ -32,7 +32,7 @@ public class DeleteMedical extends HttpServlet implements PropertiesLoader {
                 logger.debug("Medical with ID {} deleted", medicalId);
             }
 
-            response.sendRedirect("medicalList");
+            response.sendRedirect("success.jsp");
 
         } catch (Exception e) {
             logger.error("Error deleting medical", e);

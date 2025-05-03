@@ -1,10 +1,13 @@
 package com.misfit.service;
 
+import com.misfit.entity.Cat;
 import com.misfit.entity.Person;
 import com.misfit.persistence.GenericDAO;
 import com.nimbusds.jwt.SignedJWT;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.List;
 
 /**
  * The type Person service.
@@ -39,6 +42,13 @@ public class PersonService {
             logger.error("Error checking if user is admin", e);
             return null;
         }
+    }
+
+    private final GenericDAO<Cat> catDao = new GenericDAO<>(Cat.class);
+
+    public boolean isFoster(Person person) {
+        List<Cat> fosteredCats = catDao.getByFieldList("person", person);
+        return fosteredCats != null && !fosteredCats.isEmpty();
     }
 
     private String getEmailFromToken(String idToken) throws Exception {

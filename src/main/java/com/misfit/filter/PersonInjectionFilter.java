@@ -44,7 +44,13 @@ public class PersonInjectionFilter implements Filter {
                 if (person == null) {
                     person = personService.getPerson(idToken);
                     if (person != null) {
+                        boolean isFoster = personService.isFoster(person);
+                        req.getSession().setAttribute("isFoster", isFoster);
+                        req.getSession().setAttribute("personId", person.getPersonId());
                         req.getSession().setAttribute("person", person);
+
+                        req.setAttribute("isFoster", isFoster);
+                        req.setAttribute("personId", person.getPersonId());
                     }
                 }
 
