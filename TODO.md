@@ -7,7 +7,6 @@ Medium priority:
 + viewEvent: remove T in date/time
 + hover styling on nav menu list items
 
-Lower priority: 
-+ scroll or pagination
+Lower priority:
 + carousel: icons not showing
 + photos!?

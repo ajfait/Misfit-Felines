@@ -26,7 +26,7 @@
             </div>
         </div>
         <!-- Cards Loop -->
-        <div class="container">
+        <div class="overflow-y-auto container" style="max-height: 750px;">
             <c:forEach var="event" items="${eventList}">
                 <div class="card my-2 shadow-sm">
                     <div class="p-3">

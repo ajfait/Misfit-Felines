@@ -36,3 +36,4 @@
 | 5/2/25  | Fix issues with edit person                                                                                                              | 1     | 62.5 |
 | 5/2/25  | Fix issues with edit event                                                                                                               | 1     | 63.5 |
 | 5/3/25  | Configure permissions for non-admin users and update add / edit cat user stories to include person                                       | 3     | 66.5 |
+| 5/3/25  | Add scroll bar to view cat / person / event pages                                                                                        | 0.5   | 67   |
