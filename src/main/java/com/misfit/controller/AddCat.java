@@ -48,6 +48,10 @@ public class AddCat extends HttpServlet implements PropertiesLoader {
             }
             String bio = request.getParameter("bio");
             boolean adoptable = request.getParameter("adoptable") != null;
+            String personIdParam = request.getParameter("personId");
+            int personId = Integer.parseInt(personIdParam);
+            GenericDAO<Person> personDAO = new GenericDAO<>(Person.class);
+            Person person = personDAO.getById(personId);
             logger.debug("parameters received");
 
             Cat newCat = new Cat();
@@ -57,6 +61,7 @@ public class AddCat extends HttpServlet implements PropertiesLoader {
             newCat.setDob(dob);
             newCat.setBio(bio);
             newCat.setAdoptable(adoptable);
+            newCat.setPerson(person);
             logger.debug("cat object created");
 
             Set<ConstraintViolation<Cat>> violations = ValidationUtil.validate(newCat);
@@ -83,7 +88,10 @@ public class AddCat extends HttpServlet implements PropertiesLoader {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-        Person person = new Person();
+        GenericDAO<Person> personDAO = new GenericDAO<>(Person.class);
+        List<Person> people = personDAO.getAll();
+
+        Person person = (Person) request.getSession().getAttribute("person");
 
         if (person == null) {
             response.sendRedirect("unauthorized.jsp");
@@ -114,6 +122,8 @@ public class AddCat extends HttpServlet implements PropertiesLoader {
             }
         }
 
+        request.setAttribute("person", person);
+        request.setAttribute("peopleList", people);
         request.setAttribute("currentPage", "addCat");
 
         request.getRequestDispatcher("/WEB-INF/add-cat.jsp").forward(request, response);

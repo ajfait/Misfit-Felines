@@ -66,9 +66,30 @@
             <div class="mb-3 pt-2">
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="adoptable" name="adoptable"
+                           value="true"
                            <c:if test="${cat.adoptable}">checked</c:if>>
                     <label class="form-check-label" for="adoptable">Adoptable</label>
                 </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="form-floating mb-3 pt-2">
+                <select class="form-select form-select-lg" name="personId" id="foster" required>
+                    <c:choose>
+                        <c:when test="${sessionScope.isAdmin}">
+                            <c:forEach var="person" items="${peopleList}">
+                                <option value="${person.personId}"
+                                        <c:if test="${sessionScope.personId == person.personId}">selected</c:if>>
+                                        ${person.firstName} ${person.lastName}
+                                </option>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <input type="hidden" name="personId" value="${sessionScope.personId}"/>
+                        </c:otherwise>
+                    </c:choose>
+                </select>
+                <label for="foster">Foster:</label>
             </div>
         </div>
         <div class="container-fluid">
