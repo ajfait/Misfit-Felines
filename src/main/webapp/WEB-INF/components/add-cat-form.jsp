@@ -72,26 +72,26 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="form-floating mb-3 pt-2">
-                <select class="form-select form-select-lg" name="personId" id="foster" required>
-                    <c:choose>
-                        <c:when test="${sessionScope.isAdmin}">
+        <c:choose>
+            <c:when test="${sessionScope.isAdmin}">
+                <div class="container-fluid">
+                    <div class="form-floating mb-3 pt-2">
+                        <select class="form-select form-select-lg" name="personId" id="foster" required>
                             <c:forEach var="person" items="${peopleList}">
                                 <option value="${person.personId}"
                                         <c:if test="${sessionScope.personId == person.personId}">selected</c:if>>
                                         ${person.firstName} ${person.lastName}
                                 </option>
                             </c:forEach>
-                        </c:when>
-                        <c:otherwise>
-                            <input type="hidden" name="personId" value="${sessionScope.personId}"/>
-                        </c:otherwise>
-                    </c:choose>
-                </select>
-                <label for="foster">Foster:</label>
-            </div>
-        </div>
+                        </select>
+                        <label for="foster">Foster:</label>
+                    </div>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <input type="hidden" name="personId" value="${sessionScope.personId}"/>
+            </c:otherwise>
+        </c:choose>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
                 <textarea class="form-control" name="bio" id="bio" style="height: 350px">${cat.bio}</textarea>

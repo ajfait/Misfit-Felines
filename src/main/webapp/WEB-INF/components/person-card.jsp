@@ -6,18 +6,18 @@
             <div class="col-md-8">
                 <h1 class="py-2">Current Fosters</h1>
             </div>
-            <div class="col-md-4 text-end">
-                <c:choose>
-                    <c:when test="${sessionScope.isAdmin == true}">
-                        <!-- Display add person button for admin users -->
+            <c:choose>
+                <c:when test="${sessionScope.isAdmin == true}">
+                    <!-- Display add person button for admin users -->
+                    <div class="col-md-4 text-end">
                         <a href="${pageContext.request.contextPath}/addPerson" class="btn btn-primary btn-lg me-2">
                             <i class="bi bi-plus-circle"></i> Add Person</a>
-                    </c:when>
-                    <c:otherwise>
-                        <!-- Hide add person button -->
-                    </c:otherwise>
-                </c:choose>
-            </div>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <!-- Hide add person button -->
+                </c:otherwise>
+            </c:choose>
         </div>
         <div class="row">
             <div class="input-group mb-2">

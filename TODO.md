@@ -1,5 +1,4 @@
 High priority:
-+ hide role and admin from update profile for non-admin users
 + change log in cta to log out cta when user is logged in (servlet for logout?)
 + set backend restrictions on servlets / optimize service classes
 

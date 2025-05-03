@@ -55,14 +55,21 @@
                 />
                 <label for="email">Email Address</label>
             </div>
-            <div class="form-floating mb-3 pt-2">
-                <select class="form-select form-select-lg" id="role" name="role">
-                    <option value=""></option>
-                    <option value="Foster">Foster</option>
-                    <option value="Volunteer">Volunteer</option>
-                </select>
-                <label for="role">Role</label>
-            </div>
+            <c:choose>
+                <c:when test="${sessionScope.isAdmin == true}">
+                    <div class="form-floating mb-3 pt-2">
+                        <select class="form-select form-select-lg" id="role" name="role">
+                            <option value=""></option>
+                            <option value="Foster">Foster</option>
+                            <option value="Volunteer">Volunteer</option>
+                        </select>
+                        <label for="role">Role</label>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <!-- Hide role from non-admin users -->
+                </c:otherwise>
+            </c:choose>
             <div class="pt-2">
                 <fieldset>
                     <legend>Preferences</legend>
@@ -96,13 +103,14 @@
                     </div>
                 </fieldset>
             </div>
-            <div class="pt-2">
-                <c:choose>
-                    <c:when test="${sessionScope.isAdmin == true}">
+            <c:choose>
+                <c:when test="${sessionScope.isAdmin == true}">
+                    <div class="pt-2">
                         <fieldset>
                             <legend>Admin</legend>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="false" name="admin" id="admin_no" checked/>
+                                <input class="form-check-input" type="radio" value="false" name="admin" id="admin_no"
+                                       checked/>
                                 <label class="form-check-label" for="admin_no">
                                     No
                                 </label>
@@ -114,19 +122,19 @@
                                 </label>
                             </div>
                         </fieldset>
-                    </c:when>
-                    <c:otherwise>
-                        <!-- Hide admin toggle for non-admin users -->
-                    </c:otherwise>
-                </c:choose>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <!-- Hide admin toggle for non-admin users -->
+                </c:otherwise>
+            </c:choose>
+            <div class="container-fluid pt-3">
+                <button type="submit"
+                        class="btn btn-primary btn-lg"
+                        name="add_person_submission">
+                    Add Person
+                </button>
             </div>
-        </div>
-        <div class="container-fluid pt-3">
-            <button type="submit"
-                    class="btn btn-primary btn-lg"
-                    name="add_person_submission">
-                Add Person
-            </button>
         </div>
     </form>
     <!-- END Form -->

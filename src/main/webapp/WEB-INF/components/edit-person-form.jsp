@@ -61,14 +61,21 @@
                 />
                 <label for="email">Email Address</label>
             </div>
-            <div class="form-floating mb-3 pt-2">
-                <select class="form-select form-select-lg" id="role" name="role">
-                    <option value=""></option>
-                    <option value="Foster" ${person.role == 'Foster' ? 'selected' : ''}>Foster</option>
-                    <option value="Volunteer" ${person.role == 'Volunteer' ? 'selected' : ''}>Volunteer</option>
-                </select>
-                <label for="role">Role</label>
-            </div>
+            <c:choose>
+                <c:when test="${sessionScope.isAdmin == true}">
+                    <div class="form-floating mb-3 pt-2">
+                        <select class="form-select form-select-lg" id="role" name="role">
+                            <option value=""></option>
+                            <option value="Foster" ${person.role == 'Foster' ? 'selected' : ''}>Foster</option>
+                            <option value="Volunteer" ${person.role == 'Volunteer' ? 'selected' : ''}>Volunteer</option>
+                        </select>
+                        <label for="role">Role</label>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <!-- Hide role for non-admin users -->
+                </c:otherwise>
+            </c:choose>
             <div class="pt-2">
                 <fieldset>
                     <legend>Preferences</legend>
@@ -106,9 +113,9 @@
                     </div>
                 </fieldset>
             </div>
-            <div class="pt-2">
-                <c:choose>
-                    <c:when test="${sessionScope.isAdmin == true}">
+            <c:choose>
+                <c:when test="${sessionScope.isAdmin == true}">
+                    <div class="pt-2">
                         <fieldset>
                             <legend>Admin</legend>
                             <div class="form-check">
@@ -124,19 +131,19 @@
                                 <label class="form-check-label" for="admin_no">No</label>
                             </div>
                         </fieldset>
-                    </c:when>
-                    <c:otherwise>
-                        <!-- Hide admin toggle for non-admin users -->
-                    </c:otherwise>
-                </c:choose>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <!-- Hide admin toggle for non-admin users -->
+                </c:otherwise>
+            </c:choose>
+            <div class="container-fluid pt-3">
+                <button type="submit"
+                        class="btn btn-primary btn-lg"
+                        name="update_person_submission">
+                    Update Person
+                </button>
             </div>
-        </div>
-        <div class="container-fluid pt-3">
-            <button type="submit"
-                    class="btn btn-primary btn-lg"
-                    name="update_person_submission">
-                Update Person
-            </button>
         </div>
     </form>
     <!-- END Form -->
