@@ -97,21 +97,28 @@
                 </fieldset>
             </div>
             <div class="pt-2">
-                <fieldset>
-                    <legend>Admin</legend>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="false" name="admin" id="admin_no" checked/>
-                        <label class="form-check-label" for="admin_no">
-                            No
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="true" name="admin" id="admin_yes"/>
-                        <label class="form-check-label" for="admin_yes">
-                            Yes
-                        </label>
-                    </div>
-                </fieldset>
+                <c:choose>
+                    <c:when test="${sessionScope.isAdmin == true}">
+                        <fieldset>
+                            <legend>Admin</legend>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="false" name="admin" id="admin_no" checked/>
+                                <label class="form-check-label" for="admin_no">
+                                    No
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="true" name="admin" id="admin_yes"/>
+                                <label class="form-check-label" for="admin_yes">
+                                    Yes
+                                </label>
+                            </div>
+                        </fieldset>
+                    </c:when>
+                    <c:otherwise>
+                        <!-- Hide admin toggle for non-admin users -->
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
         <div class="container-fluid pt-3">

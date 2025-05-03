@@ -10,7 +10,7 @@
                 <p class="alert alert-danger mt-3">${violation.message}</p>
             </c:forEach>
         </c:if>
-        <h1 class="py-2">Add New Person</h1>
+        <h1 class="py-2">Edit Person</h1>
         <div class="container-fluid">
             <div class="form-floating mb-3 pt-2">
                 <input
@@ -73,28 +73,32 @@
                 <fieldset>
                     <legend>Preferences</legend>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Pregnant" id="prefer_pregnant" name="preferences"
+                        <input class="form-check-input" type="checkbox" value="Pregnant" id="prefer_pregnant"
+                               name="preferences"
                                <c:if test="${not empty person.preferences and fn:contains(person.preferences, 'Pregnant')}">checked</c:if>>
                         <label class="form-check-label" for="prefer_pregnant">
                             Pregnant / nursing moms
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Bottle" id="prefer_bottle" name="preferences"
+                        <input class="form-check-input" type="checkbox" value="Bottle" id="prefer_bottle"
+                               name="preferences"
                                <c:if test="${not empty person.preferences and fn:contains(person.preferences, 'Bottle')}">checked</c:if>>
                         <label class="form-check-label" for="prefer_bottle">
                             Bottle fed kittens
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Weaned" id="prefer_weaned" name="preferences"
+                        <input class="form-check-input" type="checkbox" value="Weaned" id="prefer_weaned"
+                               name="preferences"
                                <c:if test="${not empty person.preferences and fn:contains(person.preferences, 'Weaned')}">checked</c:if>>
                         <label class="form-check-label" for="prefer_weaned">
                             Weaned kittens
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Medical" id="prefer_medical" name="preferences"
+                        <input class="form-check-input" type="checkbox" value="Medical" id="prefer_medical"
+                               name="preferences"
                                <c:if test="${not empty person.preferences and fn:contains(person.preferences, 'Medical')}">checked</c:if>>
                         <label class="form-check-label" for="prefer_medical">
                             Medical needs
@@ -103,21 +107,28 @@
                 </fieldset>
             </div>
             <div class="pt-2">
-                <fieldset>
-                    <legend>Admin</legend>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="admin" id="admin_yes"
-                               value="true"
-                               <c:if test="${person.admin == true}">checked</c:if>>
-                        <label class="form-check-label" for="admin_yes">Yes</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="admin" id="admin_no"
-                               value="false"
-                               <c:if test="${person.admin != true}">checked</c:if>>
-                        <label class="form-check-label" for="admin_no">No</label>
-                    </div>
-                </fieldset>
+                <c:choose>
+                    <c:when test="${sessionScope.isAdmin == true}">
+                        <fieldset>
+                            <legend>Admin</legend>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="admin" id="admin_yes"
+                                       value="true"
+                                       <c:if test="${person.admin == true}">checked</c:if>>
+                                <label class="form-check-label" for="admin_yes">Yes</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="admin" id="admin_no"
+                                       value="false"
+                                       <c:if test="${person.admin != true}">checked</c:if>>
+                                <label class="form-check-label" for="admin_no">No</label>
+                            </div>
+                        </fieldset>
+                    </c:when>
+                    <c:otherwise>
+                        <!-- Hide admin toggle for non-admin users -->
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
         <div class="container-fluid pt-3">
