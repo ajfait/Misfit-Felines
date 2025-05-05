@@ -13,7 +13,7 @@ import java.util.List;
  * @param <T> the type parameter
  */
 public class GenericDAO<T> {
-    private Class<T> type;
+    private final Class<T> type;
 
     /**
      * Instantiates a new Generic dao.
@@ -54,21 +54,19 @@ public class GenericDAO<T> {
             HibernateCriteriaBuilder builder = session.getCriteriaBuilder();
             CriteriaQuery<T> query = builder.createQuery(type);
             query.from(type);
-            List<T> entities = session.createSelectionQuery(query).getResultList();
-            return entities;
+            return session.createSelectionQuery(query).getResultList();
         }
     }
 
     /**
      * Gets by id.
      *
-     * @param <T> the type parameter
-     * @param id  the id
+     * @param id the id
      * @return the by id
      */
-    public <T> T getById(int id) {
+    public T getById(int id) {
         Session session = getSession();
-        T entity = (T) session.get(type, id);
+        T entity = session.get(type, id);
         session.close();
         return entity;
     }
@@ -84,10 +82,9 @@ public class GenericDAO<T> {
         Session session = getSession();
         try {
             String hql = "FROM " + type.getName() + " WHERE " + fieldName + " = :value";
-            T entity = session.createQuery(hql, type)
+            return session.createQuery(hql, type)
                     .setParameter("value", value)
                     .uniqueResult();
-            return entity;
         } finally {
             session.close();
         }
@@ -104,10 +101,9 @@ public class GenericDAO<T> {
         Session session = getSession();
         try {
             String hql = "FROM " + type.getName() + " WHERE " + fieldName + " = :value";
-            List<T> entities = session.createQuery(hql, type)
+            return session.createQuery(hql, type)
                     .setParameter("value", value)
                     .getResultList();
-            return entities;
         } finally {
             session.close();
         }

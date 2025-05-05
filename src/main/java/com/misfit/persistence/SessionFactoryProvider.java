@@ -15,12 +15,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 public class SessionFactoryProvider {
 
     private static SessionFactory sessionFactory;
-    private static StandardServiceRegistry registry;
 
     /**
      * Create session factory.
      */
     public static void createSessionFactory() {
+        StandardServiceRegistry registry;
 
         // Create registry
         registry = new StandardServiceRegistryBuilder().configure().build();

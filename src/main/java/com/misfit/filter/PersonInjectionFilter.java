@@ -32,7 +32,6 @@ public class PersonInjectionFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse resp = (HttpServletResponse) response;
 
         String idToken = (String) req.getSession().getAttribute("idToken");
 
