@@ -63,7 +63,7 @@ public class RoleFilter implements Filter {
             }
         }
 
-        if (path.contains("/addCat")) {
+        if (path.contains("/addCat") || path.contains("/editPerson")) {
             if (person == null) {
                 response.sendRedirect("unauthorized.jsp");
                 return;

@@ -13,7 +13,7 @@
             <c:choose>
                 <c:when test="${not empty person}">
                     <a class="btn btn-success btn-lg mt-5"
-                       href="${pageContext.request.contextPath}/logout.jsp">Log
+                       href="${pageContext.request.contextPath}/logout">Log
                         Out</a>
                 </c:when>
                 <c:otherwise>

@@ -1,6 +1,5 @@
 High priority:
-+ change log in cta to log out cta when user is logged in (servlet for logout?)
-+ set backend restrictions on servlets / optimize service classes
++ addPerson: fix so this creates a user in the Cognito user pool
 
 Medium priority:
 + viewEvent: configure to hide past events
