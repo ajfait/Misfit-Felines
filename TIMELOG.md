@@ -39,3 +39,4 @@
 | 5/3/25  | Add scroll bar to view cat / person / event pages                                                                                        | 0.5   | 67   |
 | 5/5/25  | Create filter to configure servlet access                                                                                                | 0.5   | 67.5 |
 | 5/5/25  | Create servlet to manage logout                                                                                                          | 1.5   | 69   |
+| 5/6/25  | Remove past events from view event list                                                                                                  | 0.5   | 69.5 |

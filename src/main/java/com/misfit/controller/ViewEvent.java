@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @WebServlet(
@@ -25,6 +26,11 @@ public class ViewEvent extends HttpServlet implements PropertiesLoader {
         try {
             GenericDAO<Event> eventDAO = new GenericDAO<>(Event.class);
             List<Event> events = eventDAO.getAll();
+
+            events.removeIf(event ->
+                    event.getEventDateTimeStart().isBefore(LocalDateTime.now()) ||
+                            event.getEventDateTimeEnd().isBefore(LocalDateTime.now())
+            );
 
             request.setAttribute("eventList", events);
             request.setAttribute("currentPage", "viewEvent");
