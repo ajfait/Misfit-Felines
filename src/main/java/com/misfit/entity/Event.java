@@ -33,9 +33,13 @@ public class Event {
     @Column(name = "e_date_start")
     @Future(message = "Event date cannot be in the past")
     private LocalDateTime eventDateTimeStart;
+    @Transient
+    private String startFormatted;
     @Column(name = "e_date_end")
     @Future(message = "Event date cannot be in the past")
     private LocalDateTime eventDateTimeEnd;
+    @Transient
+    private String endFormatted;
 
     /**
      * Instantiates a new Event.
@@ -191,6 +195,24 @@ public class Event {
     }
 
     /**
+     * Gets start formatted.
+     *
+     * @return the start formatted
+     */
+    public String getStartFormatted() {
+        return startFormatted;
+    }
+
+    /**
+     * Sets start formatted.
+     *
+     * @param startFormatted the start formatted
+     */
+    public void setStartFormatted(String startFormatted) {
+        this.startFormatted = startFormatted;
+    }
+
+    /**
      * Gets event date time end.
      *
      * @return the event date time end
@@ -206,6 +228,24 @@ public class Event {
      */
     public void setEventDateTimeEnd(LocalDateTime eventDateTimeEnd) {
         this.eventDateTimeEnd = eventDateTimeEnd;
+    }
+
+    /**
+     * Gets end formatted.
+     *
+     * @return the end formatted
+     */
+    public String getEndFormatted() {
+        return endFormatted;
+    }
+
+    /**
+     * Sets end formatted.
+     *
+     * @param endFormatted the end formatted
+     */
+    public void setEndFormatted(String endFormatted) {
+        this.endFormatted = endFormatted;
     }
 
     @Override

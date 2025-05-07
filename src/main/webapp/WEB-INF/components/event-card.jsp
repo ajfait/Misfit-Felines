@@ -38,8 +38,8 @@
                                     <p data-searchable>
                                         <strong>Location:</strong> ${event.eventLocationStreet}, ${event.eventLocationCity}, ${event.eventLocationState} ${event.eventLocationZip}
                                     </p>
-                                    <p data-searchable><strong>Date & Time:</strong> ${event.eventDateTimeStart}
-                                        - ${event.eventDateTimeEnd}</p>
+                                    <p data-searchable><strong>Date & Time:</strong> ${event.startFormatted}
+                                        - ${event.endFormatted}</p>
                                 </div>
                             </div>
                         </div>

@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.List;
+import java.util.Locale;
 
 @WebServlet(
         name = "viewEventServlet",
@@ -27,14 +30,26 @@ public class ViewEvent extends HttpServlet implements PropertiesLoader {
             GenericDAO<Event> eventDAO = new GenericDAO<>(Event.class);
             List<Event> events = eventDAO.getAll();
 
+            LocalDateTime now = LocalDateTime.now();
             events.removeIf(event ->
-                    event.getEventDateTimeStart().isBefore(LocalDateTime.now()) ||
-                            event.getEventDateTimeEnd().isBefore(LocalDateTime.now())
+                    event.getEventDateTimeStart().isBefore(now) ||
+                            event.getEventDateTimeEnd().isBefore(now)
             );
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT)
+                    .withLocale(Locale.US);
+
+            for (Event event : events) {
+                if (event.getEventDateTimeStart() != null) {
+                    event.setStartFormatted(event.getEventDateTimeStart().format(formatter));
+                }
+                if (event.getEventDateTimeEnd() != null) {
+                    event.setEndFormatted(event.getEventDateTimeEnd().format(formatter));
+                }
+            }
 
             request.setAttribute("eventList", events);
             request.setAttribute("currentPage", "viewEvent");
-
             request.getRequestDispatcher("/WEB-INF/view-events.jsp").forward(request, response);
 
         } catch (Exception e) {
