@@ -10,16 +10,18 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.GmailScopes;
 import com.google.api.client.http.javanet.NetHttpTransport;
+import org.apache.logging.log4j.*;
 
 import java.io.File;
 import java.io.FileReader;
 import java.util.List;
 
 public class GmailOAuthSetup {
+    private static final Logger logger = LogManager.getLogger(GmailOAuthSetup.class);
     private static final String APPLICATION_NAME = "Misfit Felines Foster Portal";
     private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
-    private static final List<String> SCOPES = List.of(GmailScopes.GMAIL_SEND); // or GmailScopes.GMAIL_READONLY etc.
+    private static final List<String> SCOPES = List.of(GmailScopes.GMAIL_SEND);
     private static final String CREDENTIALS_FILE_PATH = "/Volumes/AJPC_2TB_SSD/*Enterprise Java/Misfit-Felines/src/main/resources/credentials.json";
 
     private static Gmail getGmailService() throws Exception {
@@ -42,6 +44,6 @@ public class GmailOAuthSetup {
 
     public static void main(String[] args) throws Exception {
         Gmail service = getGmailService();
-        System.out.println("Successfully authorized Gmail access!");
+        logger.debug("Successfully authorized Gmail access!");
     }
 }

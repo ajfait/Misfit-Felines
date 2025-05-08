@@ -11,7 +11,7 @@ public class OAuth2Authenticator extends Authenticator {
 
     @Override
     protected PasswordAuthentication getPasswordAuthentication() {
-        return new PasswordAuthentication("user", accessToken); // "user" can be any dummy string
+        return new PasswordAuthentication("user", accessToken);
     }
 }
 

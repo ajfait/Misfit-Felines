@@ -1173,3 +1173,4 @@ java.io.FileNotFoundException: Resource not found: credentials.json
 [DEBUG] 2025-05-08 13:33:12.769 [main] TestEmail - Email sent successfully. Message ID: 196b12c4c22d4d3d
 [DEBUG] 2025-05-08 13:35:15.475 [main] GmailUtil - Authorized credential object created.
 [DEBUG] 2025-05-08 13:35:16.171 [main] TestEmail - Email sent successfully. Message ID: 196b12e2e3bde486
+[DEBUG] 2025-05-08 17:23:55.950 [main] GmailOAuthSetup - Successfully authorized Gmail access!

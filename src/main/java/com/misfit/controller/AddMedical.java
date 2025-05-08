@@ -1,5 +1,6 @@
 package com.misfit.controller;
 
+import com.misfit.email.SendEmailUsingOAuth;
 import com.misfit.entity.Cat;
 import com.misfit.entity.Medical;
 import com.misfit.entity.Person;
@@ -60,6 +61,20 @@ public class AddMedical extends HttpServlet implements PropertiesLoader {
             GenericDAO<Medical> medicalDAO = new GenericDAO<>(Medical.class);
             medicalDAO.insert(newMedical);
             logger.debug("medical inserted");
+
+            try {
+                String subject = "Medication Added for " + cat.getName();
+                String body = "Hello,\n\nA new medication entry has been recorded in the Misfit Felines Foster Portal.\n"
+                        + "\n- Cat: " + cat.getName()
+                        + "\n- Medication: " + newMedical.getMedicationName()
+                        + "\n- Date Given: " + newMedical.getMedicationDateGiven()
+                        + "\n\nThank you,\nMisfit Felines Team";
+
+                SendEmailUsingOAuth.sendEmail(subject, body);
+                logger.debug("Email sent successfully.");
+            } catch (Exception e) {
+                logger.error("Error sending email", e);
+            }
 
             response.sendRedirect("success.jsp");
 
