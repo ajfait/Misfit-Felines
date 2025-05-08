@@ -69,7 +69,7 @@ public class AddCat extends HttpServlet implements PropertiesLoader {
             if (!violations.isEmpty()) {
                 request.setAttribute("violations", violations);
                 request.setAttribute("cat", newCat);
-                request.getRequestDispatcher("/WEB-INF/add-cat.jsp").forward(request, response);
+                request.getRequestDispatcher("add-cat.jsp").forward(request, response);
                 return;
             }
 
@@ -126,6 +126,6 @@ public class AddCat extends HttpServlet implements PropertiesLoader {
         request.setAttribute("peopleList", people);
         request.setAttribute("currentPage", "addCat");
 
-        request.getRequestDispatcher("/WEB-INF/add-cat.jsp").forward(request, response);
+        request.getRequestDispatcher("add-cat.jsp").forward(request, response);
     }
 }

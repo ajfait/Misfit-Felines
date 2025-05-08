@@ -69,7 +69,7 @@ public class AddEvent extends HttpServlet implements PropertiesLoader {
             if (!violations.isEmpty()) {
                 request.setAttribute("violations", violations);
                 request.setAttribute("event", newEvent);
-                request.getRequestDispatcher("/WEB-INF/add-event.jsp").forward(request, response);
+                request.getRequestDispatcher("add-event.jsp").forward(request, response);
                 return;
             }
 
@@ -122,7 +122,7 @@ public class AddEvent extends HttpServlet implements PropertiesLoader {
         }
 
         request.setAttribute("currentPage", "addEvent");
-        request.getRequestDispatcher("/WEB-INF/add-event.jsp").forward(request, response);
+        request.getRequestDispatcher("add-event.jsp").forward(request, response);
     }
 
     private LocalDateTime parseDateTime(String dateTimeString, DateTimeFormatter formatter) {

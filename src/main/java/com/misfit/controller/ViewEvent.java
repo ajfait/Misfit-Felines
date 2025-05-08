@@ -50,7 +50,7 @@ public class ViewEvent extends HttpServlet implements PropertiesLoader {
 
             request.setAttribute("eventList", events);
             request.setAttribute("currentPage", "viewEvent");
-            request.getRequestDispatcher("/WEB-INF/view-events.jsp").forward(request, response);
+            request.getRequestDispatcher("view-events.jsp").forward(request, response);
 
         } catch (Exception e) {
             logger.error("Error retrieving event list", e);

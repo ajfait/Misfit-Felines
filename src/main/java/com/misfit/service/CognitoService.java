@@ -3,7 +3,7 @@ package com.misfit.service;
 import com.misfit.persistence.PropertiesLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
+import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.cognitoidentityprovider.CognitoIdentityProviderClient;
 import software.amazon.awssdk.services.cognitoidentityprovider.model.AdminCreateUserRequest;
@@ -30,7 +30,7 @@ public class CognitoService implements PropertiesLoader {
         Region region = Region.of(cognitoProperties.getProperty("region"));
         this.cognitoClient = CognitoIdentityProviderClient.builder()
                 .region(region)
-                .credentialsProvider(ProfileCredentialsProvider.create())
+                .credentialsProvider(DefaultCredentialsProvider.create())
                 .build();
     }
 
@@ -41,7 +41,7 @@ public class CognitoService implements PropertiesLoader {
                     .username(email)
                     .userAttributes(List.of(
                             AttributeType.builder().name("email").value(email).build(),
-                            AttributeType.builder().name("email_verified").value("false").build()
+                            AttributeType.builder().name("email_verified").value("true").build()
                     ))
                     .temporaryPassword(tempPassword)
                     .build();

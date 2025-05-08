@@ -4,23 +4,23 @@
 <html>
 
 <head>
-    <c:import url="/WEB-INF/components/head.jsp"/>
+    <c:import url="components/head.jsp"/>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
 
 <!-- Header -->
-<c:import url="/WEB-INF/components/header.jsp"/>
+<c:import url="components/header.jsp"/>
 <!-- END Header -->
 
 <!-- Main Content -->
 <main class="flex-fill">
-    <c:import url="/WEB-INF/components/success-text.jsp"/>
+    <c:import url="components/success-text.jsp"/>
 </main>
 <!-- END Main Content -->
 
 <!-- Footer -->
-<c:import url="/WEB-INF/components/footer.jsp"/>
+<c:import url="components/footer.jsp"/>
 <!-- END Footer -->
 
 </body>

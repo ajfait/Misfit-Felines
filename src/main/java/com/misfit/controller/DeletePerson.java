@@ -35,7 +35,7 @@ public class DeletePerson extends HttpServlet implements PropertiesLoader {
                 logger.debug("Person with ID {} deleted", personId);
             }
 
-            response.sendRedirect("peopleList");
+            response.sendRedirect("/viewPerson");
 
         } catch (Exception e) {
             logger.error("Error deleting person", e);

@@ -58,7 +58,7 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
             if (!violations.isEmpty()) {
                 request.setAttribute("violations", violations);
                 request.setAttribute("person", newPerson);
-                request.getRequestDispatcher("/WEB-INF/add-person.jsp").forward(request, response);
+                request.getRequestDispatcher("add-person.jsp").forward(request, response);
                 return;
             }
 
@@ -93,6 +93,6 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
 
         request.setAttribute("currentPage", "addPerson");
 
-        request.getRequestDispatcher("/WEB-INF/add-person.jsp").forward(request, response);
+        request.getRequestDispatcher("add-person.jsp").forward(request, response);
     }
 }

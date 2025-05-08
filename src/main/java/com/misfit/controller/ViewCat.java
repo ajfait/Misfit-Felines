@@ -29,7 +29,7 @@ public class ViewCat extends HttpServlet implements PropertiesLoader {
             request.setAttribute("catList", cats);
             request.setAttribute("currentPage", "viewCat");
 
-            request.getRequestDispatcher("/WEB-INF/view-cats.jsp").forward(request, response);
+            request.getRequestDispatcher("view-cats.jsp").forward(request, response);
 
         } catch (Exception e) {
             logger.error("Error retrieving cat list", e);

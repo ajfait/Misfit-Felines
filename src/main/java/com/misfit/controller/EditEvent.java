@@ -40,7 +40,7 @@ public class EditEvent extends HttpServlet implements PropertiesLoader {
 
             request.setAttribute("event", event);
             request.setAttribute("currentPage", "editEvent");
-            request.getRequestDispatcher("/WEB-INF/add-event.jsp").forward(request, response);
+            request.getRequestDispatcher("add-event.jsp").forward(request, response);
 
         } catch (Exception e) {
             logger.error("Error loading event for edit", e);

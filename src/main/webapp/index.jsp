@@ -4,21 +4,21 @@
 <html lang="en">
 
 <head>
-    <c:import url="/WEB-INF/components/head.jsp"/>
+    <c:import url="components/head.jsp"/>
 </head>
 
 <body>
 
 <!-- Header -->
-<c:import url="/WEB-INF/components/header.jsp"/>
+<c:import url="components/header.jsp"/>
 <!-- END HEADER -->
 
 <!-- Main Content -->
-<c:import url="/WEB-INF/components/welcome-carousel.jsp"/>
+<c:import url="components/welcome-carousel.jsp"/>
 <!-- END Main Content -->
 
 <!-- Footer -->
-<c:import url="/WEB-INF/components/footer.jsp"/>
+<c:import url="components/footer.jsp"/>
 <!-- END Footer -->
 
 </body>

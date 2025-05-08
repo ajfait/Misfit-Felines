@@ -49,7 +49,7 @@ public class ViewMedical extends HttpServlet implements PropertiesLoader {
             request.setAttribute("medicalList", medicals);
             request.setAttribute("currentPage", "viewMedical");
 
-            request.getRequestDispatcher("/WEB-INF/view-medical.jsp").forward(request, response);
+            request.getRequestDispatcher("view-medical.jsp").forward(request, response);
 
         } catch (Exception e) {
             logger.error("Error retrieving medical list", e);

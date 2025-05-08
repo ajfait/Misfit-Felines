@@ -30,7 +30,7 @@ public class EditMedical extends HttpServlet implements PropertiesLoader {
 
             request.setAttribute("medical", medical);
             request.setAttribute("currentPage", "editMedical");
-            request.getRequestDispatcher("/WEB-INF/add-medical.jsp").forward(request, response);
+            request.getRequestDispatcher("add-medical.jsp").forward(request, response);
             logger.debug("Medical with ID {} loaded to edit", medicalId);
 
         } catch (Exception e) {

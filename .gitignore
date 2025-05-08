@@ -45,6 +45,7 @@ build/
 *.config
 *.crt
 *.pem
+*.json
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

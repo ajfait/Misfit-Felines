@@ -4,13 +4,13 @@
 <html lang="en">
 
 <head>
-    <c:import url="/WEB-INF/components/head.jsp"/>
+    <c:import url="components/head.jsp"/>
 </head>
 
 <body>
 
 <!-- Header -->
-<c:import url="/WEB-INF/components/header.jsp"/>
+<c:import url="components/header.jsp"/>
 <!-- END HEADER -->
 
 <!-- Main Content -->
@@ -20,10 +20,10 @@
         </div>
         <c:choose>
             <c:when test="${sessionScope.isAdmin}">
-                <c:import url="/WEB-INF/components/nav-menu-admin.jsp"/>
+                <c:import url="components/nav-menu-admin.jsp"/>
             </c:when>
             <c:otherwise>
-                <c:import url="/WEB-INF/components/nav-menu.jsp"/>
+                <c:import url="components/nav-menu.jsp"/>
             </c:otherwise>
         </c:choose>
         <div class="col-md-1">
@@ -33,9 +33,9 @@
         <div class="col-md-1">
         </div>
         <c:if test="${not empty person}">
-            <c:import url="/WEB-INF/components/profile-card.jsp"/>
+            <c:import url="components/profile-card.jsp"/>
         </c:if>
-        <c:import url="/WEB-INF/components/add-medical-form.jsp"/>
+        <c:import url="components/edit-person-form.jsp"/>
         <div class="col-md-1">
         </div>
     </div>
@@ -43,7 +43,7 @@
 <!-- END Main Content -->
 
 <!-- Footer -->
-<c:import url="/WEB-INF/components/footer.jsp"/>
+<c:import url="components/footer.jsp"/>
 <!-- END Footer -->
 
 </body>

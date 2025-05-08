@@ -48,7 +48,7 @@ public class EditCat extends HttpServlet implements PropertiesLoader {
             request.setAttribute("person", person);
             request.setAttribute("peopleList", people);
             request.setAttribute("currentPage", "editCat");
-            request.getRequestDispatcher("/WEB-INF/add-cat.jsp").forward(request, response);
+            request.getRequestDispatcher("add-cat.jsp").forward(request, response);
             logger.debug("Cat with ID {} loaded to edit", catId);
 
         } catch (Exception e) {

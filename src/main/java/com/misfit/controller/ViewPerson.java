@@ -29,7 +29,7 @@ public class ViewPerson extends HttpServlet implements PropertiesLoader {
             request.setAttribute("peopleList", people);
             request.setAttribute("currentPage", "viewPerson");
 
-            request.getRequestDispatcher("/WEB-INF/view-persons.jsp").forward(request, response);
+            request.getRequestDispatcher("view-persons.jsp").forward(request, response);
         } catch (Exception e) {
             logger.error("Error retrieving person list", e);
             response.sendRedirect("error.jsp");

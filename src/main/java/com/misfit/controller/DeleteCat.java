@@ -32,7 +32,7 @@ public class DeleteCat extends HttpServlet implements PropertiesLoader {
                 logger.debug("Cat with ID {} deleted", catId);
             }
 
-            response.sendRedirect("catList");
+            response.sendRedirect("/viewCat");
 
         } catch (Exception e) {
             logger.error("Error deleting cat", e);

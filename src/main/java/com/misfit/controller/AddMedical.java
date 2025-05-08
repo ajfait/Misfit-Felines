@@ -53,7 +53,7 @@ public class AddMedical extends HttpServlet implements PropertiesLoader {
             if (!violations.isEmpty()) {
                 request.setAttribute("violations", violations);
                 request.setAttribute("medical", newMedical);
-                request.getRequestDispatcher("/WEB-INF/add-medical.jsp").forward(request, response);
+                request.getRequestDispatcher("add-medical.jsp").forward(request, response);
                 return;
             }
 
@@ -99,6 +99,6 @@ public class AddMedical extends HttpServlet implements PropertiesLoader {
 
         request.setAttribute("currentPage", "addMedical");
 
-        request.getRequestDispatcher("/WEB-INF/add-medical.jsp").forward(request, response);
+        request.getRequestDispatcher("add-medical.jsp").forward(request, response);
     }
 }
