@@ -1,21 +1,15 @@
 package com.misfit.controller;
 
 import com.misfit.email.SendEmailUsingOAuth;
-import com.misfit.entity.Cat;
-import com.misfit.entity.Medical;
-import com.misfit.entity.Person;
-import com.misfit.persistence.GenericDAO;
-import com.misfit.persistence.PropertiesLoader;
+import com.misfit.entity.*;
+import com.misfit.persistence.*;
 import com.misfit.util.ValidationUtil;
 import jakarta.validation.ConstraintViolation;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Set;
@@ -108,6 +102,7 @@ public class AddMedical extends HttpServlet implements PropertiesLoader {
                     request.setAttribute("medical", medical);
                 }
             } catch (NumberFormatException e) {
+                response.sendRedirect("error.jsp");
                 logger.error("Invalid medicalId provided: " + medicalIdParam, e);
             }
         }
