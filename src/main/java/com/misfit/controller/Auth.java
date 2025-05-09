@@ -1,37 +1,25 @@
 package com.misfit.controller;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.*;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.misfit.auth.*;
 import com.misfit.persistence.PropertiesLoader;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.*;
 import org.apache.commons.io.*;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.*;
 import java.math.BigInteger;
-import java.net.URI;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+import java.net.*;
+import java.net.http.*;
 import java.nio.charset.StandardCharsets;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
+import java.security.*;
 import java.security.interfaces.RSAPublicKey;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.RSAPublicKeySpec;
+import java.security.spec.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -39,7 +27,6 @@ import java.util.stream.Collectors;
 @WebServlet(
         urlPatterns = {"/auth"}
 )
-// TODO if something goes wrong it this process, route to an error page. Currently, errors are only caught and logged.
 /**
  * Inspired by: https://stackoverflow.com/questions/52144721/how-to-get-access-token-using-client-credentials-using-java-code
  */
@@ -67,37 +54,38 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     /**
      * Gets the auth code from the request and exchanges it for a token containing user info.
      *
-     * @param req  servlet request
-     * @param resp servlet response
+     * @param request  servlet request
+     * @param response servlet response
      * @throws ServletException
      * @throws IOException
      */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String authCode = req.getParameter("code");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String authCode = request.getParameter("code");
         String userName = null;
 
         if (authCode == null) {
-            resp.sendRedirect("index.jsp");
+            response.sendRedirect("index.jsp");
             return;
         } else {
             HttpRequest authRequest = buildAuthRequest(authCode);
             try {
                 TokenResponse tokenResponse = getToken(authRequest);
                 userName = validate(tokenResponse);
-                req.getSession().setAttribute("idToken", tokenResponse.getIdToken());
-                logger.debug("Session ID: " + req.getSession().getId());
+                request.getSession().setAttribute("idToken", tokenResponse.getIdToken());
+                logger.debug("Session ID: " + request.getSession().getId());
                 logger.debug("idToken: " + tokenResponse.getIdToken());
-                req.setAttribute("userName", userName);
+                request.setAttribute("userName", userName);
+                request.setAttribute("person", person);
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);
-                resp.sendRedirect("error.jsp");
+                response.sendRedirect("error.jsp");
             } catch (InterruptedException e) {
                 logger.error("Error getting token from Cognito oauth url " + e.getMessage(), e);
-                resp.sendRedirect("error.jsp");
+                response.sendRedirect("error.jsp");
             }
         }
-        resp.sendRedirect(req.getContextPath() + "/viewCat");
+        response.sendRedirect(request.getContextPath() + "/viewCat");
     }
 
     /**
@@ -175,9 +163,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         logger.debug("here's the username: " + userName);
 
         logger.debug("here are all the available claims: " + jwt.getClaims());
-
-        // TODO decide what you want to do with the info!
-        // for now, I'm just returning username for display back to the browser
 
         return userName;
     }
