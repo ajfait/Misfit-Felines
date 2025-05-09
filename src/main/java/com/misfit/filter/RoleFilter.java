@@ -13,15 +13,6 @@ import java.io.IOException;
 @WebFilter("/*")
 public class RoleFilter implements Filter {
     /**
-     * @param filterConfig
-     * @throws ServletException
-     */
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        // No init needed
-    }
-
-    /**
      * Provides admin access to add, edit, and delete event
      * and person records.
      * Provides foster access to edit, and delete cat records
@@ -72,13 +63,5 @@ public class RoleFilter implements Filter {
         }
 
         filterChain.doFilter(request, response);
-    }
-
-    /**
-     *
-     */
-    @Override
-    public void destroy() {
-        // No cleanup needed
     }
 }
