@@ -24,9 +24,11 @@ public class Cat {
     private String name;
     @Column(name = "c_sex")
     @Pattern(regexp = "^(Male|Female)$", message = "Sex must be male or female")
+    @NotBlank(message = "Sex is required")
     private String sex;
     @Column(name = "c_dob")
     @PastOrPresent(message = "Birthdate cannot be in the future")
+    @NotNull(message = "Birthdate is required")
     private LocalDate dob;
     @Column(name = "c_breed")
     @NotNull(message = "Breed is required")

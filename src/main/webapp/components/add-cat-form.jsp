@@ -34,7 +34,7 @@
                         </option>
                     </c:forEach>
                 </select>
-                <label for="breed">Breed:</label>
+                <label for="breed">Breed</label>
             </div>
             <div class="mb-3 pt-2">
                 <fieldset>
@@ -84,7 +84,7 @@
                                 </option>
                             </c:forEach>
                         </select>
-                        <label for="foster">Foster:</label>
+                        <label for="foster">Foster</label>
                     </div>
                 </div>
             </c:when>
