@@ -5,6 +5,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.misfit.auth.*;
+import com.misfit.entity.Person;
 import com.misfit.persistence.PropertiesLoader;
 import org.apache.logging.log4j.*;
 import org.apache.commons.io.*;
@@ -76,6 +77,8 @@ public class Auth extends HttpServlet implements PropertiesLoader {
                 logger.debug("Session ID: " + request.getSession().getId());
                 logger.debug("idToken: " + tokenResponse.getIdToken());
                 request.setAttribute("userName", userName);
+
+                Person person = new Person();
                 request.setAttribute("person", person);
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);

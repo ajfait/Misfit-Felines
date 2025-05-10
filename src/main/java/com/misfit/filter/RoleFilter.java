@@ -1,5 +1,11 @@
 package com.misfit.filter;
 
+import com.misfit.entity.Person;
+import com.misfit.persistence.GenericDAO;
+import com.misfit.service.RoleService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +18,18 @@ import java.io.IOException;
  */
 @WebFilter("/*")
 public class RoleFilter implements Filter {
+    private final Logger logger = LogManager.getLogger(this.getClass());
+    private RoleService roleService;
+    
+    /**
+     * @param filterConfig 
+     * @throws ServletException
+     */
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        roleService = new RoleService(new GenericDAO<>(Person.class));
+    }
+
     /**
      * Provides admin access to add, edit, and delete event
      * and person records.
@@ -33,8 +51,44 @@ public class RoleFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        String path = request.getRequestURI();
+        String idToken = (String) request.getSession().getAttribute("idToken");
+
         Boolean isAdmin = (Boolean) request.getSession().getAttribute("isAdmin");
+        if (idToken != null) {
+            try {
+                Person person = (Person) request.getSession().getAttribute("person");
+
+                if (person == null) {
+                    person = roleService.getPerson(idToken);
+                    if (person != null) {
+                        boolean isFoster = roleService.isFoster(person);
+                        request.getSession().setAttribute("isFoster", isFoster);
+                        request.getSession().setAttribute("personId", person.getPersonId());
+                        request.getSession().setAttribute("person", person);
+
+                        request.setAttribute("isFoster", isFoster);
+                        request.setAttribute("personId", person.getPersonId());
+                    }
+                }
+
+                if (person != null) {
+                    request.setAttribute("person", person);
+                    logger.debug("Injected person into request: {}", person.getEmail());
+
+                    if (isAdmin == null) {
+                        isAdmin = roleService.checkIfUserIsAdmin(idToken);
+                        request.getSession().setAttribute("isAdmin", isAdmin);
+                    }
+                    request.setAttribute("isAdmin", isAdmin);
+                    logger.debug("Admin status: {}", isAdmin);
+                }
+
+            } catch (Exception e) {
+                logger.error("Error injecting person into request", e);
+            }
+        }
+
+        String path = request.getRequestURI();
         Boolean isFoster = (Boolean) request.getSession().getAttribute("isFoster");
         Object person = request.getSession().getAttribute("person");
 
@@ -63,5 +117,13 @@ public class RoleFilter implements Filter {
         }
 
         filterChain.doFilter(request, response);
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public void destroy() {
+
     }
 }

@@ -56,6 +56,7 @@ public class AddMedical extends HttpServlet implements PropertiesLoader {
             medicalDAO.insert(newMedical);
             logger.debug("medical inserted");
 
+            /**
             try {
                 String subject = "Medication Added for " + cat.getName();
                 String body = "Hello,\n\nA new medication entry has been recorded in the Misfit Felines Foster Portal.\n"
@@ -69,6 +70,7 @@ public class AddMedical extends HttpServlet implements PropertiesLoader {
             } catch (Exception e) {
                 logger.error("Error sending email", e);
             }
+             */
 
             response.sendRedirect("success.jsp");
 
