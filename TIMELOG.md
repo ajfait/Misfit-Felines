@@ -44,3 +44,4 @@
 | 5/8/25  | Add Gmail API to send emails                                                                                                             | 6     | 76   |
 | 5/9/25  | Consolidate role service and filter                                                                                                      | 0.5   | 76.5 |
 | 5/9/25  | Create javadoc and reformat code                                                                                                         | 0.5   | 78   |
+| 5/10/25 | Fix button hover and carousel styles                                                                                                     | 1     | 79   |
