@@ -2,6 +2,7 @@ package com.misfit.service;
 
 import com.google.gson.Gson;
 import com.misfit.entity.Breed;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -27,9 +28,7 @@ public class CatBreedService {
     public List<String> getBreedNames() throws URISyntaxException, IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
 
-        HttpRequest getRequest = HttpRequest.newBuilder()
-                .uri(new URI("https://api.thecatapi.com/v1/breeds"))
-                .build();
+        HttpRequest getRequest = HttpRequest.newBuilder().uri(new URI("https://api.thecatapi.com/v1/breeds")).build();
 
         HttpResponse<String> getResponse = client.send(getRequest, HttpResponse.BodyHandlers.ofString());
 

@@ -27,22 +27,12 @@ public class SendEmailUsingOAuth {
         logger.debug("Preparing to send email.");
 
         // Build Gmail service
-        Gmail gmailService = new Gmail.Builder(
-                GoogleNetHttpTransport.newTrustedTransport(),
-                GsonFactory.getDefaultInstance(),
-                GmailUtil.getCredentials(GoogleNetHttpTransport.newTrustedTransport()))
-                .setApplicationName("Misfit Felines Foster Portal")
-                .build();
+        Gmail gmailService = new Gmail.Builder(GoogleNetHttpTransport.newTrustedTransport(), GsonFactory.getDefaultInstance(), GmailUtil.getCredentials(GoogleNetHttpTransport.newTrustedTransport())).setApplicationName("Misfit Felines Foster Portal").build();
 
         logger.debug("Gmail service built.");
 
         // Create the email message
-        MimeMessage email = CreateEmail.createEmail(
-                "entjavastudent@gmail.com",
-                "jafait1004@gmail.com",
-                subject,
-                body
-        );
+        MimeMessage email = CreateEmail.createEmail("entjavastudent@gmail.com", "jafait1004@gmail.com", subject, body);
 
         logger.debug("Email message created.");
 

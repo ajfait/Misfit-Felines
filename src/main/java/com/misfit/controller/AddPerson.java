@@ -20,10 +20,7 @@ import java.util.Set;
 /**
  * The type Add person.
  */
-@WebServlet(
-        name = "addPersonServlet",
-        urlPatterns = {"/addPerson"}
-)
+@WebServlet(name = "addPersonServlet", urlPatterns = {"/addPerson"})
 public class AddPerson extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -82,8 +79,7 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Boolean isAdmin = (Boolean) request.getAttribute("isAdmin");
 
         if (isAdmin == null || !isAdmin) {

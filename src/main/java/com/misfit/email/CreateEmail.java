@@ -18,19 +18,14 @@ public class CreateEmail {
      * @return the MimeMessage to be used to send email
      * @throws MessagingException - if a wrongly formatted address is encountered.
      */
-    public static MimeMessage createEmail(String toEmailAddress,
-                                          String fromEmailAddress,
-                                          String subject,
-                                          String bodyText)
-            throws MessagingException {
+    public static MimeMessage createEmail(String toEmailAddress, String fromEmailAddress, String subject, String bodyText) throws MessagingException {
         Properties properties = new Properties();
         Session session = Session.getDefaultInstance(properties, null);
 
         MimeMessage email = new MimeMessage(session);
 
         email.setFrom(new InternetAddress(fromEmailAddress));
-        email.addRecipient(Message.RecipientType.TO,
-                new InternetAddress(toEmailAddress));
+        email.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmailAddress));
         email.setSubject(subject);
         email.setText(bodyText);
         return email;

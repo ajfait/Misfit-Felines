@@ -14,10 +14,10 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Set;
 
-@WebServlet(
-        name = "addMedicalServlet",
-        urlPatterns = {"/addMedical"}
-)
+/**
+ * The type Add medical.
+ */
+@WebServlet(name = "addMedicalServlet", urlPatterns = {"/addMedical"})
 public class AddMedical extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -57,19 +57,19 @@ public class AddMedical extends HttpServlet implements PropertiesLoader {
             logger.debug("medical inserted");
 
             /**
-            try {
-                String subject = "Medication Added for " + cat.getName();
-                String body = "Hello,\n\nA new medication entry has been recorded in the Misfit Felines Foster Portal.\n"
-                        + "\n- Cat: " + cat.getName()
-                        + "\n- Medication: " + newMedical.getMedicationName()
-                        + "\n- Date Given: " + newMedical.getMedicationDateGiven()
-                        + "\n\nThank you,\nMisfit Felines Team";
+             try {
+             String subject = "Medication Added for " + cat.getName();
+             String body = "Hello,\n\nA new medication entry has been recorded in the Misfit Felines Foster Portal.\n"
+             + "\n- Cat: " + cat.getName()
+             + "\n- Medication: " + newMedical.getMedicationName()
+             + "\n- Date Given: " + newMedical.getMedicationDateGiven()
+             + "\n\nThank you,\nMisfit Felines Team";
 
-                SendEmailUsingOAuth.sendEmail(subject, body);
-                logger.debug("Email sent successfully.");
-            } catch (Exception e) {
-                logger.error("Error sending email", e);
-            }
+             SendEmailUsingOAuth.sendEmail(subject, body);
+             logger.debug("Email sent successfully.");
+             } catch (Exception e) {
+             logger.error("Error sending email", e);
+             }
              */
 
             response.sendRedirect("success.jsp");
@@ -80,8 +80,7 @@ public class AddMedical extends HttpServlet implements PropertiesLoader {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int catId = Integer.parseInt(request.getParameter("id"));
         GenericDAO<Cat> catDao = new GenericDAO<>(Cat.class);
         Cat cat = catDao.getById(catId);

@@ -16,10 +16,10 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-@WebServlet(
-        name = "editCatServlet",
-        urlPatterns = {"/editCat"}
-)
+/**
+ * The type Edit cat.
+ */
+@WebServlet(name = "editCatServlet", urlPatterns = {"/editCat"})
 public class EditCat extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 

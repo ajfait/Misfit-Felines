@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(
-        name = "viewCatServlet",
-        urlPatterns = {"/viewCat"}
-)
+/**
+ * The type View cat.
+ */
+@WebServlet(name = "viewCatServlet", urlPatterns = {"/viewCat"})
 public class ViewCat extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 

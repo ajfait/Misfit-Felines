@@ -2,19 +2,32 @@ package com.misfit.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class CognitoTokenHeader{
+/**
+ * The type Cognito token header.
+ */
+public class CognitoTokenHeader {
 
-	@JsonProperty("kid")
-	private String kid;
+    @JsonProperty("kid")
+    private String kid;
 
-	@JsonProperty("alg")
-	private String alg;
+    @JsonProperty("alg")
+    private String alg;
 
-	public String getKid(){
-		return kid;
-	}
+    /**
+     * Get kid string.
+     *
+     * @return the string
+     */
+    public String getKid() {
+        return kid;
+    }
 
-	public String getAlg(){
-		return alg;
-	}
+    /**
+     * Get alg string.
+     *
+     * @return the string
+     */
+    public String getAlg() {
+        return alg;
+    }
 }

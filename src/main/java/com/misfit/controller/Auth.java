@@ -25,14 +25,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
-@WebServlet(
-        urlPatterns = {"/auth"}
-)
+@WebServlet(urlPatterns = {"/auth"})
 /**
  * Inspired by: https://stackoverflow.com/questions/52144721/how-to-get-access-token-using-client-credentials-using-java-code
- */
-
-public class Auth extends HttpServlet implements PropertiesLoader {
+ */ public class Auth extends HttpServlet implements PropertiesLoader {
     Properties properties;
     String CLIENT_ID;
     String CLIENT_SECRET;
@@ -155,9 +151,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         // Verify ISS field of the token to make sure it's from the Cognito source
         String iss = String.format("https://cognito-idp.%s.amazonaws.com/%s", REGION, POOL_ID);
 
-        JWTVerifier verifier = JWT.require(algorithm)
-                .withIssuer(iss)
-                .withClaim("token_use", "id") // make sure you're verifying id token
+        JWTVerifier verifier = JWT.require(algorithm).withIssuer(iss).withClaim("token_use", "id") // make sure you're verifying id token
                 .build();
 
         // Verify the token
@@ -186,15 +180,11 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         parameters.put("code", authCode);
         parameters.put("redirect_uri", REDIRECT_URL);
 
-        String form = parameters.keySet().stream()
-                .map(key -> key + "=" + URLEncoder.encode(parameters.get(key), StandardCharsets.UTF_8))
-                .collect(Collectors.joining("&"));
+        String form = parameters.keySet().stream().map(key -> key + "=" + URLEncoder.encode(parameters.get(key), StandardCharsets.UTF_8)).collect(Collectors.joining("&"));
 
         String encoding = Base64.getEncoder().encodeToString(keys.getBytes());
 
-        return HttpRequest.newBuilder().uri(URI.create(OAUTH_URL))
-                .headers("Content-Type", "application/x-www-form-urlencoded", "Authorization", "Basic " + encoding)
-                .POST(HttpRequest.BodyPublishers.ofString(form)).build();
+        return HttpRequest.newBuilder().uri(URI.create(OAUTH_URL)).headers("Content-Type", "application/x-www-form-urlencoded", "Authorization", "Basic " + encoding).POST(HttpRequest.BodyPublishers.ofString(form)).build();
     }
 
     /**

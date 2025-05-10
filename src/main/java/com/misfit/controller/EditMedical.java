@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
 
-@WebServlet(
-        name = "editMedicalServlet",
-        urlPatterns = {"/editMedical"}
-)
+/**
+ * The type Edit medical.
+ */
+@WebServlet(name = "editMedicalServlet", urlPatterns = {"/editMedical"})
 public class EditMedical extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 

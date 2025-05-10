@@ -8,11 +8,19 @@ import org.apache.logging.log4j.*;
 
 import java.util.List;
 
+/**
+ * The type Role service.
+ */
 public class RoleService {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private final GenericDAO<Person> genericDAO;
     private final GenericDAO<Cat> catDao = new GenericDAO<>(Cat.class);
 
+    /**
+     * Instantiates a new Role service.
+     *
+     * @param genericDAO the generic dao
+     */
     public RoleService(GenericDAO<Person> genericDAO) {
         this.genericDAO = genericDAO;
     }
@@ -36,6 +44,13 @@ public class RoleService {
         }
     }
 
+    /**
+     * Check if user is admin boolean.
+     *
+     * @param idToken the id token
+     * @return the boolean
+     * @throws Exception the exception
+     */
     public boolean checkIfUserIsAdmin(String idToken) throws Exception {
         try {
             String email = getEmailFromToken(idToken);
@@ -48,6 +63,12 @@ public class RoleService {
         }
     }
 
+    /**
+     * Is foster boolean.
+     *
+     * @param person the person
+     * @return the boolean
+     */
     public boolean isFoster(Person person) {
         List<Cat> fosteredCats = catDao.getByFieldList("person", person);
         return fosteredCats != null && !fosteredCats.isEmpty();

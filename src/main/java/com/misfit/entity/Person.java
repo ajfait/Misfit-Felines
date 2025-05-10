@@ -252,15 +252,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "id='" + personId + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", role='" + role + '\'' +
-                ", preferences='" + preferences + '\'' +
-                ", admin='" + admin + '\'' +
-                '}';
+        return "Person{" + "id='" + personId + '\'' + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", phone='" + phone + '\'' + ", email='" + email + '\'' + ", role='" + role + '\'' + ", preferences='" + preferences + '\'' + ", admin='" + admin + '\'' + '}';
     }
 }

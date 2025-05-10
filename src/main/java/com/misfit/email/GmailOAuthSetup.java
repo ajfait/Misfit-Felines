@@ -1,4 +1,5 @@
 package com.misfit.email;
+
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
@@ -16,6 +17,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.List;
 
+/**
+ * The type Gmail o auth setup.
+ */
 public class GmailOAuthSetup {
     private static final Logger logger = LogManager.getLogger(GmailOAuthSetup.class);
     private static final String APPLICATION_NAME = "Misfit Felines Foster Portal";
@@ -27,21 +31,19 @@ public class GmailOAuthSetup {
     private static Gmail getGmailService() throws Exception {
         final NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
 
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
-                JSON_FACTORY, new FileReader(CREDENTIALS_FILE_PATH));
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new FileReader(CREDENTIALS_FILE_PATH));
 
-        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
-                httpTransport, JSON_FACTORY, clientSecrets, SCOPES)
-                .setDataStoreFactory(new FileDataStoreFactory(new File(TOKENS_DIRECTORY_PATH)))
-                .setAccessType("offline")
-                .build();
+        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(httpTransport, JSON_FACTORY, clientSecrets, SCOPES).setDataStoreFactory(new FileDataStoreFactory(new File(TOKENS_DIRECTORY_PATH))).setAccessType("offline").build();
 
-        return new Gmail.Builder(httpTransport, JSON_FACTORY,
-                new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user"))
-                .setApplicationName(APPLICATION_NAME)
-                .build();
+        return new Gmail.Builder(httpTransport, JSON_FACTORY, new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user")).setApplicationName(APPLICATION_NAME).build();
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws Exception the exception
+     */
     public static void main(String[] args) throws Exception {
         Gmail service = getGmailService();
         logger.debug("Successfully authorized Gmail access!");

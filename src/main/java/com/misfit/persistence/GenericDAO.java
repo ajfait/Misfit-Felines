@@ -82,9 +82,7 @@ public class GenericDAO<T> {
         Session session = getSession();
         try {
             String hql = "FROM " + type.getName() + " WHERE " + fieldName + " = :value";
-            return session.createQuery(hql, type)
-                    .setParameter("value", value)
-                    .uniqueResult();
+            return session.createQuery(hql, type).setParameter("value", value).uniqueResult();
         } finally {
             session.close();
         }
@@ -101,9 +99,7 @@ public class GenericDAO<T> {
         Session session = getSession();
         try {
             String hql = "FROM " + type.getName() + " WHERE " + fieldName + " = :value";
-            return session.createQuery(hql, type)
-                    .setParameter("value", value)
-                    .getResultList();
+            return session.createQuery(hql, type).setParameter("value", value).getResultList();
         } finally {
             session.close();
         }

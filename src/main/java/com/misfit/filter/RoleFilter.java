@@ -20,9 +20,9 @@ import java.io.IOException;
 public class RoleFilter implements Filter {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private RoleService roleService;
-    
+
     /**
-     * @param filterConfig 
+     * @param filterConfig
      * @throws ServletException
      */
     @Override
@@ -92,24 +92,21 @@ public class RoleFilter implements Filter {
         Boolean isFoster = (Boolean) request.getSession().getAttribute("isFoster");
         Object person = request.getSession().getAttribute("person");
 
-        if (path.contains("/addEvent") || path.contains("/editEvent") || path.contains("/deleteEvent")
-                || path.contains("/addPerson") || path.contains("/deletePerson")) {
+        if (path.contains("/addEvent") || path.contains("/editEvent") || path.contains("/deleteEvent") || path.contains("/addPerson") || path.contains("/deletePerson")) {
             if (isAdmin == null || !isAdmin) {
                 response.sendRedirect("unauthorized.jsp");
                 return;
             }
         }
 
-        if (path.contains("/editCat") || path.contains("/deleteCat")
-                || path.contains("/addMedical") || path.contains("/editMedical") || path.contains("/deleteMedical")) {
+        if (path.contains("/editCat") || path.contains("/deleteCat") || path.contains("/addMedical") || path.contains("/editMedical") || path.contains("/deleteMedical")) {
             if (isFoster == null || !isFoster) {
                 response.sendRedirect("unauthorized.jsp");
                 return;
             }
         }
 
-        if (path.contains("/addCat") 
-                || path.contains("/viewPerson") || path.contains("/editPerson")) {
+        if (path.contains("/addCat") || path.contains("/viewPerson") || path.contains("/editPerson")) {
             if (person == null) {
                 response.sendRedirect("unauthorized.jsp");
                 return;
@@ -120,7 +117,7 @@ public class RoleFilter implements Filter {
     }
 
     /**
-     * 
+     *
      */
     @Override
     public void destroy() {

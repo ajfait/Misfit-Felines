@@ -21,10 +21,10 @@ import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Set;
 
-@WebServlet(
-        name = "addCatServlet",
-        urlPatterns = {"/addCat"}
-)
+/**
+ * The type Add cat.
+ */
+@WebServlet(name = "addCatServlet", urlPatterns = {"/addCat"})
 public class AddCat extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -86,8 +86,7 @@ public class AddCat extends HttpServlet implements PropertiesLoader {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         GenericDAO<Person> personDAO = new GenericDAO<>(Person.class);
         List<Person> people = personDAO.getAll();
 

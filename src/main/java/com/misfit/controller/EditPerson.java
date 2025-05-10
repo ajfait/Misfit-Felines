@@ -19,10 +19,7 @@ import java.util.Set;
 /**
  * The type Edit person.
  */
-@WebServlet(
-        name = "editPersonServlet",
-        urlPatterns = {"/editPerson"}
-)
+@WebServlet(name = "editPersonServlet", urlPatterns = {"/editPerson"})
 public class EditPerson extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 

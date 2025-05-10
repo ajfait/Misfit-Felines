@@ -42,3 +42,5 @@
 | 5/6/25  | Remove past events from view event list                                                                                                  | 0.5   | 69.5 |
 | 5/6/25  | Format date and time in event view                                                                                                       | 0.5   | 70   |
 | 5/8/25  | Add Gmail API to send emails                                                                                                             | 6     | 76   |
+| 5/9/25  | Consolidate role service and filter                                                                                                      | 0.5   | 76.5 |
+| 5/9/25  | Create javadoc and reformat code                                                                                                         | 0.5   | 78   |

@@ -15,10 +15,7 @@ import java.io.IOException;
 /**
  * The type Delete person.
  */
-@WebServlet(
-        name = "deletePersonServlet",
-        urlPatterns = {"/deletePerson"}
-)
+@WebServlet(name = "deletePersonServlet", urlPatterns = {"/deletePerson"})
 public class DeletePerson extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 

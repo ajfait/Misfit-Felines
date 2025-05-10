@@ -12,14 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Properties;
 
-@WebServlet(
-        urlPatterns = {"/logIn"}
-)
+@WebServlet(urlPatterns = {"/logIn"})
 
 /** Begins the authentication process using AWS Cognito
  *
- */
-public class LogIn extends HttpServlet implements PropertiesLoader {
+ */ public class LogIn extends HttpServlet implements PropertiesLoader {
     Properties properties;
     private final Logger logger = LogManager.getLogger(this.getClass());
     public static String CLIENT_ID;
@@ -53,7 +50,8 @@ public class LogIn extends HttpServlet implements PropertiesLoader {
 
     /**
      * Route to the aws-hosted cognito login page.
-     * @param request servlet request
+     *
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException
      * @throws IOException

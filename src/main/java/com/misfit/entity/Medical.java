@@ -119,10 +119,6 @@ public class Medical {
 
     @Override
     public String toString() {
-        return "Medical{" +
-                "medicalId=" + medicalId +
-                ", medicationName='" + medicationName + '\'' +
-                ", medicationDateGiven='" + medicationDateGiven + '\'' +
-                '}';
+        return "Medical{" + "medicalId=" + medicalId + ", medicationName='" + medicationName + '\'' + ", medicationDateGiven='" + medicationDateGiven + '\'' + '}';
     }
 }

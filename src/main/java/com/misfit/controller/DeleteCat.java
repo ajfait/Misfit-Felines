@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(
-        name = "deleteCatServlet",
-        urlPatterns = {"/deleteCat"}
-)
+/**
+ * The type Delete cat.
+ */
+@WebServlet(name = "deleteCatServlet", urlPatterns = {"/deleteCat"})
 public class DeleteCat extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 

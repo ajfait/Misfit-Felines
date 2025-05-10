@@ -316,15 +316,7 @@ public class Cat {
 
     @Override
     public String toString() {
-        return "Cat{" +
-                "catId=" + catId +
-                ", name='" + name + '\'' +
-                ", sex='" + sex + '\'' +
-                ", dob='" + dob + '\'' +
-                ", breed='" + breed + '\'' +
-                ", bio='" + bio + '\'' +
-                ", adoptable=" + adoptable +
-                '}';
+        return "Cat{" + "catId=" + catId + ", name='" + name + '\'' + ", sex='" + sex + '\'' + ", dob='" + dob + '\'' + ", breed='" + breed + '\'' + ", bio='" + bio + '\'' + ", adoptable=" + adoptable + '}';
     }
 
     @Override

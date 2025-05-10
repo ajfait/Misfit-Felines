@@ -20,8 +20,7 @@ public class CreateMessage {
      * @throws IOException        - if service account credentials file not found.
      * @throws MessagingException - if a wrongly formatted address is encountered.
      */
-    public static Message createMessageWithEmail(MimeMessage emailContent)
-            throws MessagingException, IOException {
+    public static Message createMessageWithEmail(MimeMessage emailContent) throws MessagingException, IOException {
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         emailContent.writeTo(buffer);
         byte[] bytes = buffer.toByteArray();

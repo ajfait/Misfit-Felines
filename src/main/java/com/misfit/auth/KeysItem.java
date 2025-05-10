@@ -2,47 +2,80 @@ package com.misfit.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class KeysItem{
+/**
+ * The type Keys item.
+ */
+public class KeysItem {
 
-	@JsonProperty("kty")
-	private String kty;
+    @JsonProperty("kty")
+    private String kty;
 
-	@JsonProperty("e")
-	private String E;
+    @JsonProperty("e")
+    private String E;
 
-	@JsonProperty("use")
-	private String use;
+    @JsonProperty("use")
+    private String use;
 
-	@JsonProperty("kid")
-	private String kid;
+    @JsonProperty("kid")
+    private String kid;
 
-	@JsonProperty("alg")
-	private String alg;
+    @JsonProperty("alg")
+    private String alg;
 
-	@JsonProperty("n")
-	private String N;
+    @JsonProperty("n")
+    private String N;
 
-	public String getKty(){
-		return kty;
-	}
+    /**
+     * Get kty string.
+     *
+     * @return the string
+     */
+    public String getKty() {
+        return kty;
+    }
 
-	public String getE(){
-		return E;
-	}
+    /**
+     * Get e string.
+     *
+     * @return the string
+     */
+    public String getE() {
+        return E;
+    }
 
-	public String getUse(){
-		return use;
-	}
+    /**
+     * Get use string.
+     *
+     * @return the string
+     */
+    public String getUse() {
+        return use;
+    }
 
-	public String getKid(){
-		return kid;
-	}
+    /**
+     * Get kid string.
+     *
+     * @return the string
+     */
+    public String getKid() {
+        return kid;
+    }
 
-	public String getAlg(){
-		return alg;
-	}
+    /**
+     * Get alg string.
+     *
+     * @return the string
+     */
+    public String getAlg() {
+        return alg;
+    }
 
-	public String getN(){
-		return N;
-	}
+    /**
+     * Get n string.
+     *
+     * @return the string
+     */
+    public String getN() {
+        return N;
+    }
 }

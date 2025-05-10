@@ -14,10 +14,10 @@ import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
-@WebServlet(
-        name = "editEventServlet",
-        urlPatterns = {"/editEvent"}
-)
+/**
+ * The type Edit event.
+ */
+@WebServlet(name = "editEventServlet", urlPatterns = {"/editEvent"})
 public class EditEvent extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 

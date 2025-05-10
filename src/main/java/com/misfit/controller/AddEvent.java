@@ -19,10 +19,10 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Set;
 
-@WebServlet(
-        name = "addEventServlet",
-        urlPatterns = {"/addEvent"}
-)
+/**
+ * The type Add event.
+ */
+@WebServlet(name = "addEventServlet", urlPatterns = {"/addEvent"})
 public class AddEvent extends HttpServlet implements PropertiesLoader {
     private static final Logger logger = LogManager.getLogger(AddEvent.class);
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
@@ -91,8 +91,7 @@ public class AddEvent extends HttpServlet implements PropertiesLoader {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Boolean isAdmin = (Boolean) request.getAttribute("isAdmin");
 
         if (isAdmin == null || !isAdmin) {

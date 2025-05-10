@@ -250,16 +250,7 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event{" +
-                "eventId=" + eventId +
-                ", eventName='" + eventName + '\'' +
-                ", eventLocationStreet='" + eventLocationStreet + '\'' +
-                ", eventLocationCity='" + eventLocationCity + '\'' +
-                ", eventLocationState='" + eventLocationState + '\'' +
-                ", eventLocationZip='" + eventLocationZip + '\'' +
-                ", eventDateTimeStart='" + eventDateTimeStart + '\'' +
-                ", eventDateTimeEnd='" + eventDateTimeEnd + '\'' +
-                '}';
+        return "Event{" + "eventId=" + eventId + ", eventName='" + eventName + '\'' + ", eventLocationStreet='" + eventLocationStreet + '\'' + ", eventLocationCity='" + eventLocationCity + '\'' + ", eventLocationState='" + eventLocationState + '\'' + ", eventLocationZip='" + eventLocationZip + '\'' + ", eventDateTimeStart='" + eventDateTimeStart + '\'' + ", eventDateTimeEnd='" + eventDateTimeEnd + '\'' + '}';
     }
 }
 

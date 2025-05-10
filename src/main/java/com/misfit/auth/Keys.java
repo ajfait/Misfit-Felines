@@ -1,14 +1,23 @@
 package com.misfit.auth;
 
 import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Keys{
+/**
+ * The type Keys.
+ */
+public class Keys {
 
-	@JsonProperty("keys")
-	private List<KeysItem> keys;
+    @JsonProperty("keys")
+    private List<KeysItem> keys;
 
-	public List<KeysItem> getKeys(){
-		return keys;
-	}
+    /**
+     * Get keys list.
+     *
+     * @return the list
+     */
+    public List<KeysItem> getKeys() {
+        return keys;
+    }
 }

@@ -14,6 +14,9 @@ import software.amazon.awssdk.services.cognitoidentityprovider.model.CognitoIden
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * The type Cognito service.
+ */
 public class CognitoService implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -21,6 +24,11 @@ public class CognitoService implements PropertiesLoader {
     private final String poolID;
     private final String tempPassword;
 
+    /**
+     * Instantiates a new Cognito service.
+     *
+     * @throws Exception the exception
+     */
     public CognitoService() throws Exception {
         Properties cognitoProperties = loadProperties("/cognito.properties");
 
@@ -28,23 +36,17 @@ public class CognitoService implements PropertiesLoader {
         this.tempPassword = cognitoProperties.getProperty("tempPassword");
 
         Region region = Region.of(cognitoProperties.getProperty("region"));
-        this.cognitoClient = CognitoIdentityProviderClient.builder()
-                .region(region)
-                .credentialsProvider(DefaultCredentialsProvider.create())
-                .build();
+        this.cognitoClient = CognitoIdentityProviderClient.builder().region(region).credentialsProvider(DefaultCredentialsProvider.create()).build();
     }
 
+    /**
+     * Create user.
+     *
+     * @param email the email
+     */
     public void createUser(String email) {
         try {
-            AdminCreateUserRequest request = AdminCreateUserRequest.builder()
-                    .userPoolId(poolID)
-                    .username(email)
-                    .userAttributes(List.of(
-                            AttributeType.builder().name("email").value(email).build(),
-                            AttributeType.builder().name("email_verified").value("true").build()
-                    ))
-                    .temporaryPassword(tempPassword)
-                    .build();
+            AdminCreateUserRequest request = AdminCreateUserRequest.builder().userPoolId(poolID).username(email).userAttributes(List.of(AttributeType.builder().name("email").value(email).build(), AttributeType.builder().name("email_verified").value("true").build())).temporaryPassword(tempPassword).build();
 
             AdminCreateUserResponse response = cognitoClient.adminCreateUser(request);
             logger.info("Created Cognito user: {}", response.user().username());

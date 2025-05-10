@@ -17,10 +17,10 @@ import java.time.format.FormatStyle;
 import java.util.List;
 import java.util.Locale;
 
-@WebServlet(
-        name = "viewEventServlet",
-        urlPatterns = {"/viewEvent"}
-)
+/**
+ * The type View event.
+ */
+@WebServlet(name = "viewEventServlet", urlPatterns = {"/viewEvent"})
 public class ViewEvent extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -31,13 +31,9 @@ public class ViewEvent extends HttpServlet implements PropertiesLoader {
             List<Event> events = eventDAO.getAll();
 
             LocalDateTime now = LocalDateTime.now();
-            events.removeIf(event ->
-                    event.getEventDateTimeStart().isBefore(now) ||
-                            event.getEventDateTimeEnd().isBefore(now)
-            );
+            events.removeIf(event -> event.getEventDateTimeStart().isBefore(now) || event.getEventDateTimeEnd().isBefore(now));
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT)
-                    .withLocale(Locale.US);
+            DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT).withLocale(Locale.US);
 
             for (Event event : events) {
                 if (event.getEventDateTimeStart() != null) {
