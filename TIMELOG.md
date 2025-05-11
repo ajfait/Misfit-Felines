@@ -45,3 +45,4 @@
 | 5/9/25  | Consolidate role service and filter                                                                                                      | 0.5   | 76.5 |
 | 5/9/25  | Create javadoc and reformat code                                                                                                         | 0.5   | 78   |
 | 5/10/25 | Fix button hover and carousel styles                                                                                                     | 1     | 79   |
+| 5/10/25 | Update add person servlet to prevent duplicate email addresses and delete person servlet to delete user from Cognito user pool           | 2     | 81   |
