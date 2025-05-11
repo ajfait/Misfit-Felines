@@ -27,7 +27,6 @@
                         id="first_name"
                         minlength="2"
                         maxlength="50"
-                        placeholder="First Name"
                 />
                 <label for="first_name">First Name</label>
             </div>
@@ -39,7 +38,6 @@
                         id="last_name"
                         minlength="2"
                         maxlength="50"
-                        placeholder="Last Name"
                 />
                 <label for="last_name">Last Name</label>
             </div>
@@ -50,7 +48,6 @@
                         name="phone"
                         id="phone"
                         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                        placeholder="608-555-1212"
                 />
                 <label for="phone">Phone Number</label>
             </div>
@@ -60,7 +57,6 @@
                         type="email"
                         name="email"
                         id="email"
-                        placeholder="foster@gmail.com"
                 />
                 <label for="email">Email Address</label>
             </div>

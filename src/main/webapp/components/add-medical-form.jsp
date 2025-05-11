@@ -21,7 +21,6 @@
                         value="${medical.medicationName}"
                         minlength="2"
                         maxlength="50"
-                        placeholder="Medication Name"
                 />
                 <label for="name">Medication Name</label>
             </div>

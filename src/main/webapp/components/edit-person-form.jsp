@@ -21,7 +21,6 @@
                         value="${person.firstName}"
                         minlength="2"
                         maxlength="50"
-                        placeholder="First Name"
                 />
                 <label for="first_name">First Name</label>
             </div>
@@ -34,7 +33,6 @@
                         value="${person.lastName}"
                         minlength="2"
                         maxlength="50"
-                        placeholder="Last Name"
                 />
                 <label for="last_name">Last Name</label>
             </div>
@@ -46,7 +44,6 @@
                         id="phone"
                         value="${person.phone}"
                         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                        placeholder="608-555-1212"
                 />
                 <label for="phone">Phone Number</label>
             </div>
@@ -57,7 +54,7 @@
                         name="email"
                         id="email"
                         value="${person.email}"
-                        placeholder="foster@gmail.com"
+                        disabled
                 />
                 <label for="email">Email Address</label>
             </div>

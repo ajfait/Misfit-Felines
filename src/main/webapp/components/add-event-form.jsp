@@ -22,7 +22,6 @@
                         value="${event.eventName}"
                         minlength="2"
                         maxlength="50"
-                        placeholder="Event Name"
                 />
                 <label for="name">Event Name</label>
             </div>
@@ -37,7 +36,6 @@
                         value="${event.eventLocationStreet}"
                         minlength="2"
                         maxlength="50"
-                        placeholder="Street Address"
                 />
                 <label for="street">Street Address</label>
             </div>
@@ -52,7 +50,6 @@
                         value="${event.eventLocationCity}"
                         minlength="2"
                         maxlength="50"
-                        placeholder="City"
                 />
                 <label for="city">City</label>
             </div>
@@ -67,7 +64,6 @@
                         value="${event.eventLocationState}"
                         minlength="2"
                         maxlength="2"
-                        placeholder="State"
                 />
                 <label for="state">State</label>
             </div>
@@ -82,7 +78,6 @@
                         value="${event.eventLocationZip}"
                         minlength="5"
                         maxlength="5"
-                        placeholder="Zip Code"
                 />
                 <label for="zip">Zip Code</label>
             </div>

@@ -21,7 +21,6 @@
                         value="${cat.name}"
                         minlength="2"
                         maxlength="50"
-                        placeholder="Cat Name"
                 />
                 <label for="cat_name">Cat Name</label>
             </div>
