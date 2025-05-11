@@ -3,6 +3,15 @@
     <!-- Form -->
     <form class="p-3 mt-3 border border-secondary-subtle rounded shadow-sm bg-white"
           action="addPerson" method="POST">
+        <!-- Display error messages for email already exists -->
+        <c:if test="${not empty dbError}">
+            <p class="alert alert-danger mt-3">${dbError}</p>
+        </c:if>
+        <c:if test="${not empty cognitoError}">
+            <p class="alert alert-danger mt-3">${cognitoError}</p>
+        </c:if>
+
+        <!-- Display error messages for form data validation -->
         <c:if test="${not empty violations}">
             <c:forEach var="violation" items="${violations}">
                 <p class="alert alert-danger mt-3">${violation.message}</p>

@@ -50,8 +50,8 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
             newPerson.setAdmin(admin);
             logger.debug("person object created");
 
+            // Validate the person object
             Set<ConstraintViolation<Person>> violations = ValidationUtil.validate(newPerson);
-
             if (!violations.isEmpty()) {
                 request.setAttribute("violations", violations);
                 request.setAttribute("person", newPerson);
@@ -59,18 +59,40 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
                 return;
             }
 
+            // Check if the email already exists in the local database
             GenericDAO<Person> personDAO = new GenericDAO<>(Person.class);
-            personDAO.insert(newPerson);
-            logger.debug("person inserted");
+            Person existingPerson = personDAO.getByField("email", email);
+            if (existingPerson != null) {
+                logger.warn("Email already exists in local DB: {}", email);
+                request.setAttribute("dbError", "Email already exists in our system.");
+                request.setAttribute("person", newPerson);
+                request.getRequestDispatcher("add-person.jsp").forward(request, response);
+                return;
+            }
 
+            // Check if the email exists in Cognito
             CognitoService cognitoService = new CognitoService();
             try {
+                if (cognitoService.userExists(email)) {
+                    logger.warn("Email already exists in Cognito: {}", email);
+                    request.setAttribute("cognitoError", "Email already exists in Cognito.");
+                    request.setAttribute("person", newPerson);
+                    request.getRequestDispatcher("add-person.jsp").forward(request, response);
+                    return;
+                }
+
+                // Create user in Cognito
                 cognitoService.createUser(email);
                 logger.debug("Cognito user created successfully.");
             } catch (Exception ex) {
-                logger.error("Error creating Cognito user", ex);
+                logger.error("Error checking or creating Cognito user", ex);
             }
 
+            // Insert the person into the database
+            personDAO.insert(newPerson);
+            logger.debug("Person inserted into the database");
+
+            // Redirect to success page
             response.sendRedirect("success.jsp");
 
         } catch (Exception e) {
@@ -88,7 +110,6 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
         }
 
         request.setAttribute("currentPage", "addPerson");
-
         request.getRequestDispatcher("add-person.jsp").forward(request, response);
     }
 }

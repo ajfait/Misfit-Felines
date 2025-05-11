@@ -37,6 +37,25 @@ public class CognitoService implements PropertiesLoader {
     }
 
     /**
+     * User exists boolean.
+     *
+     * @param email the email
+     * @return the boolean
+     */
+    public boolean userExists(String email) {
+        try {
+            AdminGetUserRequest request = AdminGetUserRequest.builder().userPoolId(poolID).username(email).build();
+
+            AdminGetUserResponse response = cognitoClient.adminGetUser(request);
+            return response != null;
+        } catch (UserNotFoundException e) {
+            return false;
+        } catch (CognitoIdentityProviderException e) {
+            throw new RuntimeException("Error checking user existence in Cognito", e);
+        }
+    }
+
+    /**
      * Create user.
      *
      * @param email the email
@@ -46,7 +65,7 @@ public class CognitoService implements PropertiesLoader {
             AdminCreateUserRequest request = AdminCreateUserRequest.builder().userPoolId(poolID).username(email).userAttributes(List.of(AttributeType.builder().name("email").value(email).build(), AttributeType.builder().name("email_verified").value("true").build())).temporaryPassword(tempPassword).build();
 
             AdminCreateUserResponse response = cognitoClient.adminCreateUser(request);
-            logger.info("Created Cognito user: {}", response.user().username());
+            logger.debug("Created Cognito user: {}", response.user().username());
 
         } catch (CognitoIdentityProviderException e) {
             logger.error("Failed to create Cognito user", e);
@@ -61,6 +80,8 @@ public class CognitoService implements PropertiesLoader {
     public void deleteUser(String email) {
         try {
             AdminDeleteUserRequest request = AdminDeleteUserRequest.builder().userPoolId(poolID).username(email).build();
+
+            cognitoClient.adminDeleteUser(request);
 
             logger.debug("User " + email + " deleted successfully from User Pool " + poolID);
         } catch (CognitoIdentityProviderException e) {
