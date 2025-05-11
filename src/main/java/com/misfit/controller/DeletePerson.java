@@ -3,6 +3,7 @@ package com.misfit.controller;
 import com.misfit.entity.Person;
 import com.misfit.persistence.GenericDAO;
 import com.misfit.persistence.PropertiesLoader;
+import com.misfit.service.CognitoService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,8 +29,19 @@ public class DeletePerson extends HttpServlet implements PropertiesLoader {
             Person person = personDAO.getById(personId);
 
             if (person != null) {
+                String email = person.getEmail();
                 personDAO.delete(person);
                 logger.debug("Person with ID {} deleted", personId);
+
+                try {
+                    CognitoService cognitoService = new CognitoService();
+                    cognitoService.deleteUser(email);
+                    logger.debug("Person deleted from Cognito");
+                } catch (Exception e) {
+                    logger.error("Error deleting person from Cognito", e);
+                    response.sendRedirect("error.jsp");
+                    return;
+                }
             }
 
             response.sendRedirect("/viewPerson");
