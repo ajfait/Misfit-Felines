@@ -38,7 +38,7 @@ public class Person {
     private String preferences;
     @Column(name = "p_admin")
     private boolean admin;
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "person", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private List<Cat> cats = new ArrayList<>();
 
     /**

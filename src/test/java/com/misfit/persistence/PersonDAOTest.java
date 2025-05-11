@@ -1,5 +1,6 @@
 package com.misfit.persistence;
 
+import com.misfit.entity.Cat;
 import com.misfit.entity.Person;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class PersonDAOTest {
     GenericDAO<Person> personDAO;
+    GenericDAO<Cat> catDAO;
 
     private final Logger logger = LogManager.getLogger(PersonDAOTest.class);
 
@@ -29,6 +31,7 @@ class PersonDAOTest {
     void setUp() {
         logger.info("Test setup");
         personDAO = new GenericDAO<>(Person.class);
+        catDAO = new GenericDAO<>(Cat.class);
         Database database = Database.getInstance();
         database.runSQL("cleanDB.sql");
     }
@@ -108,5 +111,10 @@ class PersonDAOTest {
         Person personToDelete = personDAO.getById(1);
         personDAO.delete(personToDelete);
         assertEquals(null, personDAO.getById(1));
+        List<Cat> cats = catDAO.getAll();
+        Cat catToCheck = catDAO.getById(1);
+        int expectedSize = 3;
+        assertEquals(expectedSize, cats.size());
+        assertEquals(null, catToCheck.getPerson());
     }
 }

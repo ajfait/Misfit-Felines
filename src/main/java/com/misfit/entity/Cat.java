@@ -42,7 +42,7 @@ public class Cat {
     @ManyToOne
     @JoinColumn(name = "p_id", foreignKey = @ForeignKey(name = "Cat_Person_p_id_fk"))
     private Person person;
-    @OneToMany(mappedBy = "cat", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "cat", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private List<Medical> meds = new ArrayList<>();
 
     /**
