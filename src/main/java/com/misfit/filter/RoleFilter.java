@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * The type Role filter. This filter is used to determine
- * servlet access based on user's role.
+ * The `RoleFilter` class in Java is a web filter that checks user permissions based on session
+ * attributes before allowing access to certain paths in the web application.
  */
 @WebFilter("/*")
 public class RoleFilter implements Filter {
@@ -22,8 +22,13 @@ public class RoleFilter implements Filter {
     private RoleService roleService;
 
     /**
-     * @param filterConfig
-     * @throws ServletException
+     * The init method initializes a RoleService object with a GenericDAO object for the Person class in a
+     * Java filter.
+     * 
+     * @param filterConfig The `FilterConfig` parameter in the `init` method is typically used to provide
+     * configuration information to a filter. It allows the filter to access initialization parameters
+     * defined in the deployment descriptor (web.xml) or other configuration sources. This information can
+     * be used by the filter to customize its behavior based on the
      */
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -31,19 +36,20 @@ public class RoleFilter implements Filter {
     }
 
     /**
-     * Provides admin access to add, edit, and delete event
-     * and person records.
-     * Provides foster access to edit, and delete cat records
-     * for cats they foster.
-     * Provides foster access to add, edit, and delete medical
-     * records for cats they foster.
-     * Provides user access to add cats.
-     *
-     * @param servletRequest
-     * @param servletResponse
-     * @param filterChain
-     * @throws IOException
-     * @throws ServletException
+     * This Java filter function checks user permissions based on session attributes before allowing
+     * access to certain paths in a web application.
+     * 
+     * @param servletRequest The `servletRequest` parameter in the `doFilter` method represents the
+     * request that a client sends to a web application. It contains information about the client's
+     * request, such as the URL, parameters, headers, and other relevant data. In the provided code
+     * snippet, the `servletRequest
+     * @param servletResponse The `servletResponse` parameter in the `doFilter` method represents the
+     * response that the servlet sends back to the client. It is of type `ServletResponse` which is the
+     * superclass of `HttpServletResponse`. This object allows you to manipulate and control the
+     * response that will be sent back to the client
+     * @param filterChain The `filterChain` parameter in the `doFilter` method is an object that allows
+     * the filter to pass the request and response to the next filter in the chain, or to the servlet
+     * if the filter is the last one in the chain. By calling `filterChain.doFilter(request, response)
      */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -52,8 +58,12 @@ public class RoleFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String idToken = (String) request.getSession().getAttribute("idToken");
-
         Boolean isAdmin = (Boolean) request.getSession().getAttribute("isAdmin");
+
+        // This block of code is responsible for checking the `idToken` stored in the session. If the
+        // `idToken` is not null, it attempts to retrieve the `Person` object from the session. If the
+        // `Person` object is not already stored in the session, it fetches the `Person` object using
+        // the `idToken` through the `roleService.getPerson(idToken)` method.
         if (idToken != null) {
             try {
                 Person person = (Person) request.getSession().getAttribute("person");
@@ -92,6 +102,9 @@ public class RoleFilter implements Filter {
         Boolean isFoster = (Boolean) request.getSession().getAttribute("isFoster");
         Object person = request.getSession().getAttribute("person");
 
+        // This block of code in the `doFilter` method of the `RoleFilter` class is responsible for checking
+        // the path of the incoming request and verifying the user permissions based on certain conditions
+        // before allowing access to specific paths in the web application.
         if (path.contains("/addEvent") || path.contains("/editEvent") || path.contains("/deleteEvent") || path.contains("/addPerson") || path.contains("/deletePerson")) {
             if (isAdmin == null || !isAdmin) {
                 response.sendRedirect("unauthorized.jsp");
@@ -117,10 +130,10 @@ public class RoleFilter implements Filter {
     }
 
     /**
-     *
+     * The `destroy` method is overridden in a Java class without any implementation.
      */
     @Override
     public void destroy() {
-
+        // Required but not needed
     }
 }

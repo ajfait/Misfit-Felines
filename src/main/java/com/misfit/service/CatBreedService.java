@@ -4,9 +4,7 @@ import com.google.gson.Gson;
 import com.misfit.entity.Breed;
 import com.misfit.persistence.PropertiesLoader;
 
-import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -15,19 +13,19 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * The type Cat breed service.
- * Code Credit: https://youtu.be/9oq7Y8n1t00?si=TBQpogWMHC1my8ui
+ * The `CatBreedService` class retrieves a list of cat breed names from an API using HttpClient and
+ * Gson in Java.
+ * 
+ * API: https://thecatapi.com/
  */
 public class CatBreedService implements PropertiesLoader {
     private String apiURL;
 
     /**
-     * Gets breed names.
-     *
-     * @return the breed names
-     * @throws URISyntaxException   the uri syntax exception
-     * @throws IOException          the io exception
-     * @throws InterruptedException the interrupted exception
+     * The function `getBreedNames` retrieves a list of breed names from an API using HttpClient and Gson
+     * in Java.
+     * 
+     * @return This method returns a list of breed names as strings.
      */
     public List<String> getBreedNames() throws Exception {
         Properties apiProperties = loadProperties("/api.properties");
