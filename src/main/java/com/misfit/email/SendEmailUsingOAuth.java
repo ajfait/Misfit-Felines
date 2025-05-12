@@ -13,14 +13,23 @@ import org.apache.logging.log4j.*;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
+/**
+ * The `SendEmailUsingOAuth` class provides a method to send emails using the Gmail API with
+ * specified subject and body content.
+ */
 public class SendEmailUsingOAuth {
     private static final Logger logger = LogManager.getLogger(SendEmailUsingOAuth.class);
 
     /**
-     * Send an email with dynamic subject and body using Gmail API and OAuth2.
-     *
-     * @param subject The subject line of the email.
-     * @param body    The text body of the email.
+     * The `sendEmail` function sends an email using the Gmail API with a specified subject and
+     * body.
+     * 
+     * @param subject The `subject` parameter in the `sendEmail` method refers to the subject line of the
+     * email that will be sent. It is a brief description of the content or purpose of the email. For
+     * example, if you are sending an email about a meeting, the subject could be "Meeting Agenda"
+     * @param body The `body` parameter in the `sendEmail` method refers to the content or message body of
+     * the email that you want to send. This is where you would typically include the main text or
+     * information you want to convey in the email.
      */
     public static void sendEmail(String subject, String body) throws MessagingException, IOException, GeneralSecurityException {
 

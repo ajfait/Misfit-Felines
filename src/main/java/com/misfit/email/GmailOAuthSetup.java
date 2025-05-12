@@ -1,24 +1,21 @@
 package com.misfit.email;
 
-import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
-import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
-import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
-import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.extensions.java6.auth.oauth2.*;
+import com.google.api.client.googleapis.auth.oauth2.*;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
-import com.google.api.services.gmail.Gmail;
-import com.google.api.services.gmail.GmailScopes;
+import com.google.api.services.gmail.*;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import org.apache.logging.log4j.*;
 
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.util.List;
 
 /**
- * The type Gmail o auth setup.
+ * The `GmailOAuthSetup` class sets up OAuth 2.0 authorization for accessing Gmail services in a Java
+ * application.
  */
 public class GmailOAuthSetup {
     private static final Logger logger = LogManager.getLogger(GmailOAuthSetup.class);
@@ -28,6 +25,11 @@ public class GmailOAuthSetup {
     private static final List<String> SCOPES = List.of(GmailScopes.GMAIL_SEND);
     private static final String CREDENTIALS_FILE_PATH = "/Volumes/AJPC_2TB_SSD/*Enterprise Java/Misfit-Felines/src/main/resources/credentials.json";
 
+    /**
+     * The function `getGmailService` returns a Gmail service instance using OAuth 2.0 authorization.
+     * 
+     * @return An instance of the Gmail service is being returned.
+     */
     private static Gmail getGmailService() throws Exception {
         final NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
 
@@ -39,10 +41,7 @@ public class GmailOAuthSetup {
     }
 
     /**
-     * The entry point of application.
-     *
-     * @param args the input arguments
-     * @throws Exception the exception
+     * The main function authorizes access to Gmail service and logs a success message.
      */
     public static void main(String[] args) throws Exception {
         Gmail service = getGmailService();

@@ -9,16 +9,19 @@ import jakarta.mail.internet.MimeMessage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-/* Class to demonstrate the use of Gmail Create Message API */
+/**
+ * The `CreateMessage` class provides a method to create a `Message` object with base64 encoded email
+ * content from a `MimeMessage` object.
+ */
 public class CreateMessage {
 
     /**
-     * Create a message from an email.
-     *
-     * @param emailContent Email to be set to raw of message
-     * @return a message containing a base64url encoded email
-     * @throws IOException        - if service account credentials file not found.
-     * @throws MessagingException - if a wrongly formatted address is encountered.
+     * The function `createMessageWithEmail` takes a MimeMessage object, converts it to a base64 encoded
+     * string, and creates a Message object with the encoded email content.
+     * 
+     * @param emailContent MimeMessage emailContent is an object representing an email message in MIME
+     * format. It contains the content, headers, and attachments of the email message.
+     * @return An instance of the `Message` class is being returned.
      */
     public static Message createMessageWithEmail(MimeMessage emailContent) throws MessagingException, IOException {
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
