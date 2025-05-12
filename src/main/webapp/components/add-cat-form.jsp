@@ -34,6 +34,9 @@
                     </c:forEach>
                 </select>
                 <label for="breed">Breed</label>
+                <p class="form-text fst-italic">
+                    Breed list provided by <a href="https://www.thecatapi.com/" target="_blank">The Cat API</a>
+                </p>
             </div>
             <div class="mb-3 pt-2">
                 <fieldset>

@@ -83,9 +83,13 @@ import java.util.stream.Collectors;
                 logger.debug("Session ID: " + request.getSession().getId());
                 logger.debug("idToken: " + tokenResponse.getIdToken());
                 request.setAttribute("userName", userName);
-
                 Person person = new Person();
                 request.setAttribute("person", person);
+
+                // Set person object in session
+                HttpSession session = request.getSession();
+                session.setAttribute("person", person);
+
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);
                 response.sendRedirect("error.jsp");

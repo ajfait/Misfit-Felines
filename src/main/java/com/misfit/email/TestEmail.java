@@ -17,6 +17,11 @@ import java.security.GeneralSecurityException;
 public class TestEmail {
     private static final Logger logger = LogManager.getLogger(TestEmail.class);
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         try {
             String subject = "Test Email from Misfit";
