@@ -1,12 +1,14 @@
 package com.misfit.persistence;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.*;
 
 import java.io.*;
 import java.util.*;
 
-/**
+/** This class defines a Java interface named `PropertiesLoader`. It contains a default method
+ * `loadProperties` that takes a `String` parameter `propertiesFilePath` and returns a `Properties`
+ * object.
+ * 
  * @author Eric Knapp
  */
 public interface PropertiesLoader {

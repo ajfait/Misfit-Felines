@@ -16,6 +16,10 @@ import java.io.*;
 import java.security.GeneralSecurityException;
 import java.util.*;
 
+/**
+ * The `GmailUtil` class in Java provides methods to obtain authorized credentials and create a Gmail
+ * service for sending emails using the Gmail API.
+ */
 public class GmailUtil {
 
     private static final Logger logger = LogManager.getLogger(GmailUtil.class);
@@ -27,11 +31,15 @@ public class GmailUtil {
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
     /**
-     * Creates an authorized Credential object.
-     *
-     * @param HTTP_TRANSPORT The network HTTP Transport.
-     * @return An authorized Credential object.
-     * @throws IOException If the credentials.json file cannot be found.
+     * The function `getCredentials` loads client secrets, builds a flow for user authorization, and
+     * returns the authorized credential object.
+     * 
+     * @param HTTP_TRANSPORT The `HTTP_TRANSPORT` parameter in the `getCredentials` method is an instance
+     * of `NetHttpTransport` class. This class is typically used in Java applications to handle HTTP
+     * requests and responses. It provides the necessary functionality to communicate over HTTP and HTTPS
+     * protocols.
+     * @return The method `getCredentials` returns a `Credential` object after authorizing the user with
+     * the provided client secrets and authorization flow.
      */
     public static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
         // Load client secrets.
@@ -50,6 +58,12 @@ public class GmailUtil {
         return credential;
     }
 
+    /**
+     * The function `getGmailService` returns a Gmail service instance using specified HTTP transport, JSON
+     * factory, credentials, and application name.
+     * 
+     * @return An instance of the Gmail service is being returned.
+     */
     public static Gmail getGmailService() throws IOException, GeneralSecurityException {
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         return new Gmail.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT)).setApplicationName(APPLICATION_NAME).build();

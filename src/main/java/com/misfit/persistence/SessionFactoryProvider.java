@@ -1,10 +1,8 @@
 package com.misfit.persistence;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.boot.*;
+import org.hibernate.boot.registry.*;
 
 /**
  * This file provides a SessionFactory for use with DAOs using Hibernate
@@ -45,6 +43,5 @@ public class SessionFactoryProvider {
             createSessionFactory();
         }
         return sessionFactory;
-
     }
 }
