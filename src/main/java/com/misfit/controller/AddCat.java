@@ -26,7 +26,6 @@ import java.util.*;
 public class AddCat extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
-    
     /**
      * Handles the HTTP POST request to add a new cat to the database.
      *

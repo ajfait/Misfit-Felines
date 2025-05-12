@@ -64,6 +64,7 @@ public class AddMedical extends HttpServlet implements PropertiesLoader {
             medicalDAO.insert(newMedical);
             logger.debug("medical inserted");
 
+            // TODO troubleshoot AWS connection with Gmail
             /**
              try {
              String subject = "Medication Added for " + cat.getName();

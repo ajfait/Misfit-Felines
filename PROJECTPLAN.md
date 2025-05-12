@@ -121,11 +121,13 @@
     - [ ] Can view and search medical
     - [ ] Can reset password
   - [ ] Cognito users are created when a new person is added
+  - [ ] Cognito users are removed when a person is deleted
+  - [ ] Duplicate email addresses are not allowed
   - [ ] When person is deleted, the personId for their cats is set to null
   - [ ] When cat is deleted, the catId for their medical is set to null
 
 ### Week 15
-- [ ] Implement feedback from week 14 review
+- [X] Implement feedback from week 14 review
 - [ ] Final presentation
 - [ ] Create video, add video link to README.md
 - [ ] Finalize all documentation

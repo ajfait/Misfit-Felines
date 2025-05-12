@@ -1,6 +1,7 @@
 package com.misfit.email;
 
 import com.google.api.client.extensions.java6.auth.oauth2.*;
+import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.*;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.json.JsonFactory;

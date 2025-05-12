@@ -11,6 +11,7 @@ import java.util.*;
 @Entity(name = "Person")
 @Table(name = "person")
 public class Person {
+    // TODO add profile photo capabilities
     // Creates instance variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
