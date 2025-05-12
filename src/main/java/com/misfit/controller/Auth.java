@@ -6,6 +6,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.misfit.auth.*;
 import com.misfit.entity.Person;
+import com.misfit.persistence.PersonDAO;
 import com.misfit.persistence.PropertiesLoader;
 import org.apache.logging.log4j.*;
 import org.apache.commons.io.*;
@@ -69,7 +70,6 @@ import java.util.stream.Collectors;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String authCode = request.getParameter("code");
-        String userName = null;
 
         if (authCode == null) {
             response.sendRedirect("index.jsp");
@@ -78,18 +78,25 @@ import java.util.stream.Collectors;
             HttpRequest authRequest = buildAuthRequest(authCode);
             try {
                 TokenResponse tokenResponse = getToken(authRequest);
-                userName = validate(tokenResponse);
-                request.getSession().setAttribute("idToken", tokenResponse.getIdToken());
+                String userName = validate(tokenResponse);
+
+                HttpSession session = request.getSession();
+                session.setAttribute("idToken", tokenResponse.getIdToken());
+
                 logger.debug("Session ID: " + request.getSession().getId());
                 logger.debug("idToken: " + tokenResponse.getIdToken());
-                request.setAttribute("userName", userName);
 
-                Person person = new Person();
-                request.setAttribute("person", person);
+                PersonDAO personDAO = new PersonDAO();
+                Person person = personDAO.getByField("email", userName);
 
-                // Set person object in session
-                HttpSession session = request.getSession();
-                session.setAttribute("person", person);
+                if (person != null) {
+                    session.setAttribute("person", person);
+                    logger.debug("Person stored in session: " + person);
+                } else {
+                    logger.error("No person found with email: " + userName);
+                    response.sendRedirect("error.jsp");
+                    return;
+                }
 
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);

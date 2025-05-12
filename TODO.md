@@ -7,7 +7,7 @@
 4. [ ] Resolve and close issues
 5. [ ] Application startup to load properties
 6. [X] Remove unused classes
-7. [ ] Set person in session
+7. [X] Set person in session
 8. [ ] Run QAPlug
 9. [X] Showing IDs
 10. [ ] Update readme
