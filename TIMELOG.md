@@ -1,7 +1,7 @@
 # Time Log
 
 | Date    | Task                                                                                                                                     | Hours | Cume |
-|---------|------------------------------------------------------------------------------------------------------------------------------------------|-------|------|
+| ------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ----- | ---- |
 | 2/2/25  | Clone repository and write problem statement                                                                                             | 0.5   | 0.5  |
 | 2/9/25  | Configure Log4J and JUnit, write user stories, design screens, create project plan                                                       | 3     | 3.5  |
 | 2/10/25 | Create entities and some JSP files                                                                                                       | 1     | 4.5  |
@@ -48,3 +48,4 @@
 | 5/10/25 | Update add person servlet to prevent duplicate email addresses and delete person servlet to delete user from Cognito user pool           | 2     | 81   |
 | 5/11/25 | Update unit tests with check for cascade action on delete                                                                                | 0.5   | 81.5 |
 | 5/11/25 | Create api properties file and custom error pages                                                                                        | 0.5   | 82   |
+| 5/12/25 | Update Javadoc, consolidate import statments, create application startup class, and address feedback                                     | 4     | 86   |
