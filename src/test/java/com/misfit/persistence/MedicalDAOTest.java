@@ -1,12 +1,8 @@
 package com.misfit.persistence;
 
-import com.misfit.entity.Medical;
-import com.misfit.entity.Cat;
-import com.misfit.entity.Person;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.misfit.entity.*;
+import org.junit.jupiter.api.*;
+import org.apache.logging.log4j.*;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -5,12 +5,8 @@ import com.misfit.entity.Breed;
 import com.misfit.persistence.PropertiesLoader;
 
 import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.net.http.*;
+import java.util.*;
 
 /**
  * The `CatBreedService` class retrieves a list of cat breed names from an API using HttpClient and

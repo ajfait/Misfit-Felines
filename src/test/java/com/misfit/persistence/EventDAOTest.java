@@ -1,10 +1,8 @@
 package com.misfit.persistence;
 
 import com.misfit.entity.Event;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.*;
+import org.apache.logging.log4j.*;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -1,15 +1,13 @@
 package com.misfit.service;
 
 import com.misfit.persistence.PropertiesLoader;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.*;
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.cognitoidentityprovider.CognitoIdentityProviderClient;
 import software.amazon.awssdk.services.cognitoidentityprovider.model.*;
 
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * The `CognitoService` class in Java provides methods to interact with Amazon Cognito user pools such

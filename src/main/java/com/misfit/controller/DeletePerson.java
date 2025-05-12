@@ -1,16 +1,12 @@
 package com.misfit.controller;
 
 import com.misfit.entity.Person;
-import com.misfit.persistence.GenericDAO;
-import com.misfit.persistence.PropertiesLoader;
+import com.misfit.persistence.*;
 import com.misfit.service.CognitoService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.*;
 
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 /**

@@ -24,7 +24,6 @@ import java.security.spec.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-
 /**
  * This servlet class handles the authentication process.
  * It loads properties, including client ID, client secret, OAuth URL, login URL, and redirect URL.

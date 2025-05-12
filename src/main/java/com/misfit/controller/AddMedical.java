@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Set;
 
-
 /**
  * HttpServlet class that handles the POST request to add medical information.
  * This servlet sets the character encoding, processes the request parameters, 

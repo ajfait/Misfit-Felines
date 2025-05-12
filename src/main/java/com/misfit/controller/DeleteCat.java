@@ -1,15 +1,11 @@
 package com.misfit.controller;
 
 import com.misfit.entity.Cat;
-import com.misfit.persistence.GenericDAO;
-import com.misfit.persistence.PropertiesLoader;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.misfit.persistence.*;
+import org.apache.logging.log4j.*;
 
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 /**

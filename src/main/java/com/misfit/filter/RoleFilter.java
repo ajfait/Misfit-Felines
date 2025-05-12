@@ -3,13 +3,11 @@ package com.misfit.filter;
 import com.misfit.entity.Person;
 import com.misfit.persistence.GenericDAO;
 import com.misfit.service.RoleService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.*;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 /**

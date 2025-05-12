@@ -6,8 +6,7 @@ import org.apache.commons.codec.binary.Base64;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * The `CreateMessage` class provides a method to create a `Message` object with base64 encoded email

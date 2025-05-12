@@ -1,21 +1,15 @@
 package com.misfit.controller;
 
 import com.misfit.entity.Event;
-import com.misfit.persistence.GenericDAO;
-import com.misfit.persistence.PropertiesLoader;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.misfit.persistence.*;
+import org.apache.logging.log4j.*;
 
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.List;
-import java.util.Locale;
+import java.time.format.*;
+import java.util.*;
 
 /**
  * This servlet handles the GET request to view a list of events.

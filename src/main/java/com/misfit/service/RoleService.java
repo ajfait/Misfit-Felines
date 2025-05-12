@@ -1,7 +1,6 @@
 package com.misfit.service;
 
-import com.misfit.entity.Cat;
-import com.misfit.entity.Person;
+import com.misfit.entity.*;
 import com.misfit.persistence.GenericDAO;
 import com.nimbusds.jwt.SignedJWT;
 import org.apache.logging.log4j.*;
