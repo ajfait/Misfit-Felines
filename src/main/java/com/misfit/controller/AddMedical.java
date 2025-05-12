@@ -14,13 +14,22 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Set;
 
+
 /**
- * The type Add medical.
+ * HttpServlet class that handles the POST request to add medical information.
+ * This servlet sets the character encoding, processes the request parameters, 
+ * and forwards the request to the appropriate JSP page.
  */
 @WebServlet(name = "addMedicalServlet", urlPatterns = {"/addMedical"})
 public class AddMedical extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Handles the HTTP POST request to add medical information.
+     *
+     * @param request  The HTTP servlet request containing the parameters.
+     * @param response The HTTP servlet response to redirect to success.jsp.
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
@@ -79,6 +88,14 @@ public class AddMedical extends HttpServlet implements PropertiesLoader {
         }
     }
 
+    /**
+     * Handles the HTTP GET request to retrieve information about a specific cat by its ID.
+     *
+     * @param request  the HTTP request object containing the cat ID parameter
+     * @param response the HTTP response object to send the response back
+     * @throws IOException      if an input or output exception occurs
+     * @throws ServletException if a servlet exception occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int catId = Integer.parseInt(request.getParameter("id"));

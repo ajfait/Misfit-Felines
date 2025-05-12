@@ -17,12 +17,23 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * The type Edit cat.
+ * Handles the GET request to edit a cat entity.
+ *
+ * @param request  the HTTP request containing the cat ID to edit
+ * @param response the HTTP response to redirect to success or error page
+ * @throws IOException if an I/O error occurs while processing the request
  */
 @WebServlet(name = "editCatServlet", urlPatterns = {"/editCat"})
 public class EditCat extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Handles the GET request to edit a cat entity.
+     *
+     * @param request  the HTTP servlet request
+     * @param response the HTTP servlet response
+     * @throws IOException if an I/O error occurs while processing the request
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
@@ -57,6 +68,13 @@ public class EditCat extends HttpServlet implements PropertiesLoader {
         }
     }
 
+    /**
+     * Handles the HTTP POST request to update a cat entity based on the provided parameters.
+     *
+     * @param request  the HTTP servlet request containing the cat information
+     * @param response the HTTP servlet response to be sent back
+     * @throws IOException if an I/O error occurs while processing the request
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {

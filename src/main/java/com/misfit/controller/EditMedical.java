@@ -15,12 +15,23 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 /**
- * The type Edit medical.
+ * Handles the GET request to edit a medical record.
+ *
+ * @param request  the HttpServletRequest object containing the request parameters
+ * @param response the HttpServletResponse object for sending the response
+ * @throws IOException if an I/O error occurs while processing the request
  */
 @WebServlet(name = "editMedicalServlet", urlPatterns = {"/editMedical"})
 public class EditMedical extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Handles the GET request to retrieve and display a specific medical record for editing.
+     *
+     * @param request  the HttpServletRequest object containing the request parameters
+     * @param response the HttpServletResponse object for sending the response
+     * @throws IOException if an I/O error occurs while processing the request
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
@@ -39,6 +50,13 @@ public class EditMedical extends HttpServlet implements PropertiesLoader {
         }
     }
 
+    /**
+     * Handles the HTTP POST request to update medical information.
+     *
+     * @param request  The HTTP request containing medical information to be updated.
+     * @param response The HTTP response to be sent back after processing the request.
+     * @throws IOException If an I/O error occurs while processing the request.
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {

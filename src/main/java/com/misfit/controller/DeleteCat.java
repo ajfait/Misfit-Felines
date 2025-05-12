@@ -13,12 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * The type Delete cat.
+ * Servlet for deleting a cat entity.
+ * This servlet handles the POST request to delete a cat by its ID.
+ * It logs the deletion action and redirects to the viewCat page upon success.
+ * If an error occurs during the deletion process, it logs the error and redirects to an error page.
  */
 @WebServlet(name = "deleteCatServlet", urlPatterns = {"/deleteCat"})
 public class DeleteCat extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Handles the HTTP POST request to delete a cat entity by its ID.
+     *
+     * @param request  the HTTP servlet request containing the cat ID parameter
+     * @param response the HTTP servlet response to redirect after deletion
+     * @throws IOException if an I/O error occurs while processing the request
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {

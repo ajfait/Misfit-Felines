@@ -15,12 +15,24 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 /**
- * The type Edit event.
+ * Servlet for editing an event based on the provided ID.
+ * This servlet handles GET requests to edit an event.
+ *
+ * @param request  the HTTP request containing the event ID to be edited
+ * @param response the HTTP response to redirect to success or error page
+ * @throws IOException if an input or output error occurs while the servlet is handling the request
  */
 @WebServlet(name = "editEventServlet", urlPatterns = {"/editEvent"})
 public class EditEvent extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Handles the HTTP GET request to load and display an event for editing.
+     *
+     * @param request  the HttpServletRequest object containing the request parameters
+     * @param response the HttpServletResponse object for sending the response
+     * @throws IOException if an I/O error occurs while processing the request
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
@@ -48,6 +60,13 @@ public class EditEvent extends HttpServlet implements PropertiesLoader {
         }
     }
 
+    /**
+     * Handles the HTTP POST request to update an event with the provided details.
+     *
+     * @param request  The HTTP servlet request containing the event details
+     * @param response The HTTP servlet response to redirect to success or error page
+     * @throws IOException if an I/O error occurs while processing the request
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {

@@ -13,12 +13,24 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * The type Delete medical.
+ * Servlet for deleting a medical record based on the provided medical ID.
+ * This servlet handles the POST request to delete a medical record.
+ *
+ * @param request  the HTTP servlet request containing the medical ID to be deleted
+ * @param response the HTTP servlet response to redirect to success or error pages
+ * @throws IOException if an input or output exception occurs while processing the request
  */
 @WebServlet(name = "deleteMedicalServlet", urlPatterns = {"/deleteMedical"})
 public class DeleteMedical extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Handles the HTTP POST request to delete a medical record based on the provided medical ID.
+     *
+     * @param request  The HTTP servlet request containing the medical ID parameter
+     * @param response The HTTP servlet response to redirect to success or error page
+     * @throws IOException if an input or output exception occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {

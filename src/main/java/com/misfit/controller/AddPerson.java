@@ -17,13 +17,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
 
+
 /**
- * The type Add person.
+ * Servlet for adding a person to the system.
+ * Only accessible to users with admin privileges.
  */
 @WebServlet(name = "addPersonServlet", urlPatterns = {"/addPerson"})
 public class AddPerson extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Handles the HTTP POST request to add a new person to the database.
+     *
+     * @param request  The HTTP servlet request containing the person's information.
+     * @param response The HTTP servlet response to redirect to the success page.
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
@@ -100,6 +108,14 @@ public class AddPerson extends HttpServlet implements PropertiesLoader {
         }
     }
 
+    /**
+     * Handles the HTTP GET request to add a person.
+     *
+     * @param request  the HttpServletRequest object containing the request parameters
+     * @param response the HttpServletResponse object for sending the response
+     * @throws IOException      if an input or output error occurs while the servlet is handling the GET request
+     * @throws ServletException if the request for the GET could not be handled
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Boolean isAdmin = (Boolean) request.getAttribute("isAdmin");

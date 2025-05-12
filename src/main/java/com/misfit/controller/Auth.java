@@ -25,6 +25,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
+/**
+ * This servlet class handles the authentication process.
+ * It loads properties, including client ID, client secret, OAuth URL, login URL, and redirect URL.
+ * It also loads a JWKS file from a URL, reads it using a mapper, and logs the loaded keys.
+ * If an IOException occurs during loading the JSON file, it is logged as an error.
+ * If any other exception occurs, it is also logged as an error.
+ */
 @WebServlet(urlPatterns = {"/auth"})
 /**
  * Inspired by: https://stackoverflow.com/questions/52144721/how-to-get-access-token-using-client-credentials-using-java-code
@@ -41,6 +48,11 @@ import java.util.stream.Collectors;
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Initializes the servlet by calling the superclass's init method and loading the key.
+     *
+     * @throws ServletException if an exception occurs during initialization
+     */
     @Override
     public void init() throws ServletException {
         super.init();

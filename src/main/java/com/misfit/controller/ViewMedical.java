@@ -15,12 +15,30 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * The type View medical.
+ * This servlet handles the GET request to view a list of medical.
+ * It retrieves the list of medical from the database using a GenericDAO,
+ * sets the attributes for the JSP page, and forwards the request to view-medical.jsp.
+ * If an exception occurs during the process, it logs the error and redirects to an error page.
+ *
+ * @param request  the HttpServletRequest object
+ * @param response the HttpServletResponse object
+ * @throws IOException if an I/O error occurs
  */
 @WebServlet(name = "viewMedicalServlet", urlPatterns = {"/viewMedical"})
 public class ViewMedical extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Handles the HTTP GET request to display a list of medical.
+     *
+     * This method retrieves a list of medical from the database using a GenericDAO,
+     * sets the list as an attribute in the request, sets the current page attribute,
+     * and forwards the request to the view-medical.jsp page to display the list of medical.
+     *
+     * @param request  the HttpServletRequest object
+     * @param response the HttpServletResponse object
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {

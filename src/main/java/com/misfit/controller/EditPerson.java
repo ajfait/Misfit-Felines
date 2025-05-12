@@ -17,12 +17,25 @@ import java.io.IOException;
 import java.util.Set;
 
 /**
- * The type Edit person.
+ * This servlet handles the editing of a person entity.
+ * It retrieves the person ID from the request parameters, updates the corresponding person entity,
+ * and redirects the user to either a success or error page based on the outcome.
+ *
+ * @param request  the HttpServletRequest object containing the request parameters
+ * @param response the HttpServletResponse object used to redirect the user
+ * @throws IOException if an I/O error occurs while processing the request
  */
 @WebServlet(name = "editPersonServlet", urlPatterns = {"/editPerson"})
 public class EditPerson extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Handles the GET request to load a person for editing based on the provided ID.
+     *
+     * @param request  the HttpServletRequest object containing the request parameters
+     * @param response the HttpServletResponse object for sending the response
+     * @throws IOException if an I/O error occurs while processing the request
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
@@ -41,6 +54,13 @@ public class EditPerson extends HttpServlet implements PropertiesLoader {
         }
     }
 
+    /**
+     * Handles the HTTP POST request to update a person's information.
+     *
+     * @param request  The HTTP servlet request containing the person's updated information
+     * @param response The HTTP servlet response to redirect to success or error page
+     * @throws IOException If an input or output exception occurs while processing the request
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {

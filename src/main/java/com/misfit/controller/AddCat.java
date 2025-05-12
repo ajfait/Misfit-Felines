@@ -22,12 +22,24 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * The type Add cat.
+ * Servlet to handle adding a new cat to the database.
+ * This servlet extends HttpServlet and implements PropertiesLoader.
+ * It handles the HTTP POST request to add a new cat to the database.
+ * It sets attributes for person, peopleList, and currentPage, 
+ * then forwards the request to add-cat.jsp.
  */
 @WebServlet(name = "addCatServlet", urlPatterns = {"/addCat"})
 public class AddCat extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    
+    /**
+     * Handles the HTTP POST request to add a new cat to the database.
+     *
+     * @param request The HTTP servlet request containing cat information
+     * @param response The HTTP servlet response to redirect to success or error page
+     * @throws IOException If an input or output exception occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
@@ -85,6 +97,19 @@ public class AddCat extends HttpServlet implements PropertiesLoader {
         }
     }
 
+    /**
+     * Handles the HTTP GET request to add a new cat.
+     *
+     * Retrieves a list of people from the database and the person from the session.
+     * If the person is not in the session, redirects to an unauthorized page.
+     * Sets attributes for the person, people list, and current page.
+     * Forwards the request to the add-cat.jsp page.
+     *
+     * @param request  the HttpServletRequest object
+     * @param response the HttpServletResponse object
+     * @throws IOException      if an input or output error occurs while the servlet is handling the GET request
+     * @throws ServletException if the request for the GET could not be handled
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         GenericDAO<Person> personDAO = new GenericDAO<>(Person.class);

@@ -14,12 +14,23 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * The type Delete person.
+ * Servlet for deleting a person entity from the database.
+ * This servlet handles the POST request to delete a person by their ID.
+ * It uses a GenericDAO to interact with the database.
+ * If the deletion is successful, the user is redirected to viewPerson page.
+ * If an error occurs during the deletion process, the user is redirected to an error page.
  */
 @WebServlet(name = "deletePersonServlet", urlPatterns = {"/deletePerson"})
 public class DeletePerson extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Handles the HTTP POST request to delete a person entity based on the provided personId.
+     *
+     * @param request  the HTTP servlet request containing the personId parameter
+     * @param response the HTTP servlet response to redirect to viewPerson or error.jsp
+     * @throws IOException if an I/O error occurs while processing the request
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {

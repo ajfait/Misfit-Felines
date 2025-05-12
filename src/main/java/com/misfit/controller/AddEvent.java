@@ -19,14 +19,22 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Set;
 
+
 /**
- * The type Add event.
+ * Servlet that handles adding events via POST requests.
+ * Implements PropertiesLoader interface.
  */
 @WebServlet(name = "addEventServlet", urlPatterns = {"/addEvent"})
 public class AddEvent extends HttpServlet implements PropertiesLoader {
     private static final Logger logger = LogManager.getLogger(AddEvent.class);
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
+    /**
+     * Handles the HTTP POST request to add event details.
+     *
+     * @param request  the HTTP servlet request containing the event details
+     * @param response the HTTP servlet response to redirect to success or error page
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
@@ -90,6 +98,14 @@ public class AddEvent extends HttpServlet implements PropertiesLoader {
         }
     }
 
+    /**
+     * Handles the HTTP GET request for adding an event.
+     *
+     * @param request  the HttpServletRequest object containing the request parameters
+     * @param response the HttpServletResponse object for sending the response
+     * @throws IOException      if an input or output error occurs while the servlet is handling the GET request
+     * @throws ServletException if the request for the GET could not be handled
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Boolean isAdmin = (Boolean) request.getAttribute("isAdmin");
@@ -124,6 +140,13 @@ public class AddEvent extends HttpServlet implements PropertiesLoader {
         request.getRequestDispatcher("add-event.jsp").forward(request, response);
     }
 
+    /**
+     * Parses a date-time string using the provided formatter into a LocalDateTime object.
+     *
+     * @param dateTimeString The date-time string to parse
+     * @param formatter The formatter to use for parsing the date-time string
+     * @return The LocalDateTime object parsed from the string, or null if parsing fails
+     */
     private LocalDateTime parseDateTime(String dateTimeString, DateTimeFormatter formatter) {
         try {
             if (dateTimeString != null && !dateTimeString.isBlank()) {
