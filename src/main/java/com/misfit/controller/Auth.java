@@ -44,7 +44,6 @@ import java.util.stream.Collectors;
     @Override
     public void init() throws ServletException {
         super.init();
-        loadProperties();
         loadKey();
     }
 
@@ -110,7 +109,6 @@ import java.util.stream.Collectors;
         logger.debug("Id token: " + tokenResponse.getIdToken());
 
         return tokenResponse;
-
     }
 
     /**
@@ -210,28 +208,6 @@ import java.util.stream.Collectors;
             logger.error("Cannot load json..." + ioException.getMessage(), ioException);
         } catch (Exception e) {
             logger.error("Error loading json" + e.getMessage(), e);
-        }
-    }
-
-    /**
-     * Read in the cognito props file and get/set the client id, secret, and required urls
-     * for authenticating a user.
-     */
-    // TODO This code appears in a couple classes, consider using a startup servlet similar to adv java project
-    private void loadProperties() {
-        try {
-            properties = loadProperties("/cognito.properties");
-            CLIENT_ID = properties.getProperty("client.id");
-            CLIENT_SECRET = properties.getProperty("client.secret");
-            OAUTH_URL = properties.getProperty("oauthURL");
-            LOGIN_URL = properties.getProperty("loginURL");
-            REDIRECT_URL = properties.getProperty("redirectURL");
-            REGION = properties.getProperty("region");
-            POOL_ID = properties.getProperty("poolId");
-        } catch (IOException ioException) {
-            logger.error("Cannot load properties..." + ioException.getMessage(), ioException);
-        } catch (Exception e) {
-            logger.error("Error loading properties" + e.getMessage(), e);
         }
     }
 }
