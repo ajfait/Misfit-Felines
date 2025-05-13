@@ -12,9 +12,6 @@ import java.util.Properties;
 /**
  * This servlet handles the logout functionality by redirecting the user to the Cognito logout URL.
  * The user will be logged out from the Cognito service.
- * 
- * @param request the HTTP request made by the user
- * @param response the HTTP response to be sent back to the user
  */
 @WebServlet(urlPatterns = {"/logout"})
 public class Logout extends HttpServlet implements PropertiesLoader {
@@ -32,6 +29,20 @@ public class Logout extends HttpServlet implements PropertiesLoader {
     @Override
     public void init() throws ServletException {
         super.init();
+        loadProperties();
+    }
+
+    private void loadProperties() {
+        try {
+            properties = loadProperties("/cognito.properties");
+            DOMAIN = properties.getProperty("domain");
+            CLIENT_ID = properties.getProperty("client.id");
+            HOSTED = properties.getProperty("hosted");
+        } catch (IOException ioException) {
+            logger.error("Cannot load properties..." + ioException.getMessage(), ioException);
+        } catch (Exception e) {
+            logger.error("Error loading properties" + e.getMessage(), e);
+        }
     }
 
     /**
@@ -47,14 +58,8 @@ public class Logout extends HttpServlet implements PropertiesLoader {
         if (request.getSession() != null) {
             request.getSession().invalidate();
         }
-        
-        try {
-            String cognitoLogoutUrl = DOMAIN + "/logout?client_id=" + CLIENT_ID + "&logout_uri=" + HOSTED;
-            logger.debug("Routed to Cognito logout");
-            response.sendRedirect(cognitoLogoutUrl);
-        } catch (Exception e) {
-            logger.error("Error routing to Cognito logout");
-            response.sendRedirect("error.jsp");
-        }
+        String cognitoLogoutUrl = DOMAIN + "/logout?client_id=" + CLIENT_ID + "&logout_uri=" + HOSTED;
+
+        response.sendRedirect(cognitoLogoutUrl);
     }
 }

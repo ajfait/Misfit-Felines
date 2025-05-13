@@ -5,8 +5,6 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.misfit.auth.*;
-import com.misfit.entity.Person;
-import com.misfit.persistence.PersonDAO;
 import com.misfit.persistence.PropertiesLoader;
 import org.apache.logging.log4j.*;
 import org.apache.commons.io.*;
@@ -56,6 +54,7 @@ import java.util.stream.Collectors;
     @Override
     public void init() throws ServletException {
         super.init();
+        loadProperties();
         loadKey();
     }
 
@@ -82,28 +81,18 @@ import java.util.stream.Collectors;
 
                 HttpSession session = request.getSession();
                 session.setAttribute("idToken", tokenResponse.getIdToken());
+                session.setAttribute("userName", userName);
 
                 logger.debug("Session ID: " + request.getSession().getId());
                 logger.debug("idToken: " + tokenResponse.getIdToken());
-
-                PersonDAO personDAO = new PersonDAO();
-                Person person = personDAO.getByField("email", userName);
-
-                if (person != null) {
-                    session.setAttribute("person", person);
-                    logger.debug("Person stored in session: " + person);
-                } else {
-                    logger.error("No person found with email: " + userName);
-                    response.sendRedirect("error.jsp");
-                    return;
-                }
+                request.setAttribute("userName", userName);
 
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);
-                response.sendRedirect("error.jsp");
+                // response.sendRedirect("error.jsp");
             } catch (InterruptedException e) {
                 logger.error("Error getting token from Cognito oauth url " + e.getMessage(), e);
-                response.sendRedirect("error.jsp");
+                // response.sendRedirect("error.jsp");
             }
         }
         response.sendRedirect(request.getContextPath() + "/viewCat");
@@ -139,7 +128,7 @@ import java.util.stream.Collectors;
      * as username.
      *
      * @param tokenResponse
-     * @return
+     * @return userName
      * @throws IOException
      */
     private String validate(TokenResponse tokenResponse) throws IOException {
@@ -231,6 +220,28 @@ import java.util.stream.Collectors;
             logger.error("Cannot load json..." + ioException.getMessage(), ioException);
         } catch (Exception e) {
             logger.error("Error loading json" + e.getMessage(), e);
+        }
+    }
+
+    /**
+     * Read in the cognito props file and get/set the client id, secret, and required urls
+     * for authenticating a user.
+     */
+    // TODO This code appears in a couple classes, consider using a startup servlet similar to adv java project
+    private void loadProperties() {
+        try {
+            properties = loadProperties("/cognito.properties");
+            CLIENT_ID = properties.getProperty("client.id");
+            CLIENT_SECRET = properties.getProperty("client.secret");
+            OAUTH_URL = properties.getProperty("oauthURL");
+            LOGIN_URL = properties.getProperty("loginURL");
+            REDIRECT_URL = properties.getProperty("redirectURL");
+            REGION = properties.getProperty("region");
+            POOL_ID = properties.getProperty("poolId");
+        } catch (IOException ioException) {
+            logger.error("Cannot load properties..." + ioException.getMessage(), ioException);
+        } catch (Exception e) {
+            logger.error("Error loading properties" + e.getMessage(), e);
         }
     }
 }
