@@ -2,19 +2,20 @@ package com.misfit.controller;
 
 import com.misfit.entity.Person;
 import com.misfit.persistence.*;
+import com.misfit.util.ValidationUtil;
+import jakarta.validation.ConstraintViolation;
 import org.apache.logging.log4j.*;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.Set;
 
 /**
  * This servlet handles the editing of a person entity.
  * It retrieves the person ID from the request parameters, updates the corresponding person entity,
  * and redirects the user to either a success or error page based on the outcome.
  *
- * @param request  the HttpServletRequest object containing the request parameters
- * @param response the HttpServletResponse object used to redirect the user
  * @throws IOException if an I/O error occurs while processing the request
  */
 @WebServlet(name = "editPersonServlet", urlPatterns = {"/editPerson"})
@@ -34,6 +35,12 @@ public class EditPerson extends HttpServlet implements PropertiesLoader {
             int personId = Integer.parseInt(request.getParameter("id"));
             GenericDAO<Person> personDAO = new GenericDAO<>(Person.class);
             Person person = personDAO.getById(personId);
+
+            if (person == null) {
+                logger.error("No person found with ID: " + personId);
+                response.sendRedirect("error.jsp");
+                return;
+            }
 
             request.setAttribute("person", person);
             request.setAttribute("currentPage", "editPerson");

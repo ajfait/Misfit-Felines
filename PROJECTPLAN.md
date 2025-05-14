@@ -99,39 +99,39 @@
 - [X] Weekly journal entry / time log
 
 ### Week 14
-- [ ] Functional testing
-  - [ ] Admin User
-    - [ ] Can add / edit profile
-    - [ ] Can add / edit / delete cat
-    - [ ] Can add / edit / delete person
-    - [ ] Can add / edit / delete event
-    - [ ] Can add / edit / delete medical
-    - [ ] Can view and search cats
-    - [ ] Can view and search people
-    - [ ] Can view and search events
-    - [ ] Can view and search medical
-    - [ ] Can reset password
-  - [ ] Non-Admin User
-    - [ ] Can add / edit profile
-    - [ ] Can add / edit / delete cat
-    - [ ] Can add / edit / delete medical
-    - [ ] Can view and search cats
-    - [ ] Can view and search people
-    - [ ] Can view and search events
-    - [ ] Can view and search medical
-    - [ ] Can reset password
-  - [ ] Cognito users are created when a new person is added
-  - [ ] Cognito users are removed when a person is deleted
-  - [ ] Duplicate email addresses are not allowed
-  - [ ] When person is deleted, the personId for their cats is set to null
-  - [ ] When cat is deleted, the catId for their medical is set to null
+- [X] Functional testing
+  - [X] Admin User
+    - [X] Can edit profile
+    - [X] Can add / edit / delete cat
+    - [X] Can add / edit / delete person
+    - [X] Can add / edit / delete event
+    - [X] Can add / edit / delete medical
+    - [X] Can view and search cats
+    - [X] Can view and search people
+    - [X] Can view and search events
+    - [X] Can view and search medical
+    - [X] Can reset password
+  - [X] Non-Admin User
+    - [X] Can edit profile
+    - [X] Can add / edit / delete cat
+    - [X] Can add / edit / delete medical
+    - [X] Can view and search cats
+    - [X] Can view and search people
+    - [X] Can view and search events
+    - [X] Can view and search medical
+    - [X] Can reset password
+  - [X] Cognito users are created when a new person is added
+  - [X] Cognito users are removed when a person is deleted
+  - [X] Duplicate email addresses are not allowed
+  - [X] When person is deleted, the personId for their cats is set to null
+  - [X] When cat is deleted, the catId for their medical is set to null (duplicate cat names?)
 
 ### Week 15
 - [X] Implement feedback from week 14 review
 - [ ] Final presentation
 - [ ] Create video, add video link to README.md
-- [ ] Finalize all documentation
-- [ ] Code quality check
+- [X] Finalize all documentation
+- [X] Code quality check
 - [ ] Weekly journal entry / time log
 
 ### Week 16

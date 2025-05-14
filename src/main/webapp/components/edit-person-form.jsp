@@ -54,7 +54,7 @@
                         name="email"
                         id="email"
                         value="${person.email}"
-                        disabled
+                        readonly
                 />
                 <label for="email">Email Address</label>
             </div>
