@@ -128,12 +128,12 @@
 
 ### Week 15
 - [X] Implement feedback from week 14 review
-- [ ] Final presentation
-- [ ] Create video, add video link to README.md
+- [X] Final presentation
+- [X] Create video, add video link to README.md
 - [X] Finalize all documentation
 - [X] Code quality check
-- [ ] Weekly journal entry / time log
+- [X] Weekly journal entry / time log
 
 ### Week 16
-- [ ] Final touches before code complete
-- [ ] Weekly journal entry / time log
+- [X] Final touches before code complete
+- [X] Weekly journal entry / time log

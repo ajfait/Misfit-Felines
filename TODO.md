@@ -10,7 +10,7 @@
 7. [X] Set person in session
 8. [X] Run QAPlug
 9. [X] Showing IDs
-10. [ ] Update readme
+10. [X] Update readme
 11. [X] Cite API service
-12. [ ] Add demo video to read me
+12. [X] Add demo video to read me
 13. [X] Ensure main branch is UTP with all source code

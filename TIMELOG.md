@@ -52,3 +52,4 @@
 | 5/12/25 | Troubleshoot auth issues and revert application startup                                                                                  | 5     | 91   |
 | 5/13/25 | Troubleshoot application startup                                                                                                         | 10    | 101  |
 | 5/13/25 | Functional testing and resolve minor issues                                                                                              | 1     | 102  |
+| 5/13/25 | Presentation and final documentation                                                                                                     | 3     | 105  |

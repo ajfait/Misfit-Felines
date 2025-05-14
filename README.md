@@ -2,14 +2,12 @@
 
 ## Table of Contents
 <!-- TOC -->
-* [Misfit Felines Foster Portal](#misfit-felines-foster-portal)
-  * [Table of Contents](#table-of-contents)
-  * [Problem Statement](#problem-statement)
-  * [Technology Stack](#technology-stack)
-  * [Documentation](#documentation)
-  * [Demo](#demo)
-  * [Code Review](#code-review)
-  * [GitHub Repository](#github-repository)
+* [Problem Statement](#problem-statement)
+* [Technology Stack](#technology-stack)
+* [Documentation](#documentation)
+* [Demo](#demo)
+* [Code Review](#code-review)
+* [GitHub Repository](#github-repository)
 <!-- TOC -->
 ___
 
@@ -32,26 +30,26 @@ ___
 8. AWS Cognito user authentication and authorization
 9. Bootstrap 5 front end styling
 10. Hibernate object relational mapper and validator
-11. The Cat API
+11. [The Cat API](https://www.thecatapi.com)
 12. Gson JSON parsing
 13. JSTL & EL JSP logic and templating
 14. Nimbus JWT handling
 15. Tomcat deployment
 16. GitHub versioning
 17. Postman API testing
-18. GMAIL API
+18. [Gmail API](https://developers.google.com/workspace/gmail/api/guides)
 ___
 ## Documentation
 + [Project Plan](https://github.com/ajfait/Misfit-Felines/blob/main/PROJECTPLAN.md)
 + [Time Log](https://github.com/ajfait/Misfit-Felines/blob/main/TIMELOG.md)
 + [Design](https://github.com/ajfait/Misfit-Felines/tree/main/design)
-+ Screenshots
++ [Screenshots](https://github.com/ajfait/Misfit-Felines/tree/main/screenshots)
 ___
 ## Demo
-View Demo on YouTube
+https://www.youtube.com/watch?v=y8pF_gzjWm8
 ___
 ## Code Review
-View Code Review on YouTube
+https://www.youtube.com/watch?v=R9afdVR-Sio
 ___
 ## GitHub Repository
 https://github.com/ajfait/Misfit-Felines
